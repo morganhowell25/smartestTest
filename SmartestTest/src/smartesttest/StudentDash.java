@@ -14,7 +14,7 @@ import javafx.scene.layout.GridPane;
  */
 public abstract class StudentDash  implements AppScene
 {
-    public GridPane drawTeacherDash()
+    public GridPane drawStudentDash()
     {
         GridPane gp = new GridPane();
         
