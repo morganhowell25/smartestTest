@@ -26,6 +26,15 @@ public class DashBoard
         ViewDepartmentLOScene x = new ViewDepartmentLOScene();
         Scene scene = x.getScene();
         
+        //Testing testing 1,2,3...
+        
+        //CreateTestScene CTS = new CreateTestScene();
+        //Scene scene = CTS.getScene();
+        //AddQuestionScene AQ = new AddQuestionScene();
+        //Scene scene = AQ.getScene();
+        //ManageTestsScene MTS = new ManageTestsScene();
+        //Scene scene = MTS.getScene();        
+        
         primaryStage.setTitle("SmartTest!");
         primaryStage.setScene(scene);
         primaryStage.show();
