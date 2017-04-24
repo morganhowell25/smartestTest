@@ -23,8 +23,8 @@ public class DashBoard
     {
         //Stage primaryStage = new Stage();
         
-        ManageUserScene mus = new ManageUserScene();
-        Scene scene = mus.getScene();
+        //ViewTestLOScene vtlos = new ViewTestLOScene();
+        //Scene scene = vtlos.getScene();
         
         primaryStage.setTitle("SmartTest!");
         primaryStage.setScene(scene);
