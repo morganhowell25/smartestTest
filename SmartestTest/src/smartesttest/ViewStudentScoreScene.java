@@ -19,7 +19,7 @@ public class ViewStudentScoreScene extends StudentDash
     {
         GridPane gp = drawStudentDash();
         
-        //Implement manage user buttons here
+        //
         
         Scene scene = new Scene(gp, 700, 500);
         return scene;
