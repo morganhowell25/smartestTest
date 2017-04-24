@@ -21,7 +21,9 @@ public class ViewScoresScene extends StudentDash
     {
         GridPane gp = drawStudentDash();
         
-        //Show a table of tests taken
+        //Show a table of tests taken some editing needs to be done to 
+        //make it look pretty will be done dyanmically based on the 
+        //information pulled form DB
         Label testList = new Label("Tests Taken");
         gp.add(testList, 1, 0);
         Label scoreList = new Label("Score");

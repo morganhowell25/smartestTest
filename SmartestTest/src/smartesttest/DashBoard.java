@@ -25,6 +25,7 @@ public class DashBoard
         
         TestScene test = new TestScene();
         ViewScoresScene scoresList = new ViewScoresScene();
+        ViewStudentScoreScene studentScore = new ViewStudentScoreScene();
         Scene scene = test.getScene();
         
         primaryStage.setTitle("SmartTest!");

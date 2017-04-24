@@ -20,21 +20,23 @@ public class TestScene extends StudentDash {
         GridPane gp = drawStudentDash();
 
         //for each question on the test do the following
-        for (int i = 0; i < 11; i+=5) 
+        for (int i = 0; i < 15; i+=5) 
         {
             Label questionTxt = new Label((i/5+1) + ") Question text goes here");
             gp.add(questionTxt, 1, i);
 
+            //makes it so only one of the radio buttons maye be selcted at a time
             ToggleGroup questionAnswers = new ToggleGroup();
-            int j = 1;
-            while(j < 5) 
+            
+            //loops to create the radio buttons for the answers
+            //can be changed instead of 5 to be less than the questions array of answers
+            //in final implementation.
+            for(int j = 1; j < 5; j++) 
             {
                 RadioButton ans1 = new RadioButton("answer " + j);
                 ans1.setToggleGroup(questionAnswers);
-                gp.add(ans1, 1, (j+i));
-                j++;
+                gp.add(ans1, 1, (j+i));                
             }
-            j = 1;
         }
 
         Scene scene = new Scene(gp, 700, 500);
