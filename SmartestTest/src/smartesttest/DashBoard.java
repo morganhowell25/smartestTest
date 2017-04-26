@@ -21,15 +21,9 @@ public class DashBoard
     
     public void start(Stage primaryStage) 
     {
-        
-<<<<<<< HEAD
-        ViewDepartmentLOScene x = new ViewDepartmentLOScene();
-        Scene scene = x.getScene();
 
-=======
-        //ViewTestLOScene vtlos = new ViewTestLOScene();
-        //Scene scene = vtlos.getScene();
->>>>>>> origin/branchMATT
+        LoginForm x = new LoginForm();
+        Scene scene = x.getScene();
         
         primaryStage.setTitle("SmartTest!");
         primaryStage.setScene(scene);

@@ -54,9 +54,10 @@ public class LoginForm{
         "Student"
     );
         final ComboBox comboBox = new ComboBox(options);
+        gp.add(comboBox, 1, 4);
         
         Button btn = new Button("Sign in");
-        gp.add(btn, 1, 4);
+        gp.add(btn, 1, 5);
         
                
         Scene scene = new Scene(gp, 700, 500);

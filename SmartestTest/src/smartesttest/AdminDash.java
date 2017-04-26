@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
  *
  * @author csc190
  */
-public abstract class AdminDash implements AppScene
+public abstract class AdminDash extends DashBoard implements AppScene
 {
     public GridPane drawAdminDash()
     {
@@ -21,6 +21,7 @@ public abstract class AdminDash implements AppScene
         Button btnAddUser = new Button();
         btnAddUser.setText("Add User");
         gp.add(btnAddUser, 0, 0);
+        
         
         Button btnManageUser = new Button();
         btnManageUser.setText("Manage User");
