@@ -13,7 +13,8 @@ import javafx.scene.layout.GridPane;
  *
  * @author csc190
  */
-public class AdminHomeScene extends AdminDash{
+public class AdminHomeScene extends AdminDash
+{
 
     public AdminHomeScene()
     {

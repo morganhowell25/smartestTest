@@ -5,15 +5,24 @@
  */
 package smartesttest;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 /**
  *
  * @author csc190
  */
-public abstract class AdminDash extends DashBoard implements AppScene
+public class AdminDash extends DashBoard
 {
+    public AdminDash()
+    {
+        
+    }
+    
     public GridPane drawAdminDash()
     {
         GridPane gp = new GridPane();
@@ -21,11 +30,12 @@ public abstract class AdminDash extends DashBoard implements AppScene
         Button btnAddUser = new Button();
         btnAddUser.setText("Add User");
         gp.add(btnAddUser, 0, 0);
-        
+        btnAddUser.setOnAction(addUserClick());
         
         Button btnManageUser = new Button();
         btnManageUser.setText("Manage User");
         gp.add(btnManageUser, 0, 1);
+        btnManageUser.setOnAction(manageUserClick());
         
         Button btnImportLO = new Button();
         btnImportLO.setText("Import LO");
