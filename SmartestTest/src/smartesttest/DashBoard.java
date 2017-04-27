@@ -28,7 +28,6 @@ public class DashBoard
     
     public EventHandler<ActionEvent> addUserClick() 
     {
-        DashBoard dash = this;
         return new EventHandler<ActionEvent>()
         {
             public void handle(ActionEvent event) 
@@ -38,22 +37,24 @@ public class DashBoard
                 Stage stage2 = new Stage();
                 stage2.setScene(auScene.getScene());
                 stage2.show();
+                
+                //If we could jsut access the varaibles form DashBoard
+                //we would be good
             }
         };
     }
     
     public EventHandler<ActionEvent> manageUserClick() 
     {
-        ManageUserScene muScene = new ManageUserScene();
+        DashBoard dash = this;
         return new EventHandler<ActionEvent>()
         {
             public void handle(ActionEvent event) 
             {
                 System.out.println("Manage User Button Clicked");
-                ManageUserScene muScene = new ManageUserScene();                
-                Stage stage2 = new Stage();
-                stage2.setScene(muScene.getScene());
-                stage2.show();
+                ManageUserScene muScene = new ManageUserScene();
+                dash.update(muScene.getScene());
+                
             }
         };
     }
@@ -66,7 +67,7 @@ public class DashBoard
         myScene = x.getScene();
         
         myStage.setTitle("SmartTest!");
-        update();
+        update(myScene);
         
     }
     
@@ -75,9 +76,9 @@ public class DashBoard
         return myStage;
     }
     
-    public void update()
+    public void update(Scene newScene)
     {
-        myStage.setScene(myScene);
+        myStage.setScene(newScene);
         myStage.show();
     }
 }
