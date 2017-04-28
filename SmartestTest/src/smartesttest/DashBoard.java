@@ -54,9 +54,21 @@ public class DashBoard
                 System.out.println("Manage User Button Clicked");
                 ManageUserScene muScene = new ManageUserScene();
                 dash.update(muScene.getScene());
-                
             }
         };
+    }
+    
+    public EventHandler<ActionEvent> importLOClick() 
+    {
+        EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>()
+        {
+            public void handle(ActionEvent event) 
+            {
+                ImportLOsScene auScene = new ImportLOsScene ();
+                System.out.println("Import LO's Button Clicked");                
+            }
+        };
+        return handler;
     }
     
     public void start(Stage primaryStage) 
@@ -64,6 +76,7 @@ public class DashBoard
         myStage = primaryStage;
         
         AdminHomeScene x = new AdminHomeScene();
+        x.myStage = this.myStage;
         myScene = x.getScene();
         
         myStage.setTitle("SmartTest!");

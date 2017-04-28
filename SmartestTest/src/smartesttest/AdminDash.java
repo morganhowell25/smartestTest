@@ -36,6 +36,7 @@ public class AdminDash extends DashBoard
         Button btnImportLO = new Button();
         btnImportLO.setText("Import LO");
         gp.add(btnImportLO, 0, 2);
+        btnImportLO.setOnAction(importLOClick());
         
         return gp;
     }

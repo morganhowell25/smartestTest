@@ -21,8 +21,16 @@ public class SmartestTest extends Application
     @Override
     public void start(Stage primaryStage) 
     {
+        /*
         DashBoard dash = new DashBoard();
         dash.start(primaryStage);
+        */
+        //1. pop up the log in TO DO
+        //2. based on decision
+        //switch role student/...
+        //one case below as a branch of it
+        AdminDash adminDash = new AdminDash();
+        adminDash.start(primaryStage);
     }
 
     /**
