@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  *
  * @author csc190
  */
-public class AdminDash extends DashBoard implements AppScene
+public class AdminDash extends DashBoard 
 {
     protected Scene SCENE;
     protected Stage STAGE;
@@ -40,6 +40,7 @@ public class AdminDash extends DashBoard implements AppScene
         Button btnAddUser = new Button();
         btnAddUser.setText("Add User");
         gp.add(btnAddUser, 0, 0);
+
         btnAddUser.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
@@ -48,15 +49,28 @@ public class AdminDash extends DashBoard implements AppScene
                 update(x);
             }
         });
+
+        btnAddUser.setOnAction(addUserClick());
+
         
         Button btnManageUser = new Button();
         btnManageUser.setText("Manage User");
         gp.add(btnManageUser, 0, 1);
+
                 
         Button btnImportLO = new Button();
         btnImportLO.setText("Import LO");
         gp.add(btnImportLO, 0, 2);
                 
+
+        btnManageUser.setOnAction(manageUserClick());
+        
+        /*Button btnImportLO2 = new Button();
+        btnImportLO.setText("Import LO");
+        gp.add(btnImportLO2, 0, 2);
+        btnImportLO.setOnAction(importLOClick());*/
+        
+
         return gp;
     }
     

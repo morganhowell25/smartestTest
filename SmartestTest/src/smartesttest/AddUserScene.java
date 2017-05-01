@@ -18,12 +18,14 @@ import javafx.scene.layout.GridPane;
  *
  * @author csc190
  */
-public class AddUserScene extends AdminDash{
-    public AddUserScene(){
+public class AddUserScene extends AdminDash implements AppScene
+{
+    public AddUserScene()
+    {
         
     }
-    public Scene getScene(){
-        
+    public Scene getScene()
+    {
         GridPane gp = drawAdminDash();
         Label userTypeLbl = new Label("User Type");
         gp.add(userTypeLbl,2,0);
@@ -51,7 +53,6 @@ public class AddUserScene extends AdminDash{
         gp.add(confirm,2,6);
         
                 
-        
         
         Scene scene = new Scene(gp, 700, 500);
         return scene;
