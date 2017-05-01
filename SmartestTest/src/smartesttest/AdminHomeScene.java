@@ -26,7 +26,7 @@ public class AdminHomeScene extends AdminDash{
         
         //my one addition
         Label homeText = new Label("Hello Admin! Please choose a tab to begin");
-        gp.add(homeText,0,3);
+        gp.add(homeText,1,0);
         
         
         Scene scene = new Scene(gp, 700, 500);

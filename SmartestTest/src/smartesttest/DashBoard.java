@@ -5,6 +5,8 @@
  */
 package smartesttest;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -12,27 +14,11 @@ import javafx.stage.Stage;
  *
  * @author csc190
  */
-public class DashBoard 
+public abstract class DashBoard 
 {
-    public DashBoard()
-    {
-
-    }
+    //public static Scene GLOBALSCENE;
     
-    public void start(Stage primaryStage) 
-    {
-        
-<<<<<<< HEAD
-        ViewDepartmentLOScene x = new ViewDepartmentLOScene();
-        Scene scene = x.getScene();
-
-=======
-        //ViewTestLOScene vtlos = new ViewTestLOScene();
-        //Scene scene = vtlos.getScene();
->>>>>>> origin/branchMATT
-        
-        primaryStage.setTitle("SmartTest!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
+    public void start(Stage primaryStage, AppScene x){}
+    
+    public void update(AppScene x){}
 }
