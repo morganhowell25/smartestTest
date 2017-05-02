@@ -13,12 +13,12 @@ import javafx.scene.layout.GridPane;
  *
  * @author csc190
  */
-public class AdminHomeScene extends AdminDash
+public class AdminHomeScene extends AdminDash implements AppScene 
 {
 
     public AdminHomeScene()
     {
-        int i=0;
+        
     }
             
     public Scene getScene()
@@ -26,7 +26,7 @@ public class AdminHomeScene extends AdminDash
         GridPane gp = drawAdminDash();
         
         //my one addition
-        Label homeText = new Label("Hello Admin! Please choose a tab to begin");
+        Label homeText = new Label("Hello Admin! Please choose a tab to begin.");
         gp.add(homeText,1,0);
         
         

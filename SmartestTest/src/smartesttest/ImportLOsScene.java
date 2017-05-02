@@ -7,6 +7,7 @@ package smartesttest;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
@@ -24,11 +25,15 @@ public class ImportLOsScene extends AdminDash{
         
         //Implement manage user buttons here
         Text scenetitle = new Text("Upload XML Document");
-        gp.add(scenetitle, 0, 0, 2, 1);
+        gp.add(scenetitle, 1, 0);
+        
+        TextField tfEnter = new TextField();
+        tfEnter.setPromptText("Enter Filepath");
+        gp.add(tfEnter, 1, 1);
         
         Button btnXML = new Button();
         btnXML.setText("Upload");
-        gp.add(btnXML, 0, 2);
+        gp.add(btnXML, 1, 2);
         
         Scene scene = new Scene(gp, 700, 500);
         return scene;

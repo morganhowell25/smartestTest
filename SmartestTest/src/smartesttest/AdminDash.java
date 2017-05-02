@@ -21,21 +21,25 @@ public class AdminDash extends DashBoard
     protected Scene SCENE;
     protected Stage STAGE;
     
-    AdminDash(){}
-    
-    public void start(Stage primaryStage, AppScene x) 
-    {
-        
-        //Admin Buttons
+    public AdminDash(){} // Here lies a blank constructor.
+    // Tis meant to honor Captain Morgan. Yoho.
+      
+    public void start(Stage primaryStage){
         STAGE = primaryStage;
         
-        STAGE.setTitle("SmartTest!");
-        update(x);
-    }
+        AdminHomeScene ahs = new AdminHomeScene();
+        ahs.STAGE = this.STAGE;
+        SCENE = ahs.getScene();
+        
+        STAGE.setTitle("SmartTest");
+        update(SCENE);
+    } 
     
     public GridPane drawAdminDash()
     {
         GridPane gp = new GridPane();
+        
+        AdminDash adminDash = this;
         
         Button btnAddUser = new Button();
         btnAddUser.setText("Add User");
@@ -44,43 +48,48 @@ public class AdminDash extends DashBoard
         btnAddUser.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("we didnt fuck it up!");
-                AddUserScene x = new AddUserScene();
-                update(x);
+                System.out.println("AddUser Clicked!");
+                AddUserScene aus = new AddUserScene();
+                aus.STAGE = adminDash.STAGE;
+                adminDash.update(aus.getScene());
             }
         });
-
-        btnAddUser.setOnAction(addUserClick());
-
         
         Button btnManageUser = new Button();
         btnManageUser.setText("Manage User");
         gp.add(btnManageUser, 0, 1);
-
-                
+        
+        btnManageUser.setOnAction(new EventHandler<ActionEvent>() { 
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("ManageUser Clicked!");
+                ManageUserScene mus = new ManageUserScene();
+                mus.STAGE = adminDash.STAGE;
+                adminDash.update(mus.getScene());
+            }
+        });
+   
         Button btnImportLO = new Button();
-        btnImportLO.setText("Import LO");
+        btnImportLO.setText("Import LO's");
         gp.add(btnImportLO, 0, 2);
-                
+          
+        btnImportLO.setOnAction(new EventHandler<ActionEvent>() { 
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("ImportLO Clicked!");
+                ImportLOsScene ilos = new ImportLOsScene();
+                ilos.STAGE = adminDash.STAGE;
+                adminDash.update(ilos.getScene());
+            }
+        });
 
-        btnManageUser.setOnAction(manageUserClick());
-        
-        /*Button btnImportLO2 = new Button();
-        btnImportLO.setText("Import LO");
-        gp.add(btnImportLO2, 0, 2);
-        btnImportLO.setOnAction(importLOClick());*/
-        
+        //btnManageUser.setOnAction(manageUserClick()); 
 
         return gp;
     }
     
-    public void update(AppScene x){
-        SCENE = x.getScene();
-        STAGE.setScene(SCENE);
+    public void update(Scene newScene){
+        STAGE.setScene(newScene);
         STAGE.show();
-    }
-    
-    public Scene getScene(){
-        return SCENE;
     }
 }

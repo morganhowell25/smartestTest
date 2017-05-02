@@ -15,11 +15,6 @@ import javafx.scene.layout.GridPane;
  */
 public class StudentHomeScene extends StudentDash
 {
-    public StudentHomeScene()
-    {
-        
-    }
-
     public Scene getScene()
     {
         GridPane gp = drawStudentDash();
@@ -31,4 +26,3 @@ public class StudentHomeScene extends StudentDash
         return scene;
     }
 }
-

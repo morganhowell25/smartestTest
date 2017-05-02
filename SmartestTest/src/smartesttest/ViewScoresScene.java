@@ -11,12 +11,7 @@ import javafx.scene.layout.GridPane;
  * @author Morgan Howell
  */
 public class ViewScoresScene extends StudentDash
-{
-    public ViewScoresScene()
-    {
-        
-    }
-    
+{   
     public Scene getScene()
     {
         GridPane gp = drawStudentDash();
@@ -33,14 +28,14 @@ public class ViewScoresScene extends StudentDash
         gp.add(testPinCode, 1, 1);
         Label testScore = new Label("34/75");
         gp.add(testScore, 2, 1);
-        Button testBtn = new Button("Click to view score");
+        Button testBtn = new Button("View Results");
         gp.add(testBtn, 3, 1);
         
         Label testPinCode2 = new Label("1234567");
         gp.add(testPinCode2, 1, 2);
         Label testScore2 = new Label("84/100");
         gp.add(testScore2, 2, 2);
-        Button testBtn2 = new Button("Click to view score");
+        Button testBtn2 = new Button("View Results");
         gp.add(testBtn2, 3, 2);
         
         Scene scene = new Scene(gp, 700, 500);

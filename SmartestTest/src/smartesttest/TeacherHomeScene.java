@@ -14,15 +14,12 @@ import javafx.scene.text.Text;
  * @author csc190
  */
 public class TeacherHomeScene extends TeacherDash{
-    public TeacherHomeScene(){
         
-    }
-    
     public Scene getScene(){
         GridPane gp = drawTeacherDash();
         
-        Text scenetitle = new Text("SELECT A TAB");
-        gp.add(scenetitle, 0, 0, 2, 1);
+        Text scenetitle = new Text("Welcome! Please Select A Tab.");
+        gp.add(scenetitle, 1, 0);
         
         Scene scene = new Scene(gp, 700, 500);
         return scene;

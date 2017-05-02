@@ -16,7 +16,6 @@ import javafx.scene.layout.GridPane;
  */
 public class StudentScoresListScene extends TeacherDash {
     
-    @Override
     public Scene getScene() {
         
         GridPane gp = drawTeacherDash();

@@ -16,20 +16,16 @@ import javafx.scene.layout.GridPane;
  * @author csc190
  */
 public class TakeTestScene extends StudentDash
-{
-    public TakeTestScene()
-    {
-        
-    }
-            
+{         
     public Scene getScene()
     {
         GridPane gp = drawStudentDash();
         
-        Label l = new Label("Insert Pincode");
-        gp.add(l,1,0);
+        Label lblTake = new Label("Take A Test");
+        gp.add(lblTake,1,0);
         
         TextField input = new TextField();
+        input.setPromptText("Enter PINcode");
         gp.add(input,1,1);
         
         Button sub = new Button("Submit");

@@ -80,14 +80,14 @@ public abstract class DashBoard
     
     public void start(Stage primaryStage) 
     {
-        myStage = primaryStage;
+        /*myStage = primaryStage;
         
-        AdminHomeScene x = new AdminHomeScene();
-        x.myStage = this.myStage;
-        myScene = x.getScene();
+        AdminHomeScene ahs = new AdminHomeScene();
+        ahs.myStage = this.myStage;
+        myScene = ahs.getScene();
         
-        myStage.setTitle("SmartTest!");
-        update(myScene);
+        myStage.setTitle("SmartTest");
+        update(myScene);*/
         
     }
     
