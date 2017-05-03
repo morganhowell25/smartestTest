@@ -91,10 +91,6 @@ public abstract class DashBoard
         
     }
     
-    public Stage getStage()
-    {
-        return myStage;
-    }
     
     public void update(Scene newScene)
     {
