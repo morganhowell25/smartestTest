@@ -28,15 +28,15 @@ public class DashBoard
     
     public EventHandler<ActionEvent> addUserClick() 
     {
+        DashBoard dash = this;
         return new EventHandler<ActionEvent>()
         {
             public void handle(ActionEvent event) 
             {
                 AddUserScene auScene = new AddUserScene();
                 System.out.println("Add User Button Clicked");                
-                Stage stage2 = new Stage();
-                stage2.setScene(auScene.getScene());
-                stage2.show();
+                dash.update(auScene.getScene());
+                
                 
                 //If we could jsut access the varaibles form DashBoard
                 //we would be good
