@@ -5,6 +5,7 @@
  */
 package smartesttest;
 
+
 public class utils {
     
     public int[] pullTests(int tid){
@@ -20,7 +21,7 @@ public class utils {
     }
     
     public GradedTest pullStudentGradedTest(int id, int pincode){
-        return new GradedTest;
+        return new GradedTest();
     }
     
     public String[][] pullDepartmentLOs(){
@@ -28,10 +29,11 @@ public class utils {
     }
     
     public Test pullTest(int pincode){
-        return new Test;
+        return new Test();
     }
     
     public void saveGradedTest(GradedTest gT){
         
     }
+
 }
