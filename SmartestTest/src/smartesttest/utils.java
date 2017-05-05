@@ -5,6 +5,7 @@
  */
 package smartesttest;
 
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -15,9 +16,11 @@ import java.util.ArrayList;
 import java.util.Base64;
 import static smartesttest.DBHandler.execNonQuery;
 import static smartesttest.DBHandler.execQuery;
-
+import java.util.Base64;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 public class utils {
+    public static String mySeed = "halp";
     
     // What happens when teacher clicks "Manage Tests" in TeacherDash
     public ArrayList<String> pullTests(int tid){
@@ -96,9 +99,15 @@ public class utils {
                 sid + "', '" + pincode + "', '" + gtContent + "', '" + score + "');";
         execNonQuery(query);
     }
-
-    public String hasher(String hashInput){
-        return hashInput;
+    
+    
+    
+    public byte[] hasher(String hashInput){
+        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+        encryptor.setPassword(mySeed);
+        String encrypted = encryptor.encrypt(hashInput);
+        byte[] bytesEncoded = Base64.getEncoder().encode(encrypted.getBytes());
+        return bytesEncoded;
     } 
     
     // Converts an object into a string
@@ -160,7 +169,7 @@ public class utils {
     
     // What happens when admin clicks "Reset password" in ManageUserScene
     public void resetPWD(String newPass, int userID){
-        String encodedPWD = hasher(newPass); // May change with implementation of hasher
+        byte[] encodedPWD = hasher(newPass); // May change with implementation of hasher
         String query = "UPDATE tbl_user SET encodedPWD='" + encodedPWD + "' WHERE id=" + userID + ";";
         execNonQuery(query);
     }
@@ -170,6 +179,6 @@ public class utils {
         String testContent = toStr(myTest);
         String query = "INSERT INTO tbl_test (pincode, tid, testObj) VALUES ('" + pincode + "', '" +
                 teacherID + "', '" + testContent + "');";
-        execNonQuery(query);
+        execNonQuery(query); 
     }
 }
