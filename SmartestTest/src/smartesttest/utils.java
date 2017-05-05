@@ -8,6 +8,7 @@ package smartesttest;
 
 public class utils {
     
+<<<<<<< HEAD
     public int[] pullTests(int tid){
         return new int[5];
     }
@@ -36,4 +37,31 @@ public class utils {
         
     }
 
+=======
+    public String hasher(String hashInput){
+        return hashInput;
+    } 
+    
+    public String toStr(Object myObj){
+        return "a";
+    }
+    
+    public void addUser(String userName, String userPass, String userRole){
+        
+    }
+    
+    public String[][] pullUserList(){
+        String[][] userArr = {{"a","b"},{"c","d"}};
+        return userArr; 
+    }
+    
+    public void resetPWD(String newPass, int userID){
+        
+    }
+    
+    //make sure to change parameter type on this one
+    public void saveTest(Test myTest){
+        
+    }
+>>>>>>> origin/timV1
 }
