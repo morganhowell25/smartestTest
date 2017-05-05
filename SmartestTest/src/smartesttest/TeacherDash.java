@@ -38,6 +38,8 @@ public class TeacherDash extends DashBoard {
         
         TeacherDash teacherDash = this;
         
+        //We should create the buttons in a method and call this method
+        // here. would make the code more readable. ie createTestButton()
         Button btnCreateTest = new Button();
         btnCreateTest.setText("Create Test");
         gp.add(btnCreateTest, 0, 0);
