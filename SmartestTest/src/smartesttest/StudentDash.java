@@ -20,6 +20,7 @@ public class StudentDash extends DashBoard
 {
     protected Scene SCENE;
     protected Stage STAGE;
+    protected int currentUserID;
           
     public void start(Stage primaryStage){
         STAGE = primaryStage;

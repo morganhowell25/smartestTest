@@ -34,9 +34,7 @@ public class CreateTestScene extends TeacherDash
         
         Button btnAddQuestion = new Button("+ Add Question");
         gp.add(btnAddQuestion,1,2);
-        
-        Button btnBack = new Button("< Back");
-        gp.add(btnBack, 1, 3);        
+             
         Scene scene = new Scene(gp, 700, 500);
         return scene;
     }
