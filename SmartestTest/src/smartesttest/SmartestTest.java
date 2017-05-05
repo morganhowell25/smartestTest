@@ -36,7 +36,7 @@ public class SmartestTest extends Application
         // If you login as student, call this:
 
         //StudentDash studentDash = new StudentDash();
-        //studentDash.start(primaryStage);
+        //studentDash.start(primaryStage);git com
     }
 
     /**

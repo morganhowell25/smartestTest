@@ -9,7 +9,7 @@ package smartesttest;
  *
  * @author csc190
  */
-public class Test 
+public class Test implements java.io.Serializable
 {
     protected Question[] myQuestions;
     private int myPincode;

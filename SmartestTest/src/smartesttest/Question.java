@@ -9,7 +9,7 @@ package smartesttest;
  *
  * @author csc190
  */
-public class Question 
+public class Question implements java.io.Serializable 
 {
     //The question being asked
     private String myQuestion;
