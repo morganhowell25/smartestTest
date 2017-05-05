@@ -5,15 +5,23 @@
  */
 package smartesttest;
 
-<<<<<<< HEAD
+import java.util.Base64;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+
 /**
  *
  * @author csc190
  */
 public class utils {
     
-    public String hasher(String hashInput){
-        return hashInput;
+    public static String mySeed = "halp";
+    
+    public byte[] hasher(String hashInput){
+        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+        encryptor.setPassword(mySeed);
+        String encrypted = encryptor.encrypt(hashInput);
+        byte[] bytesEncoded = Base64.getEncoder().encode(encrypted.getBytes());
+        return bytesEncoded;
     } 
     
     public String toStr(Object myObj){
@@ -35,6 +43,8 @@ public class utils {
     
     //make sure to change parameter type on this one
     public void saveTest(Test myTest){
+        
+    }
 
     public int[] pullTests(int tid){
         return new int[5];
@@ -49,7 +59,7 @@ public class utils {
     }
     
     public GradedTest pullStudentGradedTest(int id, int pincode){
-        return new GradedTest;
+        return new GradedTest();
     }
     
     public String[][] pullDepartmentLOs(){
@@ -57,7 +67,7 @@ public class utils {
     }
     
     public Test pullTest(int pincode){
-        return new Test;
+        return new Test();
     }
     
     public void saveGradedTest(GradedTest gT){
