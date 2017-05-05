@@ -20,6 +20,7 @@ public class AdminDash extends DashBoard
 {
     protected Scene SCENE;
     protected Stage STAGE;
+    protected int currentUserID;
     
     public AdminDash(){} // Here lies a blank constructor.
     // Tis meant to honor Captain Morgan. Yoho.
