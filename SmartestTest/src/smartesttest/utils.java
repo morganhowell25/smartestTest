@@ -12,10 +12,12 @@ package smartesttest;
 public class utils {
     
     public String hasher(String hashInput){
-        return hashInput;
+        String encodedPWD = "";
+        return encodedPWD;
     } 
     
     public String toStr(Object myObj){
+        // copy from Fu's Utils.java
         return "a";
     }
     
