@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DBHandler {
     
@@ -47,8 +48,8 @@ public class DBHandler {
         return sRet;
     }
 
-    public static String execQuery(String qry) {
-        String res = null;
+    public static ArrayList<String> execQuery(String qry) {
+        ArrayList<String> arrStrings = new ArrayList<String>();
         try {
             Class.forName(DRIVER);
             Connection conn = DriverManager.getConnection(URL, USER, PASS);
@@ -56,8 +57,7 @@ public class DBHandler {
             ResultSet rs = stmt.executeQuery(qry);
 
             while (rs.next()) {
-                res = rs.getString(1);
-
+                arrStrings.add(rs.getString(1));
             }
 
             rs.close();
@@ -66,7 +66,7 @@ public class DBHandler {
         } catch (Exception e) {
             System.out.println(e);
         }
-        return res;
+        return arrStrings;
     }
 
     public static void execNonQuery(String qry) {

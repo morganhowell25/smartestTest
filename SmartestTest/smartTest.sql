@@ -11,33 +11,32 @@ CREATE TABLE tbl_user(
 );
 
 CREATE TABLE tbl_test(
-	pincode INT PRIMARY KEY,
+	pincode VARCHAR(255) PRIMARY KEY,
 	tid INT,
 	testObj TEXT
 );
 
 CREATE TABLE tbl_gradedtest(
 	sid INT,
-	pincode INT,
+	pincode VARCHAR(255),
 	gradedTestObj TEXT,
-	score INT
+	score VARCHAR(255),
 	PRIMARY KEY (sid, pincode)
 );	
 
-CREATE TABLE tbl_deptLO(
+CREATE TABLE tbl_deptLOs(
 	cat1 VARCHAR(255),
 	cat2 VARCHAR(255),
-	correct INT,
-	total INT,
+	correct VARCHAR(255),
+	total VARCHAR(255),
 	PRIMARY KEY (cat1, cat2)
 );
 
 CREATE TABLE tbl_testLOs(
-	tid INT,
-	pincode INT, 
+	pincode VARCHAR(255), 
 	cat1 VARCHAR(255),
 	cat2 VARCHAR(255),
-	correct INT,
-	total INT,
-	PRIMARY KEY (tid, pincode)
+	correct VARCHAR(255),
+	total VARCHAR(255),
+	PRIMARY KEY (pincode, cat1, cat2)
 );
