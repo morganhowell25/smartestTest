@@ -11,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.tree.RowMapper;
 
 public class DBHandler {
     
@@ -67,6 +69,37 @@ public class DBHandler {
             System.out.println(e);
         }
         return arrStrings;
+    }
+    
+    // execQuery method that returns an ArrayList<StudentScoresListStruct>. 
+    // StudentScoresListStruct data type has two data members: String uname and String score.
+    // Basically, it's a 2-D array where each element in the first array holds an array of two Strings,
+    // but this implementation ensures that each uname is associated with the correct score.
+    // That means that each uname is part of the same StudentScoresListStruct as its score.
+    public static ArrayList<StudentScoresListStruct> execQuerySSL(String qry) {
+        ArrayList<StudentScoresListStruct> arrSSLStruct = new ArrayList<StudentScoresListStruct>();
+        try {
+            Class.forName(DRIVER);
+            Connection conn = DriverManager.getConnection(URL, USER, PASS);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(qry);
+            StudentScoresListStruct sslStruct = new StudentScoresListStruct();
+            
+            while (rs.next()) {    
+                sslStruct.id = rs.getInt(1);
+                sslStruct.uname = rs.getString(2);
+                sslStruct.score = rs.getString(3);
+                arrSSLStruct.add(sslStruct);
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        } 
+        return arrSSLStruct;
+        
     }
 
     public static void execNonQuery(String qry) {

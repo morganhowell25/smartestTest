@@ -12,11 +12,11 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Base64;
 import static smartesttest.DBHandler.execNonQuery;
 import static smartesttest.DBHandler.execQuery;
 import java.util.Base64;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import static smartesttest.DBHandler.execQuerySSL;
 
 public class utils {
     public static String mySeed = "halp";
@@ -47,20 +47,23 @@ public class utils {
     }
     
     // What happens when teacher clicks "View Student Scores" in ManageTestsScene
-    public String[][] pullTeacherGradedTest(String pincode){
-        // pull all unames for each sid
-        // pull all scores
-        /*String query1 = "SELECT score FROM tbl_gradedtest WHERE pincode='" + pincode +"';";
-        ArrayList<String> arrScores = execQuery(query1);
-        String query2 = "SELECT uname FROM tbl_user JOIN tbl_gradedtest ON tbl_gradedtest.sid = tbl_user.id" +
-                " WHERE pincode='" + pincode + "';";
-        ArrayList<String> arrUnames = execQuery(query2);*/
+    public static ArrayList<StudentScoresListStruct> viewStudentScores(String pincode){
+        // Pull all unames for each sid
+        // Pull all scores associated with each uname
+        // QUESTION: WILL A CONSTRAINT BE THAT UNAMES MUST BE UNIQUE?
+        // Store each uname and associated score in a StudentScoresListStruct, which has two data members: String uname and String score.
+        String query = "SELECT tbl_user.id, uname, score FROM tbl_user JOIN tbl_gradedtest ON tbl_gradedtest.sid = tbl_user.id" + 
+                "WHERE pincode='" + pincode +"';";
+        ArrayList<StudentScoresListStruct> arrSSLStruct = execQuerySSL(query);
+        //String query2 = "SELECT uname FROM tbl_user JOIN tbl_gradedtest ON tbl_gradedtest.sid = tbl_user.id" +
+        //        " WHERE pincode='" + pincode + "';";
+        //ArrayList<String> arrUnames = execQuery(query2);*/
         
-
-        return new String[5][5];
+        return arrSSLStruct;
     }
     
     // What happens when student or teacher views an individual student's test
+    // ***THIS WILL BE CALLED IN BOTH ViewStudentScoresSceneTeacher AND ViewStudentScoresScene***
     public GradedTest pullStudentGradedTest(int id, int pincode){
         return new GradedTest();
     }
