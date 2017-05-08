@@ -25,7 +25,8 @@ public class TeacherDash extends DashBoard {
     public void start(Stage primaryStage){
         STAGE = primaryStage;
         
-        TeacherHomeScene ths = new TeacherHomeScene();
+        //TeacherHomeScene ths = new TeacherHomeScene();
+        StudentScoresListScene ths = new StudentScoresListScene("99999");
         ths.STAGE = this.STAGE;
         SCENE = ths.getScene();
         
