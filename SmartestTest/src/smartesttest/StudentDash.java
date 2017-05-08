@@ -25,7 +25,16 @@ public class StudentDash extends DashBoard
     public void start(Stage primaryStage){
         STAGE = primaryStage;
         
-        StudentHomeScene shs = new StudentHomeScene();
+        Question[] questions = new Question[3];
+        questions[0] = new Question();
+        String[] answers = new String[]{"andy", "is a", "butt"};
+        questions[1] = new Question("Question here", answers, 3, 2, answers);
+        questions[2] = new Question();
+                
+        Test t = new Test(questions, 8675309, 72);
+        
+        TestScene shs = new TestScene(t);
+        //StudentHomeScene shs = new StudentHomeScene();
         shs.STAGE = this.STAGE;
         SCENE = shs.getScene();
         
