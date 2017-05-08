@@ -5,6 +5,8 @@
  */
 package smartesttest;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -34,6 +36,14 @@ public class CreateTestScene extends TeacherDash
         
         Button btnAddQuestion = new Button("+ Add Question");
         gp.add(btnAddQuestion,1,2);
+        
+        btnAddQuestion.setOnAction(new EventHandler<ActionEvent>() { 
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Add Question Clicked!");
+                AddQuestionScene aqs = new AddQuestionScene();               
+            }
+        });
         
         Button btnBack = new Button("< Back");
         gp.add(btnBack, 1, 3);        
