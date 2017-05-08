@@ -48,12 +48,12 @@ public class utils {
     
     // What happens when teacher clicks "View Student Scores" in ManageTestsScene
     public static ArrayList<StudentScoresListStruct> viewStudentScores(String pincode){
+        // Pull all student ids for the students who took the specific test
         // Pull all unames for each sid
         // Pull all scores associated with each uname
-        // QUESTION: WILL A CONSTRAINT BE THAT UNAMES MUST BE UNIQUE?
         // Store each uname and associated score in a StudentScoresListStruct, which has two data members: String uname and String score.
         String query = "SELECT tbl_user.id, uname, score FROM tbl_user JOIN tbl_gradedtest ON tbl_gradedtest.sid = tbl_user.id" + 
-                "WHERE pincode='" + pincode +"';";
+                " WHERE pincode='" + pincode +"';";
         ArrayList<StudentScoresListStruct> arrSSLStruct = execQuerySSL(query);
         //String query2 = "SELECT uname FROM tbl_user JOIN tbl_gradedtest ON tbl_gradedtest.sid = tbl_user.id" +
         //        " WHERE pincode='" + pincode + "';";
@@ -65,7 +65,10 @@ public class utils {
     // What happens when student or teacher views an individual student's test
     // ***THIS WILL BE CALLED IN BOTH ViewStudentScoresSceneTeacher AND ViewStudentScoresScene***
     public GradedTest pullStudentGradedTest(int id, int pincode){
-        return new GradedTest();
+        String query = "SELECT gradedTestObj FROM tbl_gradedtest WHERE sid='" + id + "' AND pincode='" + pincode + "';";
+        ArrayList<String> strGradedTest = execQuery(query);
+        GradedTest gradedTest = (GradedTest) toObj(strGradedTest.get(0));
+        return gradedTest;
     }
     
     // What happens when teacher clicks "View Dept LOs" in TeacherDash
@@ -95,15 +98,14 @@ public class utils {
     }
     
     // What happens when student finishes taking a test and clicks "submit"
-    public void saveGradedTest(int sid, String pincode, GradedTest gt, String score){
+    public static void saveGradedTest(int sid, String pincode, GradedTest gt, String score){
         String gtContent = toStr(gt);
         String query = "INSERT INTO tbl_gradedtest (sid, pincode, gradedTestObj, score) VALUES ('" +
                 sid + "', '" + pincode + "', '" + gtContent + "', '" + score + "');";
         execNonQuery(query);
     }
     
-    
-    
+    // Encodes a user's password by converting the input String into a byte array
     public byte[] hasher(String hashInput){
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         encryptor.setPassword(mySeed);
@@ -113,7 +115,7 @@ public class utils {
     } 
     
     // Converts an object into a string
-    public String toStr(Serializable obj){
+    public static String toStr(Serializable obj){
         String sRet = null;
 
         try {
@@ -148,7 +150,7 @@ public class utils {
     }
     
     // Adds a user to the database when admin clicks "Submit" in AddUserScene
-    public void addUser(String userName, String userPass, String userRole){
+    public static void addUser(String userName, String userPass, String userRole){
         String query = "INSERT INTO tbl_user (role, uname, encodedPWD) VALUES ('" + userRole + "', '" +
                 userName + "', '" + userPass + "');";
         execNonQuery(query);

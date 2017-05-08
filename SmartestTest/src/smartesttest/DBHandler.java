@@ -11,13 +11,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-import javax.swing.tree.RowMapper;
 
 public class DBHandler {
     
     static final String DRIVER = "com.mysql.jdbc.Driver";
-    static final String URL = "jdbc:mysql://localhost/employees_db";
+    static final String URL = "jdbc:mysql://localhost/smarttest_db";
     static final String USER = "root";
     static final String PASS = "goodyear123!@#";
     
@@ -71,7 +69,7 @@ public class DBHandler {
         return arrStrings;
     }
     
-    // execQuery method that returns an ArrayList<StudentScoresListStruct>. 
+    // execQuerySSL method that returns an ArrayList<StudentScoresListStruct>. 
     // StudentScoresListStruct data type has two data members: String uname and String score.
     // Basically, it's a 2-D array where each element in the first array holds an array of two Strings,
     // but this implementation ensures that each uname is associated with the correct score.
@@ -83,9 +81,9 @@ public class DBHandler {
             Connection conn = DriverManager.getConnection(URL, USER, PASS);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(qry);
-            StudentScoresListStruct sslStruct = new StudentScoresListStruct();
             
-            while (rs.next()) {    
+            while (rs.next()) {
+                StudentScoresListStruct sslStruct = new StudentScoresListStruct();
                 sslStruct.id = rs.getInt(1);
                 sslStruct.uname = rs.getString(2);
                 sslStruct.score = rs.getString(3);
