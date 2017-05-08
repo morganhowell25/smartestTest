@@ -106,7 +106,7 @@ public class utils {
     }
     
     // Encodes a user's password by converting the input String into a byte array
-    public byte[] hasher(String hashInput){
+    public static byte[] hasher(String hashInput){
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         encryptor.setPassword(mySeed);
         String encrypted = encryptor.encrypt(hashInput);
@@ -157,7 +157,7 @@ public class utils {
     }
     
     // What happens when admin clicks "Manage Users" in AdminDash
-    public ArrayList<ArrayList<String>> pullUserList(){
+    public static ArrayList<ArrayList<String>> pullUserList(){
         String query1 = "SELECT id FROM tbl_user;";
         ArrayList<String> arrIDs = execQuery(query1);
         String query2 = "SELECT role FROM tbl_user;";
@@ -172,7 +172,7 @@ public class utils {
     }
     
     // What happens when admin clicks "Reset password" in ManageUserScene
-    public void resetPWD(String newPass, int userID){
+    public static void resetPWD(String newPass, int userID){
         byte[] encodedPWD = hasher(newPass); // May change with implementation of hasher
         String query = "UPDATE tbl_user SET encodedPWD='" + encodedPWD + "' WHERE id=" + userID + ";";
         execNonQuery(query);
