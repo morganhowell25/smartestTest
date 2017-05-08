@@ -42,7 +42,7 @@ public class CreateTestScene extends TeacherDash
                 finalizeAlert.setHeaderText(null);
                 finalizeAlert.setContentText("Changes cannot be made after confirmation");
                 finalizeAlert.showAndWait();
-                utils.saveTest(dummy1, dummy2, dummy3);
+                //utils.saveTest(dummy1, dummy2, dummy3);
             }
         });
         
@@ -61,8 +61,8 @@ public class CreateTestScene extends TeacherDash
             }
         });
         
-        Button btnBack = new Button("< Back");
-        gp.add(btnBack, 1, 3);        
+        //Button btnBack = new Button("< Back");
+        //gp.add(btnBack, 1, 3);        
 
              
         Scene scene = new Scene(gp, 700, 500);
