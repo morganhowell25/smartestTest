@@ -20,11 +20,13 @@ public class TeacherDash extends DashBoard {
         
     protected Scene SCENE;
     protected Stage STAGE;
+    protected int currentUserID;
 
     public void start(Stage primaryStage){
         STAGE = primaryStage;
         
-        TeacherHomeScene ths = new TeacherHomeScene();
+        //TeacherHomeScene ths = new TeacherHomeScene();
+        StudentScoresListScene ths = new StudentScoresListScene("99999");
         ths.STAGE = this.STAGE;
         SCENE = ths.getScene();
         
@@ -38,6 +40,8 @@ public class TeacherDash extends DashBoard {
         
         TeacherDash teacherDash = this;
         
+        //We should create the buttons in a method and call this method
+        // here. would make the code more readable. ie createTestButton()
         Button btnCreateTest = new Button();
         btnCreateTest.setText("Create Test");
         gp.add(btnCreateTest, 0, 0);
