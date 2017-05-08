@@ -26,6 +26,8 @@ public class CreateTestScene extends TeacherDash
     {
         GridPane gp = drawTeacherDash();
         
+        TeacherDash teacherDash = this;
+        
         //Upon clicking Create Test
         
         Button btnFinalize = new Button("Finalize");

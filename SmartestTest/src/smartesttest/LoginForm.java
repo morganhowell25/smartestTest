@@ -7,6 +7,8 @@ package smartesttest;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,14 +18,17 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  *
  * @author csc190
  */
 public class LoginForm{
-    public LoginForm(){
-        
+    public void start(Stage primaryStage){
+        LoginForm lForm = this;
+        primaryStage.setTitle("SmartTest");
+        update(primaryStage, lForm.getScene());
     }
             
     public Scene getScene()
@@ -46,22 +51,27 @@ public class LoginForm{
         PasswordField pwBox = new PasswordField();
         gp.add(pwBox, 1, 2);
         
-        //dropdown menu for usertype
-        
-        ObservableList<String> options = FXCollections.observableArrayList(
-        "Admin",
-        "Teacher",
-        "Student"
-    );
-        final ComboBox comboBox = new ComboBox(options);
-        gp.add(comboBox, 1, 4);
-        
-        Button btn = new Button("Sign in");
-        gp.add(btn, 1, 5);
-        
+             
+        Button btnSignIn = new Button("Sign in");
+        gp.add(btnSignIn, 1, 5);
+        btnSignIn.setOnAction(new EventHandler<ActionEvent>() { 
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Sign-In Clicked!");
+                String uname = userTextField.getText();
+                String pword = pwBox.getText();
+                
+                System.out.println(uname + " " + pword);
+            }
+        });
                
         Scene scene = new Scene(gp, 700, 500);
         return scene;
+    }
+    
+    public void update(Stage primaryStage, Scene newScene){
+        primaryStage.setScene(newScene);
+        primaryStage.show();
     }
 }
 
