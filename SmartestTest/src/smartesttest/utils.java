@@ -151,8 +151,9 @@ public class utils {
     
     // Adds a user to the database when admin clicks "Submit" in AddUserScene
     public static void addUser(String userName, String userPass, String userRole){
+        byte[] encodedPWD = hasher(userPass);
         String query = "INSERT INTO tbl_user (role, uname, encodedPWD) VALUES ('" + userRole + "', '" +
-                userName + "', '" + userPass + "');";
+                userName + "', '" + encodedPWD + "');";
         execNonQuery(query);
     }
     
