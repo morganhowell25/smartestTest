@@ -10,12 +10,10 @@ import javafx.scene.layout.GridPane;
  *
  * @author Morgan Howell
  */
-public class TestScene extends StudentDash 
-{
-    private Test myTest;
-    
-    public TestScene(Test test) 
-    {
+public class TestScene extends StudentDash {
+    private Test myTest; 
+
+    public TestScene(Test test) {
         myTest = test;
     }
 
