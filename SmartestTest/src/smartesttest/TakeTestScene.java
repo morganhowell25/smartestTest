@@ -54,7 +54,7 @@ public class TakeTestScene extends StudentDash {
                 } else {
                     Test myTest = (Test) toObj(newTest.get(0));
                     System.out.println("else statement");
-                    TestScene ts = new TestScene();
+                    TestScene ts = new TestScene(myTest);
                     ts.STAGE = tts.STAGE;
                     tts.update(ts.getScene());
                 }
