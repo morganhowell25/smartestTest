@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class DBHandler {
     
     static final String DRIVER = "com.mysql.jdbc.Driver";
-    static final String URL = "jdbc:mysql://localhost/employees_db";
+    static final String URL = "jdbc:mysql://localhost/smarttest_db";
     static final String USER = "root";
     static final String PASS = "goodyear123!@#";
     
