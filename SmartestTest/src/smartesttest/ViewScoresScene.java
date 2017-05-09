@@ -1,4 +1,3 @@
-
 package smartesttest;
 
 import javafx.scene.Scene;
