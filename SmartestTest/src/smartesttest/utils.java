@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package smartesttest;
 
 import java.io.ByteArrayInputStream;
@@ -22,14 +17,14 @@ public class utils {
     public static String mySeed = "halp";
     
     // What happens when teacher clicks "Manage Tests" in TeacherDash
-    public ArrayList<String> pullTests(int tid){
+    public static ArrayList<String> pullTests(int tid){
         String query = "SELECT pincode FROM tbl_test WHERE tid='" + tid + "';";
         ArrayList<String> arrPincodes = execQuery(query);
         return arrPincodes;
     }
     
     // What happens when teacher clicks "LO" in ManageTestsScene
-    public ArrayList<ArrayList<String>> pullTestLO(String pincode){
+    public static ArrayList<ArrayList<String>> pullTestLO(String pincode){
         String query1 = "SELECT cat1 FROM tbl_testLOs WHERE pincode='" + pincode + "';";
         ArrayList<String> arrCat1 = execQuery(query1);
         String query2 = "SELECT cat2 FROM tbl_testLOs WHERE pincode='" + pincode + "';";
@@ -64,7 +59,7 @@ public class utils {
     
     // What happens when student or teacher views an individual student's test
     // ***THIS WILL BE CALLED IN BOTH ViewStudentScoresSceneTeacher AND ViewStudentScoresScene***
-    public GradedTest pullStudentGradedTest(int id, int pincode){
+    public static GradedTest pullStudentGradedTest(int id, int pincode){
         String query = "SELECT gradedTestObj FROM tbl_gradedtest WHERE sid='" + id + "' AND pincode='" + pincode + "';";
         ArrayList<String> strGradedTest = execQuery(query);
         GradedTest gradedTest = (GradedTest) toObj(strGradedTest.get(0));
@@ -72,7 +67,7 @@ public class utils {
     }
     
     // What happens when teacher clicks "View Dept LOs" in TeacherDash
-    public ArrayList<ArrayList<String>> pullDepartmentLOs(){
+    public static ArrayList<ArrayList<String>> pullDepartmentLOs(){
         String query1 = "SELECT cat1 FROM tbl_deptLOs;";
         ArrayList<String> arrCat1 = execQuery(query1);
         String query2 = "SELECT cat2 FROM tbl_deptLOs;";
@@ -90,11 +85,10 @@ public class utils {
     }
     
     // What happens when student clicks "Take a Test" after they enter valid pincode
-    public Test pullTest(String pincode){
+    public static ArrayList<String> pullTest(String pincode){
         String query = "SELECT testObj FROM tbl_test WHERE pincode='" + pincode +"';";
         ArrayList<String> test = execQuery(query);
-        Test myTest = (Test) toObj(test.get(0));
-        return myTest;
+        return test;
     }
     
     // What happens when student finishes taking a test and clicks "submit"
@@ -112,7 +106,7 @@ public class utils {
         String encrypted = encryptor.encrypt(hashInput);
         byte[] bytesEncoded = Base64.getEncoder().encode(encrypted.getBytes());
         return bytesEncoded;
-    } 
+    }
     
     // Converts an object into a string
     public static String toStr(Serializable obj){
@@ -134,7 +128,7 @@ public class utils {
     }
     
     // Converts a string into an object
-    public Object toObj(String str) {
+    public static Object toObj(String str) {
         Object obj = null;
         try {
             //String sDecoded = URLDecoder.decode(str, "UTF-8");
@@ -180,7 +174,7 @@ public class utils {
     }
     
     // What happens when teacher clicks "Finalize" after creating a Test
-    public void saveTest(int pincode , int teacherID, Test myTest){
+    public static void saveTest(int pincode , int teacherID, Test myTest){
         String testContent = toStr(myTest);
         String query = "INSERT INTO tbl_test (pincode, tid, testObj) VALUES ('" + pincode + "', '" +
                 teacherID + "', '" + testContent + "');";

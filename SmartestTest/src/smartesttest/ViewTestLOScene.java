@@ -5,10 +5,11 @@
  */
 package smartesttest;
 
+import java.util.ArrayList;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import static smartesttest.utils.pullTestLO;
 
 /**
  *
@@ -16,41 +17,31 @@ import javafx.scene.layout.GridPane;
  */
 public class ViewTestLOScene extends TeacherDash {
     
-    public Scene getScene() {
+    public Scene getScene(String pincode) {
         
         GridPane gp = drawTeacherDash();
         
-        Label lblTitle = new Label();
-        lblTitle.setText("Learning Outcomes");
-        gp.add(lblTitle, 1, 0);
+        ArrayList<ArrayList<String>> testLOs = pullTestLO(pincode);
         
-        Label lblTestCode = new Label();
-        lblTestCode.setText("Test Code: 87961");
-        gp.add(lblTestCode, 1, 1);
+        Label Cat1 = new Label("Category 1");
+        gp.add(Cat1,1,0);
+        Label Cat2 = new Label("Category 2");
+        gp.add(Cat2,2,0);
+        Label Correct = new Label("Correct Answers");
+        gp.add(Correct,3,0);
+        Label Total = new Label("Total");
+        gp.add(Total,4,0);
         
-        Label lblLO = new Label();
-        lblLO.setText("Learning Outcomes     ");
-        gp.add(lblLO, 1, 2);
-        
-        Label lblStats = new Label();
-        lblStats.setText("Stats");
-        gp.add(lblStats, 2, 2);
-        
-        Label lblLO1 = new Label();
-        lblLO1.setText("LO1");
-        gp.add(lblLO1, 1, 3);
-        
-        Label lblStats1 = new Label();
-        lblStats1.setText("(5 + 7)/20");
-        gp.add(lblStats1, 2, 3);
-        
-        Label lblLO2 = new Label();
-        lblLO2.setText("LO2");
-        gp.add(lblLO2, 1, 4);
-        
-        Label lblStats2 = new Label();
-        lblStats2.setText("3/10");
-        gp.add(lblStats2, 2, 4);
+        for(int i = 0; i < testLOs.get(0).size(); i++){
+            Cat1 = new Label(testLOs.get(0).get(i));
+            gp.add(Cat1,1,i+1);
+            Cat2 = new Label(testLOs.get(1).get(i));
+            gp.add(Cat2,2,i+1);
+            Correct = new Label(testLOs.get(2).get(i));
+            gp.add(Correct,3,i+1);
+            Total = new Label(testLOs.get(3).get(i));
+            gp.add(Total,4,i+1);
+        }
         
         Scene scene = new Scene(gp, 700, 500);
         return scene;
