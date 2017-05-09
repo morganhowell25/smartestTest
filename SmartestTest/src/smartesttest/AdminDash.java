@@ -7,6 +7,7 @@ package smartesttest;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -39,6 +40,9 @@ public class AdminDash extends DashBoard
     public GridPane drawAdminDash()
     {
         GridPane gp = new GridPane();
+        gp.setHgap(15);
+        gp.setVgap(5);
+        gp.setPadding(new Insets(10, 10, 10, 10));
         
         AdminDash adminDash = this;
         

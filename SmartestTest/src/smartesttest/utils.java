@@ -1,6 +1,5 @@
 package smartesttest;
 
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -12,6 +11,7 @@ import static smartesttest.DBHandler.execNonQuery;
 import static smartesttest.DBHandler.execQuery;
 import java.util.Base64;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import static smartesttest.DBHandler.execQuerySSL;
 
 public class utils {
     public static String mySeed = "halp";
@@ -42,6 +42,7 @@ public class utils {
     }
     
     // What happens when teacher clicks "View Student Scores" in ManageTestsScene
+<<<<<<< HEAD
     public static String[][] pullTeacherGradedTest(String pincode){
         // pull all unames for each sid
         // pull all scores
@@ -50,14 +51,35 @@ public class utils {
         String query2 = "SELECT uname FROM tbl_user JOIN tbl_gradedtest ON tbl_gradedtest.sid = tbl_user.id" +
                 " WHERE pincode='" + pincode + "';";
         ArrayList<String> arrUnames = execQuery(query2);*/
+=======
+    public static ArrayList<StudentScoresListStruct> viewStudentScores(String pincode){
+        // Pull all student ids for the students who took the specific test
+        // Pull all unames for each sid
+        // Pull all scores associated with each uname
+        // Store each uname and associated score in a StudentScoresListStruct, which has two data members: String uname and String score.
+        String query = "SELECT tbl_user.id, uname, score FROM tbl_user JOIN tbl_gradedtest ON tbl_gradedtest.sid = tbl_user.id" + 
+                " WHERE pincode='" + pincode +"';";
+        ArrayList<StudentScoresListStruct> arrSSLStruct = execQuerySSL(query);
+        //String query2 = "SELECT uname FROM tbl_user JOIN tbl_gradedtest ON tbl_gradedtest.sid = tbl_user.id" +
+        //        " WHERE pincode='" + pincode + "';";
+        //ArrayList<String> arrUnames = execQuery(query2);*/
+>>>>>>> origin/timV2
         
-
-        return new String[5][5];
+        return arrSSLStruct;
     }
     
     // What happens when student or teacher views an individual student's test
+<<<<<<< HEAD
     public static GradedTest pullStudentGradedTest(int id, int pincode){
         return new GradedTest();
+=======
+    // ***THIS WILL BE CALLED IN BOTH ViewStudentScoresSceneTeacher AND ViewStudentScoresScene***
+    public GradedTest pullStudentGradedTest(int id, int pincode){
+        String query = "SELECT gradedTestObj FROM tbl_gradedtest WHERE sid='" + id + "' AND pincode='" + pincode + "';";
+        ArrayList<String> strGradedTest = execQuery(query);
+        GradedTest gradedTest = (GradedTest) toObj(strGradedTest.get(0));
+        return gradedTest;
+>>>>>>> origin/timV2
     }
     
     // What happens when teacher clicks "View Dept LOs" in TeacherDash
@@ -93,8 +115,12 @@ public class utils {
         execNonQuery(query);
     }
     
+<<<<<<< HEAD
     
     
+=======
+    // Encodes a user's password by converting the input String into a byte array
+>>>>>>> origin/timV2
     public static byte[] hasher(String hashInput){
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         encryptor.setPassword(mySeed);
@@ -140,8 +166,12 @@ public class utils {
     
     // Adds a user to the database when admin clicks "Submit" in AddUserScene
     public static void addUser(String userName, String userPass, String userRole){
+<<<<<<< HEAD
+=======
+        byte[] encodedPWD = hasher(userPass);
+>>>>>>> origin/timV2
         String query = "INSERT INTO tbl_user (role, uname, encodedPWD) VALUES ('" + userRole + "', '" +
-                userName + "', '" + userPass + "');";
+                userName + "', '" + encodedPWD + "');";
         execNonQuery(query);
     }
     
