@@ -29,7 +29,7 @@ public class Test implements java.io.Serializable
         setTeacherID(teacherID);
     }
     
-    public Question[] getQuestion()
+    public Question[] getTestQuestions()
     {   return myQuestions;     }
     
     public int getPincode()

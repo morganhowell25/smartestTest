@@ -11,18 +11,20 @@ import javafx.scene.layout.GridPane;
  * @author Morgan Howell
  */
 public class TestScene extends StudentDash {
+    private Test myTest; 
 
-    public TestScene() {
-
+    public TestScene(Test test) {
+        myTest = test;
     }
 
     public Scene getScene() {
         GridPane gp = drawStudentDash();
 
-        //for each question on the test do the following
-        for (int i = 0; i < 15; i+=5) 
+                //for each question on the test do the following
+        Question[] questionList = myTest.getTestQuestions();
+        for (int i = 0; i < questionList.length*5; i+=5) 
         {
-            Label questionTxt = new Label((i/5+1) + ") Question text goes here");
+            Label questionTxt = new Label((i/5+1) + ") " + questionList[i/5].getQuestion());
             gp.add(questionTxt, 1, i);
 
             //makes it so only one of the radio buttons maye be selcted at a time
@@ -31,9 +33,10 @@ public class TestScene extends StudentDash {
             //loops to create the radio buttons for the answers
             //can be changed instead of 5 to be less than the questions array of answers
             //in final implementation.
-            for(int j = 1; j < 5; j++) 
+            String[] answers = questionList[i/5].getAnswers();
+            for(int j = 1; j <= answers.length; j++) 
             {
-                RadioButton ans1 = new RadioButton("answer " + j);
+                RadioButton ans1 = new RadioButton(answers[j-1]);
                 ans1.setToggleGroup(questionAnswers);
                 gp.add(ans1, 1, (j+i));                
             }
