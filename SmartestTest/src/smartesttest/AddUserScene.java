@@ -79,7 +79,7 @@ public class AddUserScene extends AdminDash implements AppScene
                     badAlert.showAndWait();
                 }
                 else{
-                    utils.addUser(userNameTxt.getText(), userPassTxt.getText(), typeBox.getValue().toString().toLowerCase());
+                    server.addUser(userNameTxt.getText(), userPassTxt.getText(), typeBox.getValue().toString().toLowerCase());
                     Alert goodAlert = new Alert(AlertType.INFORMATION);
                     goodAlert.setTitle("User Added Successfully");
                     goodAlert.setHeaderText(null);

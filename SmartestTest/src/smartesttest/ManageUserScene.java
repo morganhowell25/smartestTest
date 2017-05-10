@@ -58,7 +58,7 @@ public class ManageUserScene extends AdminDash
         
         
         
-        ArrayList<ArrayList<String>> arrUsers = utils.pullUserList();
+        ArrayList<ArrayList<String>> arrUsers = server.pullUserList();
         
         for (int i = 0; i < arrUsers.size(); i++){
             for (int j = 0; j < arrUsers.get(i).size(); j++){
@@ -77,7 +77,7 @@ public class ManageUserScene extends AdminDash
                         dialog.setContentText("Please enter new password:");
                         Optional<String> result = dialog.showAndWait();
                         if (result.isPresent()){
-                            utils.resetPWD(result.get(),buttonInd);
+                            server.resetPWD(result.get(),buttonInd);
                         }
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Password Changed Successfully");
