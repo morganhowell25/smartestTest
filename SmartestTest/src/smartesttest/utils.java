@@ -151,13 +151,14 @@ public class utils {
     
     // Adds a user to the database when admin clicks "Submit" in AddUserScene
     public static void addUser(String userName, String userPass, String userRole){
+        byte[] encodedPWD = hasher(userPass);
         String query = "INSERT INTO tbl_user (role, uname, encodedPWD) VALUES ('" + userRole + "', '" +
-                userName + "', '" + userPass + "');";
+                userName + "', '" + encodedPWD + "');";
         execNonQuery(query);
     }
     
     // What happens when admin clicks "Manage Users" in AdminDash
-    public ArrayList<ArrayList<String>> pullUserList(){
+    public static ArrayList<ArrayList<String>> pullUserList(){
         String query1 = "SELECT id FROM tbl_user;";
         ArrayList<String> arrIDs = execQuery(query1);
         String query2 = "SELECT role FROM tbl_user;";
@@ -172,14 +173,23 @@ public class utils {
     }
     
     //What happens when we click on Sign IN.
-    public static ArrayList<String> pullUName(String uname, byte[] pwd){
-        String queryu = "SELECT uname, encodedPWD, role FROM tbl_user WHERE uname='" + uname + "' AND encodedPWD='" + pwd + "';";
-        ArrayList<String> credentials = execQuery(queryu);
-        return credentials;
+    public static ArrayList<ArrayList<String>> pullUName(String uname, byte[] pwd){
+        String queryu = "SELECT uname FROM tbl_user WHERE uname='" + uname + "' AND encodedPWD='" + pwd + "';";
+        String queryp = "SELECT encodedPWD FROM tbl_user WHERE uname='" + uname + "' AND encodedPWD='" + pwd + "';";
+        String queryr = "SELECT role FROM tbl_user WHERE uname='" + uname + "' AND encodedPWD='" + pwd + "';";
+        ArrayList<String> credentialsu = execQuery(queryu);
+        ArrayList<String> credentialsp = execQuery(queryp);
+        ArrayList<String> credentialsr = execQuery(queryr);
+        System.out.println(credentialsu + " " + credentialsp + " " + credentialsr);
+        ArrayList<ArrayList<String>> arrUnames = new ArrayList<ArrayList<String>>();
+        arrUnames.add(credentialsu);
+        arrUnames.add(credentialsp);
+        arrUnames.add(credentialsr);
+        return arrUnames;
     }
     
     // What happens when admin clicks "Reset password" in ManageUserScene
-    public void resetPWD(String newPass, int userID){
+    public static void resetPWD(String newPass, int userID){
         byte[] encodedPWD = hasher(newPass); // May change with implementation of hasher
         String query = "UPDATE tbl_user SET encodedPWD='" + encodedPWD + "' WHERE id=" + userID + ";";
         execNonQuery(query);

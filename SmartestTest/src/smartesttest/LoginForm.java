@@ -59,13 +59,15 @@ public class LoginForm {
                 String uname = userTextField.getText();
                 String pword = pwBox.getText();
                 byte[] pwordHashed = utils.hasher(pword);
-                ArrayList<String> newCred = utils.pullUName(uname, pwordHashed);
-                if (uname.equals(newCred.get(0)) && pwordHashed.equals(newCred.get(1))) {
-                    if (newCred.get(2).equals("admin")) {
+                ArrayList<ArrayList<String>> newCred = utils.pullUName(uname, pwordHashed);
+                System.out.println(newCred);
+                if (uname.equals(newCred.get(0).get(0)) && pwordHashed.equals(newCred.get(1).get(0))) {
+                  
+                    if (newCred.get(2).get(0).equals("admin")) {
                         AdminDash adminDash = new AdminDash();
                         Stage primaryStage = new Stage();
                         adminDash.start(primaryStage);
-                    } else if (newCred.get(2).equals("teacher")) {
+                    } else if (newCred.get(2).get(0).equals("teacher")) {
                         TeacherDash teacherDash = new TeacherDash();
                         Stage primaryStage = new Stage();
                         teacherDash.start(primaryStage);
