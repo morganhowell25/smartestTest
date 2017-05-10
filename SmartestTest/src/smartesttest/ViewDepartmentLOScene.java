@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.GridPane;
-import static smartesttest.utils.pullDepartmentLOs;
 
 /**
  *
@@ -34,7 +33,7 @@ public class ViewDepartmentLOScene extends TeacherDash
         int j = 0;
         int k = 0;
         
-        ArrayList<ArrayList<String>> LOs = pullDepartmentLOs();
+        ArrayList<ArrayList<String>> LOs = server.pullDepartmentLOs();
         
         for(int i = 0; i < LOs.get(0).size(); i++){
             hold = i;
