@@ -20,7 +20,7 @@ public class TestScene extends StudentDash {
     public Scene getScene() {
         GridPane gp = drawStudentDash();
 
-                //for each question on the test do the following
+        //for each question on the test do the following
         Question[] questionList = myTest.getTestQuestions();
         for (int i = 0; i < questionList.length*5; i+=5) 
         {

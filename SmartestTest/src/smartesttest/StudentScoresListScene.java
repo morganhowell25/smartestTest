@@ -14,7 +14,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import static smartesttest.utils.viewStudentScores;
 
 /**
  *
@@ -57,7 +56,7 @@ public class StudentScoresListScene extends TeacherDash {
         gp.add(lblScore, 3, 2);
 
         // Collect a set of corresponding unames and scores that match the give pincode.
-        ArrayList<StudentScoresListStruct> arrSSLStruct = viewStudentScores(pincode);
+        ArrayList<StudentScoresListStruct> arrSSLStruct = server.viewStudentScores(pincode);
 
         // Test case: if no students have taken the specific test, don't open the scene, and return to ManageTestsScene.
         // IDK if this will work.
