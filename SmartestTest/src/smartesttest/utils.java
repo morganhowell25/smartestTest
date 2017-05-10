@@ -39,7 +39,7 @@ public class utils {
         arrTestLOs.add(arrCorrect);
         arrTestLOs.add(arrTotal);
         return arrTestLOs;
-    }
+   
     
     // What happens when teacher clicks "View Student Scores" in ManageTestsScene
 
