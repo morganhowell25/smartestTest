@@ -5,11 +5,13 @@
  */
 package smartesttest;
 
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -21,7 +23,6 @@ import javafx.scene.layout.GridPane;
  */
 public class AddQuestionScene extends TeacherDash
 {
-    static int current = 4;
     public AddQuestionScene()
     {
                 
@@ -31,35 +32,24 @@ public class AddQuestionScene extends TeacherDash
         
         GridPane gp = drawTeacherDash();
         
-        //Upon clicking Add Question...
-        
-        ArrayList<ArrayList<String>> deptLOs = utils.pullDepartmentLOs();
-        ArrayList<String> answersArr = new ArrayList<String>();
+        //Upon clicking Add Question
         
         //Default question
         TextField txtQuestion = new TextField("Type Question Here");
+        TextField txtOption = new TextField("Type Option Here");  
         TextField txtPoints = new TextField("Enter Number of Points");
-        TextField txtAnsOption = new TextField("Type Option Here");  
-        TextField txtAnsOption2 = new TextField("Type Option Here");  
-
-        
-        //Create radiobuttons for each department LO and add to bottom
-        for(int i=0; i<deptLOs.size(); i++){
-        RadioButton rbLO = new RadioButton(deptLOs.get(i).toString());
-        gp.add(rbLO,1,current+1);
-        }
-        
+        RadioButton rbLO = new RadioButton("Learning Outcome 1");
+     
         //Add to GridPane
         gp.add(txtQuestion,1,0);
-        gp.add(txtPoints,1,1);
-        gp.add(txtAnsOption,1,2);
-        gp.add(txtAnsOption,1,3);
         //gp.add(lbQuantity,1,1);
         //gp.add(comboBox,2,1);
         //gp.add(lbCorrect,2,2);
+        gp.add(txtOption,1,1);
         //gp.add(rbAnswerChoice,1,3);
-        //gp.add(lbPoints,1,4);       
-        //gp.add(rbLO,1,3);         
+        //gp.add(lbPoints,1,4);
+        gp.add(txtPoints,1,2);
+        gp.add(rbLO,1,3);         
         //gp.add(btnBack,1,6);
         //end Add GridPane
         
@@ -69,25 +59,26 @@ public class AddQuestionScene extends TeacherDash
         
         Button btnNewAnswerOption = new Button("Add New Option");
         
-        ToggleGroup answerChoices = new ToggleGroup();        
+        ToggleGroup answerChoices = new ToggleGroup();
         
-        //This button action is soley for adding more answers choices.
+        int k=2;
+        int q=k;
+        
         btnNewAnswerOption.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 
                 RadioButton rbAnswerChoice = new RadioButton("Select Correct");
                 rbAnswerChoice.setToggleGroup(answerChoices);              
-                TextField txtAnsOption = new TextField("Type Option Here");
-                answersArr.add(txtAnsOption.toString());
-                gp.add(rbAnswerChoice,1,current);
-                current++;
+                TextField txtOption = new TextField("Type Option Here"); 
+                gp.add(rbAnswerChoice,1,q);
+                //q = 1 + q;
             }   
         });     
         
         //Buttons
         Button btnDone = new Button("Done");
-        gp.add(btnDone,1,7);
+        gp.add(btnDone,2,6);
                
         /*
         //Creating the Drop Down
@@ -102,14 +93,13 @@ public class AddQuestionScene extends TeacherDash
         comboBox.setItems(options);
         //end Drop Down creation
         */
-                
+        
+        
         btnDone.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Done Buttom Clicked!");
-                //Save the question. Call contructor.
-                //Question myQ = Question(txtQuestion, answersArr, txtPoints, correctAns, selectedLOs);
-                
+                //Now return to test!
             }   
         });    
         
