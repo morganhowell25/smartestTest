@@ -106,7 +106,7 @@ public class utils {
     }
     
     // Encodes a user's password by converting the input String into a byte array
-    public byte[] hasher(String hashInput){
+    public static byte[] hasher(String hashInput){
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         encryptor.setPassword(mySeed);
         String encrypted = encryptor.encrypt(hashInput);
@@ -169,6 +169,13 @@ public class utils {
         arrUsers.add(arrRoles);
         arrUsers.add(arrUnames);
         return arrUsers;
+    }
+    
+    //What happens when we click on Sign IN.
+    public static ArrayList<String> pullUName(String uname, byte[] pwd){
+        String queryu = "SELECT uname, encodedPWD, role FROM tbl_user WHERE uname='" + uname + "' AND encodedPWD='" + pwd + "';";
+        ArrayList<String> credentials = execQuery(queryu);
+        return credentials;
     }
     
     // What happens when admin clicks "Reset password" in ManageUserScene
