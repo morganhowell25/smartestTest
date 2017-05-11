@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import static smartesttest.utils.pullTestLO;
 
 /**
  *
@@ -21,7 +20,7 @@ public class ViewTestLOScene extends TeacherDash {
         
         GridPane gp = drawTeacherDash();
         
-        ArrayList<ArrayList<String>> testLOs = pullTestLO(pincode);
+        ArrayList<ArrayList<String>> testLOs = server.pullTestLO(pincode);
         
         Label Cat1 = new Label("Category 1");
         gp.add(Cat1,1,0);
