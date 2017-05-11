@@ -18,23 +18,28 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import static smartesttest.server.mySeed;
 
 /**
  *
  * @author csc190
  */
 public class LoginForm {
-
+    //protected Stage pStage;
     public void start(Stage primaryStage) {
         LoginForm lForm = this;
         primaryStage.setTitle("SmartTest");
         update(primaryStage, lForm.getScene());
+       
     }
 
     public Scene getScene() {
         GridPane gp = new GridPane();
         gp.setAlignment(Pos.CENTER);
 
+        LoginForm lf = this;
+        
         Text scenetitle = new Text("Welcome");
         gp.add(scenetitle, 0, 0, 2, 1);
 
@@ -58,15 +63,24 @@ public class LoginForm {
                 System.out.println("Sign-In Clicked!");
                 String uname = userTextField.getText();
                 String pword = pwBox.getText();
-                byte[] pwordHashed = utils.hasher(pword);
-                ArrayList<ArrayList<String>> newCred = utils.pullUName(uname, pwordHashed);
-                System.out.println(newCred);
-                if (uname.equals(newCred.get(0).get(0)) && pwordHashed.equals(newCred.get(1).get(0))) {
+                //System.out.println(pword);
+                //String pwordHashed = server.hasher(pword);
+                //System.out.println(pwordHashed);
+                ArrayList<ArrayList<String>> newCred = server.pullUInfo(uname);
+                //System.out.println(newCred);
+                StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+                //encryptor.setPassword(newCred.get(1).get(0));
+                //System.out.println(newCred.get(1).get(0));
+                encryptor.setPassword(mySeed);
+                String passHashedDecrypted = encryptor.decrypt(newCred.get(1).get(0));
+                //System.out.println(passHashedDecrypted);
+                if (uname.equals(newCred.get(0).get(0)) && pword.equals(passHashedDecrypted)) {
                   
                     if (newCred.get(2).get(0).equals("admin")) {
                         AdminDash adminDash = new AdminDash();
                         Stage primaryStage = new Stage();
                         adminDash.start(primaryStage);
+                        //primaryStage.close();
                     } else if (newCred.get(2).get(0).equals("teacher")) {
                         TeacherDash teacherDash = new TeacherDash();
                         Stage primaryStage = new Stage();
@@ -75,6 +89,9 @@ public class LoginForm {
                         StudentDash studentDash = new StudentDash();
                         Stage primaryStage = new Stage();
                         studentDash.start(primaryStage);
+                        System.out.println("After start clicked");
+                        //this..close();
+                        System.out.println("After close clicked");
                     }
                 } else {
                     Alert loginFail = new Alert(Alert.AlertType.ERROR);
@@ -84,7 +101,7 @@ public class LoginForm {
                     loginFail.showAndWait();
                 }
             }
-
+            
          });
                
         Scene scene = new Scene(gp, 700, 500);

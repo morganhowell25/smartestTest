@@ -133,6 +133,21 @@ public class server {
         return arrUsers;
     }
     
+    public static ArrayList<ArrayList<String>> pullUInfo(String uname){
+        String queryu = "SELECT uname FROM tbl_user WHERE uname='" + uname + "';";
+        String queryp = "SELECT encodedPWD FROM tbl_user WHERE uname='" + uname + "';";
+        String queryr = "SELECT role FROM tbl_user WHERE uname='" + uname + "';";
+        ArrayList<String> credentialsu = execQuery(queryu);
+        ArrayList<String> credentialsp = execQuery(queryp);
+        ArrayList<String> credentialsr = execQuery(queryr);
+        System.out.println(credentialsu + " " + credentialsp + " " + credentialsr);
+        ArrayList<ArrayList<String>> arrUnames = new ArrayList<ArrayList<String>>();
+        arrUnames.add(credentialsu);
+        arrUnames.add(credentialsp);
+        arrUnames.add(credentialsr);
+        return arrUnames;
+    }
+    
     // What happens when admin clicks "Reset password" in ManageUserScene
     public static void resetPWD(String newPass, int userID){
         String encodedPWD = hasher(newPass); // May change with implementation of hasher

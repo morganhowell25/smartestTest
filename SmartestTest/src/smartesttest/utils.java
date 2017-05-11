@@ -14,9 +14,9 @@ import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import static smartesttest.DBHandler.execQuerySSL;
 
 public class utils {
-
+    
     // Converts an object into a string
-    public static String toStr(Serializable obj) {
+    public static String toStr(Serializable obj){
         String sRet = null;
 
         try {
@@ -33,7 +33,7 @@ public class utils {
             return sRet;
         }
     }
-
+    
     // Converts a string into an object
     public static Object toObj(String str) {
         Object obj = null;
@@ -49,3 +49,5 @@ public class utils {
             return obj;
         }
     }}
+    
+    
