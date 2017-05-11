@@ -6,12 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import static smartesttest.DBHandler.execNonQuery;
-import static smartesttest.DBHandler.execQuery;
 import java.util.Base64;
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
-import static smartesttest.DBHandler.execQuerySSL;
 
 public class utils {
     
