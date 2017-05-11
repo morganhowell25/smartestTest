@@ -1,6 +1,10 @@
 package smartesttest;
 
+import java.util.ArrayList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -20,6 +24,9 @@ public class TestScene extends StudentDash {
     public Scene getScene() {
         GridPane gp = drawStudentDash();
 
+        int currentRow=0;
+        ArrayList<RadioButton> answerButtons = new ArrayList<RadioButton>();
+        
         //for each question on the test do the following
         Question[] questionList = myTest.getTestQuestions();
         for (int i = 0; i < questionList.length*5; i+=5) 
@@ -38,9 +45,25 @@ public class TestScene extends StudentDash {
             {
                 RadioButton ans1 = new RadioButton(answers[j-1]);
                 ans1.setToggleGroup(questionAnswers);
-                gp.add(ans1, 1, (j+i));                
+                gp.add(ans1, 1, (j+i)); 
+                answerButtons.add(ans1);
             }
+            currentRow += i;
         }
+        
+        Button btnSumbit = new Button();
+        btnSumbit.setText("Sumbit");
+        gp.add(btnSumbit, 5, currentRow);
+        btnSumbit.setOnAction(new EventHandler<ActionEvent>() { 
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Sumbit Clicked!");
+                for(RadioButton btn : answerButtons)
+                {
+                    
+                }
+            }
+        });
 
         Scene scene = new Scene(gp, 700, 500);
         return scene;

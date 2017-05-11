@@ -43,13 +43,13 @@ public class SmartestTest extends Application
         //adminDash.start(primaryStage);
         
         // If you login as teacher, call this:
-        AdminDash teacherDash = new AdminDash();
-        teacherDash.start(primaryStage);
+        //AdminDash teacherDash = new AdminDash();
+        //teacherDash.start(primaryStage);
         
         // If you login as student, call this:
 
-        //StudentDash studentDash = new StudentDash();
-        //studentDash.start(primaryStage);
+        StudentDash studentDash = new StudentDash();
+        studentDash.start(primaryStage);
             
     }
 
