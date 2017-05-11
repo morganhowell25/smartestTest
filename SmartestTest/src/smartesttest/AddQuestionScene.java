@@ -22,6 +22,8 @@ import javafx.scene.layout.GridPane;
 public class AddQuestionScene extends TeacherDash
 {
     static int current = 4;
+    static int rbCurr = 60;
+    
     public AddQuestionScene()
     {
                 
@@ -37,57 +39,57 @@ public class AddQuestionScene extends TeacherDash
         ArrayList<String> answersArr = new ArrayList<String>();
         
         //Default question
-        TextField txtQuestion = new TextField("Type Question Here");
-        TextField txtPoints = new TextField("Enter Number of Points");
-        TextField txtAnsOption = new TextField("Type Option Here");  
-        TextField txtAnsOption2 = new TextField("Type Option Here");  
+        TextField txtQuestion = new TextField();
+        TextField txtPoints = new TextField();
+        TextField txtAnsOption = new TextField();  
+        TextField txtAnsOption2 = new TextField();  
 
-        
+        RadioButton rbLO = new RadioButton();
         //Create radiobuttons for each department LO and add to bottom
         for(int i=0; i<deptLOs.size(); i++){
-        RadioButton rbLO = new RadioButton(deptLOs.get(i).toString());
-        gp.add(rbLO,1,current+1);
+        rbLO = new RadioButton(deptLOs.get(i).toString());
+        gp.add(rbLO,1,rbCurr);
+        rbCurr++;
         }
         
-        //Add to GridPane
-        gp.add(txtQuestion,1,0);
-        gp.add(txtPoints,1,1);
-        gp.add(txtAnsOption,1,2);
-        gp.add(txtAnsOption,1,3);
-        //gp.add(lbQuantity,1,1);
-        //gp.add(comboBox,2,1);
-        //gp.add(lbCorrect,2,2);
-        //gp.add(rbAnswerChoice,1,3);
-        //gp.add(lbPoints,1,4);       
-        //gp.add(rbLO,1,3);         
-        //gp.add(btnBack,1,6);
-        //end Add GridPane
-        
-        //Label lbPoints = new Label("Enter Number of Points ");
-        //Label lbQuantity = new Label("How many options?");
-        //Label lbCorrect = new Label("Choose Correct Option");
-        
+        Label selectRB = new Label("Select Appropriate Learning Outcomes");
+        Label selectCorrect = new Label("Select Correct");
+        Label lbQuestion = new Label("Type Question Here");
+        Label lbPoints = new Label("Enter Number of Points ");
+        Label lbCorrect = new Label("Choose Correct Option");
+        Label lbTypeOption = new Label("Please type aswer options below");
         Button btnNewAnswerOption = new Button("Add New Option");
+        ToggleGroup answerChoices = new ToggleGroup();
+        RadioButton rbAnswerChoice = new RadioButton();
+        rbAnswerChoice.setToggleGroup(answerChoices);             
+        RadioButton rbAnswerChoice2 = new RadioButton();
         
-        ToggleGroup answerChoices = new ToggleGroup();        
+        rbAnswerChoice2.setToggleGroup(answerChoices); 
+        
+        //Buttons
+        Button btnDone = new Button("Done");
+        gp.add(btnDone,1,7);
+        gp.add(btnNewAnswerOption,2,7);
         
         //This button action is soley for adding more answers choices.
         btnNewAnswerOption.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
-                RadioButton rbAnswerChoice = new RadioButton("Select Correct");
-                rbAnswerChoice.setToggleGroup(answerChoices);              
-                TextField txtAnsOption = new TextField("Type Option Here");
+                gp.getChildren().remove(btnDone);
+                gp.getChildren().remove(btnNewAnswerOption);
+                RadioButton rbAnswerChoiceN = new RadioButton();
+                rbAnswerChoiceN.setToggleGroup(answerChoices);              
+                TextField txtAnsOptionN = new TextField();
                 answersArr.add(txtAnsOption.toString());
-                gp.add(rbAnswerChoice,1,current);
+                gp.add(rbAnswerChoiceN,2,current);
+                gp.add(txtAnsOptionN,1,current);
+                gp.add(btnDone,1,current+2);
+                gp.add(btnNewAnswerOption,2,current+2);
                 current++;
             }   
         });     
         
-        //Buttons
-        Button btnDone = new Button("Done");
-        gp.add(btnDone,1,7);
+
                
         /*
         //Creating the Drop Down
@@ -110,8 +112,28 @@ public class AddQuestionScene extends TeacherDash
                 //Save the question. Call contructor.
                 //Question myQ = Question(txtQuestion, answersArr, txtPoints, correctAns, selectedLOs);
                 
-            }   
-        });    
+            }
+        });
+            
+        //Add to GridPane
+        gp.add(txtQuestion,1,0);
+        gp.add(txtPoints,1,1);
+        gp.add(txtAnsOption,1,3);
+        gp.add(txtAnsOption2,1,4);
+        gp.add(rbAnswerChoice,2,3);
+        gp.add(rbAnswerChoice2,2,4);
+        gp.add(lbQuestion,2,0);
+        gp.add(lbPoints,2,1);
+        gp.add(lbTypeOption, 1,2);
+        gp.add(selectCorrect,2,2);
+        gp.add(selectRB,1,5);
+
+        //gp.add(lbCorrect,2,2);
+        //gp.add(rbAnswerChoice,1,3);
+       
+        //gp.add(rbLO,1,3);         
+        //end Add GridPane
+            
         
         Scene scene = new Scene(gp, 700, 500);
         return scene;
