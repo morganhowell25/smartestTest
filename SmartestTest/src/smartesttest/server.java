@@ -45,6 +45,21 @@ public class server {
         return arrTestLOs;
     }
     
+    //increments the tests individual LOs upon a question being grading
+    public static void updateTestLOs(String pincode,String cat1, String cat2, Boolean right){
+        String query1 = "SELECT correct FROM tbl_testLOs WHERE pincode='" + pincode + "' AND cat1='"+ cat1 +"' AND cat2='" + cat2 + "';";
+        ArrayList<String> correctS = execQuery(query1);
+        String query2 = "SELECT total FROM tbl_testLOs WHERE pincode='" + pincode + "' AND cat1='"+ cat1 +"' AND cat2='" + cat2 + "';";
+        ArrayList<String> totalS = execQuery(query2);
+        int correct = Integer.valueOf(correctS.get(0)); int total = Integer.valueOf(totalS.get(0));
+        if (right){correct++; total++;}
+        else {total++;}
+        String query3 = "UPDATE correct FROM tbl_testLOs WHERE pincode='" + pincode + "' AND cat1='"+ cat1 +"' AND cat2='" + cat2 + "' VALUE('" + correct +"');";
+        execNonQuery(query3);
+        String query4 = "UPDATE total FROM tbl_testLOs WHERE pincode='" + pincode + "' AND cat1='"+ cat1 +"' AND cat2='" + cat2 + "' VALUE('" + total +"');";
+        execNonQuery(query4);
+    }
+    
     // What happens when teacher clicks "View Student Scores" in ManageTestsScene
     public static ArrayList<StudentScoresListStruct> viewStudentScores(String pincode){
         // Pull all student ids for the students who took the specific test
@@ -86,6 +101,21 @@ public class server {
         arrDeptLOs.add(arrCorrect);
         arrDeptLOs.add(arrTotal);
         return arrDeptLOs;
+    }
+    
+    //increments the department LOs upon a question being grading
+    public static void updateDepartmentLOs(String cat1, String cat2, Boolean right){
+        String query1 = "SELECT correct FROM tbl_deptLOs WHERE cat1='"+ cat1 +"' AND cat2='" + cat2 + "';";
+        ArrayList<String> correctS = execQuery(query1);
+        String query2 = "SELECT total FROM tbl_deptLOs WHERE cat1='"+ cat1 +"' AND cat2='" + cat2 + "';";
+        ArrayList<String> totalS = execQuery(query2);
+        int correct = Integer.valueOf(correctS.get(0)); int total = Integer.valueOf(totalS.get(0));
+        if (right){correct++; total++;}
+        else {total++;}
+        String query3 = "UPDATE correct FROM tbl_deptLOs WHERE cat1='"+ cat1 +"' AND cat2='" + cat2 + "' VALUE('" + correct +"');";
+        execNonQuery(query3);
+        String query4 = "UPDATE total FROM tbl_deptLOs WHERE cat1='"+ cat1 +"' AND cat2='" + cat2 + "' VALUE('" + total +"');";
+        execNonQuery(query4);
     }
     
     // What happens when student clicks "Take a Test" after they enter valid pincode
