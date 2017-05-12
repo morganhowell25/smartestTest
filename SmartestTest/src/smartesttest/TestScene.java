@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 
@@ -25,7 +26,7 @@ public class TestScene extends StudentDash {
         GridPane gp = drawStudentDash();
 
         int currentRow=0;
-        ArrayList<RadioButton> answerButtons = new ArrayList<RadioButton>();
+        ArrayList<ToggleGroup> answerButtons = new ArrayList<ToggleGroup>();
         
         //for each question on the test do the following
         Question[] questionList = myTest.getTestQuestions();
@@ -43,13 +44,16 @@ public class TestScene extends StudentDash {
             String[] answers = questionList[i/5].getAnswers();
             for(int j = 1; j <= answers.length; j++) 
             {
-                RadioButton ans1 = new RadioButton(answers[j-1]);
-                ans1.setToggleGroup(questionAnswers);
-                gp.add(ans1, 1, (j+i)); 
-                answerButtons.add(ans1);
+                ToggleButton ans = new ToggleButton(answers[j-1]);
+                ans.setToggleGroup(questionAnswers);
+                ans.setUserData(j-1);
+                gp.add(ans, 1, (j+i)); 
             }
             currentRow += i;
+            answerButtons.add(questionAnswers);
         }
+        
+        int[] stuAns = new int[questionList.length];
         
         Button btnSumbit = new Button();
         btnSumbit.setText("Sumbit");
@@ -58,10 +62,16 @@ public class TestScene extends StudentDash {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Sumbit Clicked!");
-                for(RadioButton btn : answerButtons)
+                for(int i = 0; i < answerButtons.size(); i++)
                 {
-                    
+                    for(int j=0; j< answerButtons.get(i).getToggles().size(); j++)
+                    {
+                        if(answerButtons.get(i).getToggles().get(j).isSelected())
+                            stuAns[i] = j;
+                    }
                 }
+                for(int x=0; x< stuAns.length; x++)
+                    System.out.println("Student Answered: " + stuAns[x]);
             }
         });
 

@@ -7,9 +7,45 @@ package smartesttest;
 
 /**
  *
- * @author csc190
+ * @author Morgan Howell
  */
 public class GradedTest extends Test
 {
-    //something goes here!
+    private Test myTest;
+    private int myStuID;
+    private int[] myStuAns;
+    private int myScore;
+    
+    public GradedTest()
+    {
+        
+    }
+    
+    public GradedTest(Test test, int[] ans, int stuID)
+    {
+        myTest = test;
+        myStuAns = ans;
+        myStuID = stuID;
+    }
+    
+    public Test getTest()
+    {   return myTest;  }
+    
+    public int getStudentID()
+    {   return myStuID; }
+    
+    public int[] getStuAns()
+    {   return myStuAns;    }
+    
+    public int getScore()
+    {   return myScore; }
+    
+    public int getTotalQuestions()
+    {   return myTest.getTestQuestions().length;    }
+    
+    public void grade()
+    {
+        
+    }
+    
 }
