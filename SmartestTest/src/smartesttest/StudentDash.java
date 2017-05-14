@@ -5,6 +5,7 @@
  */
 package smartesttest;
 
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -28,7 +29,7 @@ public class StudentDash extends DashBoard
         Question[] questions = new Question[3];
         questions[0] = new Question();
         String[] answers = new String[]{"andy", "is a", "butt"};
-        questions[1] = new Question("Question here", answers, 3, 2, new String[][]{{}});
+        questions[1] = new Question("Question here", answers, 3, 2, new ArrayList<ArrayList<String>>());
         questions[2] = new Question();
                 
         Test t = new Test(questions, 8675309, 72);

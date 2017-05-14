@@ -76,6 +76,10 @@ public class TestScene extends StudentDash {
                         }
                     }
                 }
+                GradedTest graded = new GradedTest(myTest, stuAns, 1);
+                graded.grade();
+                server.saveGradedTest(currentUserID, ""+myTest.getPincode(), graded, ""+graded.getScore());
+                
                 //testing to see if it correctly pulls the students answers
                 //#worksfristtime
                 for (int x = 0; x < stuAns.length; x++) {

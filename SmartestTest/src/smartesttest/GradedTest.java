@@ -14,7 +14,8 @@ public class GradedTest extends Test
     private Test myTest;
     private int myStuID;
     private int[] myStuAns;
-    private int myScore;
+    private int myNumCorrect;
+    private double myScore;
     
     public GradedTest()
     {
@@ -37,7 +38,10 @@ public class GradedTest extends Test
     public int[] getStuAns()
     {   return myStuAns;    }
     
-    public int getScore()
+    public int getNumCorrect()
+    {   return myNumCorrect;    }
+    
+    public double getScore()
     {   return myScore; }
     
     public int getTotalQuestions()
@@ -45,17 +49,35 @@ public class GradedTest extends Test
     
     public void grade()
     {
+        //for every question
         Question[] questionList = myTest.getTestQuestions();
         for(int i =0; i < questionList.length; i ++)
         {
-            for(int j=0; j< questionList[i].getLOs().length; j++){
-               // server.updateDepartmentLOs(cat1, cat2, gradeQuestion(myStuAns[i], questionList[i].getCorrectAnswer()));
-               //update the db 4 times per LO per question
-               // TestLo Overall and indivuial
-               //Department Overall and indivual
+            //for every LO in that Question
+            for(int j=0; j< questionList[i].getLOs().size(); j++){
+                //updates department LO
+                server.updateDepartmentLOs(questionList[i].getLOs().get(0).get(j),
+                       questionList[i].getLOs().get(1).get(j), 
+                       gradeQuestion(myStuAns[i], questionList[i].getCorrectAnswer()));
+                //updates department LO category overall
+                server.updateDepartmentLOs(questionList[i].getLOs().get(0).get(j),
+                       "default", gradeQuestion(myStuAns[i], questionList[i].getCorrectAnswer()));
                
+                //updatesTest los
+                server.updateTestLOs(""+myTest.getPincode(), questionList[i].getLOs().get(0).get(j),
+                       questionList[i].getLOs().get(1).get(j), 
+                       gradeQuestion(myStuAns[i], questionList[i].getCorrectAnswer()));
+                //updates test lo category overall
+                server.updateTestLOs(""+myTest.getPincode(), questionList[i].getLOs().get(0).get(j),
+                       "default", gradeQuestion(myStuAns[i], questionList[i].getCorrectAnswer()));
+            }
+            
+            if(gradeQuestion(myStuAns[i], questionList[i].getCorrectAnswer()))
+            {
+                myNumCorrect++;
             }
         }
+        myScore = myNumCorrect/questionList.length;
     }
     
     private boolean gradeQuestion(int ans, int correctAns)
