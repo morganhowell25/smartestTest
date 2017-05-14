@@ -6,7 +6,6 @@
 package smartesttest;
 
 import java.util.ArrayList;
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import static smartesttest.DBHandler.execNonQuery;
 import static smartesttest.DBHandler.execQuery;
 import static smartesttest.DBHandler.execQuerySSL;
@@ -18,7 +17,7 @@ import static smartesttest.utils.toStr;
  * @author csc190
  */
 public class server {
-    public static String mySeed = "halp";
+    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     
     // What happens when teacher clicks "Manage Tests" in TeacherDash
     public static ArrayList<String> pullTests(int tid){
@@ -134,15 +133,35 @@ public class server {
     }
     
     // Encodes a user's password by converting the input String into a byte array
-    public static String hasher(String hashInput){
-        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
-        encryptor.setPassword(mySeed);
-        String encrypted = encryptor.encrypt(hashInput);
-        return encrypted;
+    public static String encrypt(String passText){
+        String cipherText = "";
+        for (int i = 0; i < passText.length(); i++){
+            int charPosition = ALPHABET.indexOf(passText.charAt(i));
+            int keyVal = (3 + charPosition) % 62;
+            char newChar = ALPHABET.charAt(keyVal);
+            cipherText += newChar;
+        }
+    return cipherText;
     }
+    
+    public static String decrypt(String cipherText){
+        String passText = "";
+        for (int i = 0; i < cipherText.length(); i++)
+        {
+            int charPosition = ALPHABET.indexOf(cipherText.charAt(i));
+            int keyVal = (charPosition - 3) % 62;
+            if (keyVal < 0){
+                keyVal = ALPHABET.length() + keyVal;
+            }
+            char newChar = ALPHABET.charAt(keyVal);
+            passText += newChar;
+        }
+    return passText;
+    }
+    
     // Adds a user to the database when admin clicks "Submit" in AddUserScene
     public static void addUser(String userName, String userPass, String userRole){
-        String encodedPWD = hasher(userPass);
+        String encodedPWD = encrypt(userPass);
         String query = "INSERT INTO tbl_user (role, uname, encodedPWD) VALUES ('" + userRole + "', '" +
                 userName + "', '" + encodedPWD + "');";
         execNonQuery(query);
@@ -165,7 +184,7 @@ public class server {
     
     // What happens when admin clicks "Reset password" in ManageUserScene
     public static void resetPWD(String newPass, int userID){
-        String encodedPWD = hasher(newPass); // May change with implementation of hasher
+        String encodedPWD = encrypt(newPass); // May change with implementation of hasher
         String query = "UPDATE tbl_user SET encodedPWD='" + encodedPWD + "' WHERE id=" + userID + ";";
         execNonQuery(query);
     }

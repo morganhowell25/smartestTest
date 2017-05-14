@@ -64,6 +64,14 @@ public class AddUserScene extends AdminDash implements AppScene
                 System.out.println("Confirm Clicked!");
                 String querycheck = "SELECT * from tbl_user WHERE uname='" + userNameTxt.getText() + "';";
                 ArrayList<String> unames = DBHandler.execQuery(querycheck);
+                String enteredPass = userPassTxt.getText();
+                if(enteredPass.matches("/W")){
+                Alert badAlert = new Alert(AlertType.ERROR);
+                badAlert.setTitle("Failed to Add User");
+                badAlert.setHeaderText("Username already exists");
+                badAlert.setContentText("Please choose a unique username");
+                badAlert.showAndWait();
+                }
                 if(userNameTxt.getText().isEmpty()){
                     Alert nullAlert = new Alert(AlertType.ERROR);
                     nullAlert.setTitle("Failed to Add User");
