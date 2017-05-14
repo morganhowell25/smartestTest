@@ -52,7 +52,7 @@ public class TeacherDash extends DashBoard {
                 System.out.println("CreateTest Clicked!");
                 CreateTestScene cts = new CreateTestScene();
                 cts.STAGE = teacherDash.STAGE;
-                teacherDash.update(cts.getScene());
+                teacherDash.update(cts.getScene(null));
             }
         });
         

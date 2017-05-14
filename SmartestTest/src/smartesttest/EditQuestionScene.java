@@ -22,19 +22,20 @@ import javax.swing.ButtonGroup;
  *
  * @author csc190
  */
-public class AddQuestionScene extends TeacherDash
-{
+public class EditQuestionScene extends TeacherDash{
+    Question myQ;
     static int current = 4; //for updating index of new textfield
     static TextField txtAnsOptionN;
     static RadioButton rbAnswerChoiceN;
     protected CreateTestScene cts = null;
     
-    public AddQuestionScene(CreateTestScene cts)
+    public EditQuestionScene(CreateTestScene cts, Question myQ)
     {
         this.cts = cts;
+        this.myQ = myQ;
     }
     
-    public Scene getScene(Question myQ)
+    public Scene getScene()
     {
         TeacherDash teachDash = this;
         
@@ -81,7 +82,7 @@ public class AddQuestionScene extends TeacherDash
         rbArr.add(rbAnswerChoice2);
 //end of (main) initialization
         
-        
+
         //Create radiobuttons for each department LO and add to third column
         RadioButton rbLO;
         for(int i=0; i<deptLOs.size(); i++){
@@ -96,29 +97,6 @@ public class AddQuestionScene extends TeacherDash
         gp.add(btnNewAnswerOption,2,7);
         //gp.add(btnRMOption,3,7);
        
-        if(myQ!=null){
-            txtQuestion.setText(myQ.getQuestion());
-            txtPoints.setText("" + myQ.getPointValue());
-            String[] answers = myQ.getAnswers();
-            txtAnsOption.setText(answers[0]);
-            txtAnsOption2.setText(answers[1]);
-            for(int i=2; i<answers.length; i++){
-                btnNewAnswerOption.fire();
-                textFieldArr.get(i).setText(answers[i]);
-            }
-            int correct = myQ.getCorrectAnswer();
-            rbArr.get(correct).setSelected(true);
-            String[] setUpLOs = myQ.getLOs();
-            for(int j=0; j<setUpLOs.length; j++){ 
-                if(setUpLOs[j].equals(deptLOs.get(j))){
-                    rbLOSelect.get(j).setSelected(true);
-                }
-                
-            }        
-        }
-        
-        
-        
         //This button action is soley for adding more answers choices.
         btnNewAnswerOption.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -277,5 +255,6 @@ public class AddQuestionScene extends TeacherDash
         return scene;
    
     }           
+   
     
 }
