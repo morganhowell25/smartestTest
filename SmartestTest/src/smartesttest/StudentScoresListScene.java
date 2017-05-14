@@ -111,7 +111,8 @@ public class StudentScoresListScene extends TeacherDash {
                     @Override
                     public void handle(ActionEvent event) {
                         System.out.println("View Score Clicked!");
-                        ViewStudentScoreSceneTeacher vssst = new ViewStudentScoreSceneTeacher();
+                        GradedTest gt = new GradedTest();
+                        ViewStudentScoreSceneTeacher vssst = new ViewStudentScoreSceneTeacher(gt);
                         vssst.STAGE = teacherDash.STAGE;
                         teacherDash.update(vssst.getScene());
                     }

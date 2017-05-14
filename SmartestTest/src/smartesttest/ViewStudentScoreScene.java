@@ -12,33 +12,46 @@ import javafx.scene.layout.GridPane;
  */
 public class ViewStudentScoreScene extends StudentDash
 {
-    public ViewStudentScoreScene()
+    protected GradedTest myGradedTest;
+    
+    public ViewStudentScoreScene(GradedTest test)
     {
-        
+        myGradedTest = test;
     }
     
     public Scene getScene()
     {
         GridPane gp = drawStudentDash();
         
-        Label score = new Label("Score: XX/YY = ZZ%");
+        Label score = new Label("Score: "+ myGradedTest.getNumCorrect()+"/"+myGradedTest.getTotalQuestions()+" = " + myGradedTest.getScore()+"%");
         gp.add(score, 3, 0);
-        
-        //for each question on the test do the following
-        for (int i = 0; i < 15; i+=5) 
-        {
-            Label questionTxt = new Label((i/5+1) + ") Question text goes here");
-            gp.add(questionTxt, 1, i+1);
 
-            for(int j = 1; j < 5; j++) 
-            {
-                Label ans1 = new Label("answer " + j);
-                gp.add(ans1, 1, (j+i+1));                
+        //for each question on the test do the following
+        Question[] questionList = myGradedTest.getTest().getTestQuestions();
+        for (int i = 0; i < questionList.length * 5; i += 5) {
+            Label questionTxt = new Label((i / 5 + 1) + ") " + questionList[i / 5].getQuestion());
+            gp.add(questionTxt, 1, i);
+
+            //makes it so only one of the radio buttons maye be selcted at a time
+            ToggleGroup questionAnswers = new ToggleGroup();
+
+            //loops to create the radio buttons for the answers
+            //can be changed instead of 5 to be less than the questions array of answers
+            //in final implementation.
+            String[] answers = questionList[i / 5].getAnswers();
+            for (int j = 1; j <= answers.length; j++) {
+                RadioButton ans1 = new RadioButton(answers[j - 1]);
+                ans1.setToggleGroup(questionAnswers);
+                gp.add(ans1, 1, (j + i));
+                if (questionList[i / 5].getCorrectAnswer() == (j - 1)) {
+                    Label correctAns = new Label("<<<<< Correct Answer!");
+                    gp.add(correctAns, 2, (j + i));
+                }
+                if ((j - 1) == myGradedTest.getStuAns()[i / 5]) {
+                    ans1.setSelected(true);
+                }
+                ans1.setDisable(true);
             }
-            //Something that gets the correct answer
-            //highlight the correct answer
-            Label correctAnswer = new Label("<<< The correct answer!");
-            gp.add(correctAnswer, 2, i+3);
         }
         
         Scene scene = new Scene(gp, 700, 500);
