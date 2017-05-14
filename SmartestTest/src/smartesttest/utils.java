@@ -23,6 +23,8 @@ public class utils {
     static final String URL = "jdbc:mysql://localhost/smartTest_db";
     static final String USER = "root";
     static final String PASS = "goodyear123!@#";
+    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
     
     // Converts an object into a string
     public static String toStr(Serializable obj){
@@ -58,36 +60,7 @@ public class utils {
             return obj;
         }
     }
-    public static String httpsPost(String url, String datastr) throws Exception {
-        //1. create url and request object
-        URL urlObj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
-        con.setRequestMethod("POST");
-        con.setRequestProperty("Content-length", String.valueOf(datastr.length()));
-        con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        con.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0;Windows98;DigExt)");
-        con.setDoOutput(true);
-        con.setDoInput(true);
-
-        //2. send request out
-        DataOutputStream oos = new DataOutputStream(con.getOutputStream());
-        oos.writeBytes(datastr);
-        oos.close();
-
-        //3. collect the https response
-        DataInputStream iis = new DataInputStream(con.getInputStream());
-        BufferedReader br = new BufferedReader(new InputStreamReader(iis));
-        StringBuilder sb = new StringBuilder();
-        String line = br.readLine();
-        while (line != null) {
-            sb.append(line + "\n");
-            line = br.readLine();
-        }
-        String sRet = sb.toString();
-        return sRet;
-    }
-
-    /**
+        /**
      * Return the first string in the last record in the query
      *
      * @param qry
@@ -113,5 +86,31 @@ public class utils {
             System.out.println(e);
         }
         return res;
+    }
+    
+    public static String encrypt(String passText){
+        String cipherText = "";
+        for (int i = 0; i < passText.length(); i++){
+            int charPosition = ALPHABET.indexOf(passText.charAt(i));
+            int keyVal = (3 + charPosition) % 62;
+            char newChar = ALPHABET.charAt(keyVal);
+            cipherText += newChar;
+        }
+    return cipherText;
+    }
+    
+    public static String decrypt(String cipherText){
+        String passText = "";
+        for (int i = 0; i < cipherText.length(); i++)
+        {
+            int charPosition = ALPHABET.indexOf(cipherText.charAt(i));
+            int keyVal = (charPosition - 3) % 62;
+            if (keyVal < 0){
+                keyVal = ALPHABET.length() + keyVal;
+            }
+            char newChar = ALPHABET.charAt(keyVal);
+            passText += newChar;
+        }
+    return passText;
     }
 }

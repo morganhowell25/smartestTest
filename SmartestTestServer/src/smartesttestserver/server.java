@@ -12,6 +12,7 @@ import static smartesttest.DBHandler.execQuerySSL;
 import smartesttest.GradedTest;
 import smartesttest.StudentScoresListStruct;
 import smartesttest.Test;
+import smartesttest.utils;
 import static smartesttest.utils.toObj;
 import static smartesttest.utils.toStr;
 
@@ -21,7 +22,8 @@ import static smartesttest.utils.toStr;
  */
 public class server {
     public static String mySeed = "halp";
-    
+    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
     // What happens when teacher clicks "Manage Tests" in TeacherDash
     public static ArrayList<String> pullTests(int tid){
         String query = "SELECT pincode FROM tbl_test WHERE tid='" + tid + "';";
@@ -142,6 +144,7 @@ public class server {
         String encrypted = encryptor.encrypt(hashInput);*/
         return hashInput;
     }
+    
     // Adds a user to the database when admin clicks "Submit" in AddUserScene
     public static void addUser(String userName, String userPass, String userRole){
         String encodedPWD = hasher(userPass);
@@ -199,22 +202,43 @@ public class server {
         String op = args[0];
         switch(op){
             case "pullTests":
-                ArrayList<String> tests = pullTests(Integer.getInteger(args[1]));
+                pullTests(Integer.getInteger(args[1]));
                 break;
             case "pullTestLO":
-                ArrayList<ArrayList<String>> LO = pullTestLO(args[1]);
+                pullTestLO(args[1]);
                 break;
             case "updateTestLOs":
                 updateTestLOs(args[1],args[2],args[3],Boolean.getBoolean(args[4]));
                 break;
             case "viewStudentScores":
-                ArrayList<StudentScoresListStruct> scores = viewStudentScores(args[1]);
+                viewStudentScores(args[1]);
                 break;
             case "pullStudentGradedTest":
-                GradedTest gt = pullStudentGradedTest(Integer.getInteger(args[1]),Integer.getInteger(args[2]));
+                pullStudentGradedTest(Integer.getInteger(args[1]),Integer.getInteger(args[2]));
+                break;
+            case "updateDepartmentLOs":
+                updateDepartmentLOs(args[1],args[2],Boolean.getBoolean(args[3]));
+                break;
+            case "pullTest":
+                pullTest(args[1]);
+                break;
+            case "saveGradedTest":
+                saveGradedTest(Integer.getInteger(args[1]),args[2],(GradedTest)utils.toObj(args[3]),args[4]);
                 break;
             case "addUser": 
                 addUser(args[1],args[2],args[3]);
+                break;
+            case "pullUserList":
+                pullUserList();
+                break;
+            case "pullUInfo":
+                pullUInfo(args[1]);
+                break;
+            case "resetPWD":
+                resetPWD(args[1],Integer.getInteger(args[2]));
+                break;
+            case "saveTest":
+                saveTest(Integer.getInteger(args[1]),Integer.getInteger(args[2]),(Test)utils.toObj(args[3]));
                 break;
         }
         System.out.println("We made it!");
