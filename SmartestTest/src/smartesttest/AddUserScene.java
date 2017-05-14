@@ -86,6 +86,13 @@ public class AddUserScene extends AdminDash implements AppScene
                     badAlert.setContentText("Please choose a unique username");
                     badAlert.showAndWait();
                 }
+                else if(typeBox.getValue() == null){
+                    Alert badAlert = new Alert(AlertType.ERROR);
+                    badAlert.setTitle("Failed to Add User");
+                    badAlert.setHeaderText("No UserType Selected");
+                    badAlert.setContentText("Please choose a User Type");
+                    badAlert.showAndWait();
+                }
                 else{
                     server.addUser(userNameTxt.getText(), userPassTxt.getText(), typeBox.getValue().toString().toLowerCase());
                     Alert goodAlert = new Alert(AlertType.INFORMATION);
