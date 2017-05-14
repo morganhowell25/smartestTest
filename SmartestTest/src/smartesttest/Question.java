@@ -21,7 +21,7 @@ public class Question implements java.io.Serializable
     //within myAnswers
     private int myCorrectAnswer;
     //An array of the corresponding LO's 
-    private String[] myLOs;
+    private String[][] myLOs;
     
     //Default constructor
     public Question()
@@ -30,11 +30,11 @@ public class Question implements java.io.Serializable
         myAnswers = new String[]{"ans1", "ans2", "ans3", "ans4"};
         myPointValue = -1;
         myCorrectAnswer = -1;
-        myLOs = new String[]{"null"};        
+        myLOs = new String[][]{{"null"}, {"null"}};        
     }
     
     //A Constructor that allows all the values to be set
-    public Question(String question, String[] answers, int pointValue, int correctAns, String[] LOs)
+    public Question(String question, String[] answers, int pointValue, int correctAns, String[][] LOs)
     {
         setQuestion(question);
         setAnswers(answers);
@@ -55,7 +55,7 @@ public class Question implements java.io.Serializable
     public int getCorrectAnswer()
     {   return myCorrectAnswer;     }
     
-    public String[] getLOs()
+    public String[][] getLOs()
     {   return myLOs;   }
     
     public void setQuestion(String question)
@@ -70,7 +70,7 @@ public class Question implements java.io.Serializable
     public void setCorrectAnswer(int correctAns)
     {   myCorrectAnswer = correctAns;   }
     
-    public void setLOs(String[] LOs)
+    public void setLOs(String[][] LOs)
     {   myLOs = LOs;    }
     
     public String toString()

@@ -13,7 +13,7 @@ import javafx.scene.layout.GridPane;
 
 /**
  *
- * @author csc190
+ * @author Morgan Howell
  */
 public class ViewStudentScoreSceneTeacher extends TeacherDash 
 {
