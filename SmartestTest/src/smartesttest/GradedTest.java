@@ -9,7 +9,7 @@ package smartesttest;
  *
  * @author Morgan Howell
  */
-public class GradedTest extends Test
+public class GradedTest implements java.io.Serializable
 {
     private Test myTest;
     private int myStuID;
@@ -77,7 +77,8 @@ public class GradedTest extends Test
                 myNumCorrect++;
             }
         }
-        myScore = myNumCorrect/questionList.length;
+        
+        myScore = Math.round((double)myNumCorrect/(double)questionList.length *100);
     }
     
     private boolean gradeQuestion(int ans, int correctAns)
