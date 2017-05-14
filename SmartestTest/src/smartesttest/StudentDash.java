@@ -35,8 +35,9 @@ public class StudentDash extends DashBoard
         Test t = new Test(questions, 8675309, 72);
         GradedTest gt = new GradedTest(t, new int[]{0,2,2}, 23);
         gt.grade();
+        TestScene shs = new TestScene(t);
         //ViewStudentScoreSceneTeacher shs = new ViewStudentScoreSceneTeacher(gt);
-        ViewStudentScoreScene shs = new ViewStudentScoreScene(gt);
+        //ViewStudentScoreScene shs = new ViewStudentScoreScene(gt);
         //StudentHomeScene shs = new StudentHomeScene();
         shs.STAGE = this.STAGE;
         SCENE = shs.getScene();

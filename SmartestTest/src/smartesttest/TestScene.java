@@ -5,6 +5,7 @@ import static java.util.Arrays.fill;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -32,8 +33,8 @@ public class TestScene extends StudentDash {
         //for each question on the test do the following
         Question[] questionList = myTest.getTestQuestions();
         for (int i = 0; i < questionList.length * 5; i += 5) {
-            Label questionTxt = new Label((i / 5 + 1) + ") " 
-                        + questionList[i / 5].getQuestion());
+            Label questionTxt = new Label((i / 5 + 1) + ") "
+                    + questionList[i / 5].getQuestion());
             gp.add(questionTxt, 2, i);
 
             //makes it so only one of the radio buttons maye be selcted at a time
@@ -64,7 +65,6 @@ public class TestScene extends StudentDash {
         btnSumbit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Sumbit Clicked!");
 
                 //loop for each group of answers loop
                 for (int i = 0; i < answerButtons.size(); i++) {
@@ -76,14 +76,31 @@ public class TestScene extends StudentDash {
                         }
                     }
                 }
-                GradedTest graded = new GradedTest(myTest, stuAns, 1);
-                graded.grade();
-                server.saveGradedTest(currentUserID, ""+myTest.getPincode(), graded, ""+graded.getScore());
-                
-                //testing to see if it correctly pulls the students answers
-                //#worksfristtime
-                for (int x = 0; x < stuAns.length; x++) {
-                    System.out.println("Student Answered: " + stuAns[x]);
+                boolean flag = true;
+                for(int i = 0; i < stuAns.length; i++)
+                {
+                    if(stuAns[i]==-1)
+                        flag = false;
+                }
+                if (flag) {
+
+                    System.out.println("Sumbit Clicked!");
+
+                    GradedTest graded = new GradedTest(myTest, stuAns, 1);
+                    graded.grade();
+                    server.saveGradedTest(currentUserID, "" + myTest.getPincode(), graded, "" + graded.getScore());
+
+                    //testing to see if it correctly pulls the students answers
+                    //#worksfristtime
+                    for (int x = 0; x < stuAns.length; x++) {
+                        System.out.println("Student Answered: " + stuAns[x]);
+                    }
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Incomplete Test");
+                    alert.setContentText("Please answer all the questions before sumbiting");
+                    alert.showAndWait();
                 }
             }
         });
