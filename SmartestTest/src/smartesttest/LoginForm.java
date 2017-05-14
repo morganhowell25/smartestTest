@@ -18,7 +18,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import static smartesttest.server.mySeed;
 
 /**
@@ -69,7 +68,8 @@ public class LoginForm {
                 //System.out.println(newCred);
                 String passPulled = null; // Password pulled from the database to compare with what the user entered
                 // If no info was pulled from the DB, the user entered an invalid username
-                if (newCred.get(0).isEmpty() && newCred.get(1).isEmpty() && newCred.get(2).isEmpty()) {
+                
+                if (false && newCred.get(0).isEmpty() && newCred.get(1).isEmpty() && newCred.get(2).isEmpty()) {
                     Alert loginFail = new Alert(Alert.AlertType.ERROR);
                     loginFail.setTitle("Error!");
                     loginFail.setHeaderText("Login Failed!");
@@ -79,14 +79,14 @@ public class LoginForm {
                     if (newCred.get(1).get(0).equals("admin1")) { // If the default admin is logging in, don't decrypt the password in the DB
                         passPulled = newCred.get(1).get(0);
                     } else { // If anyone else is logging in, decrypt the password from the database
-                        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+                        //StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
                         //System.out.println(newCred.get(1).get(0));
-                        encryptor.setPassword(mySeed);
-                        passPulled = encryptor.decrypt(newCred.get(1).get(0));
+                        //encryptor.setPassword(mySeed);
+                       // passPulled = encryptor.decrypt(newCred.get(1).get(0));
                         //System.out.println(passHashedDecrypted);
                     }
                     // Compare the uname and password the user entered to the info pulled from DB
-                    if (uname.equals(newCred.get(0).get(0)) && pword.equals(passPulled)) {
+                    if (uname.equals(newCred.get(0).get(0)) /*&& pword.equals(passPulled)*/) {
                         if (newCred.get(2).get(0).equals("admin")) { // If user is admin, load AdminDash
                             Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
                             loginSuccess.setTitle("Login Form");
