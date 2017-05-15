@@ -64,7 +64,22 @@ public class AddUserScene extends AdminDash implements AppScene
                 System.out.println("Confirm Clicked!");
                 String querycheck = "SELECT * from tbl_user WHERE uname='" + userNameTxt.getText() + "';";
                 ArrayList<String> unames = DBHandler.execQuery(querycheck);
-                if(userNameTxt.getText().isEmpty()){
+                String enteredPass = userPassTxt.getText();
+                boolean validPass = true;
+                for(int i = 0; i < enteredPass.length(); i++){
+                    if(!((enteredPass.charAt(i) >= 'a' && enteredPass.charAt(i) <= 'z') || (enteredPass.charAt(i) >= 'A' && enteredPass.charAt(i) <= 'Z') || (enteredPass.charAt(i) >= '0' && enteredPass.charAt(i) <= '9'))){
+                        validPass = false;
+                        break;
+                    }
+                }
+                if(validPass == false){
+                    Alert badAlert = new Alert(AlertType.ERROR);
+                    badAlert.setTitle("Failed to Add User");
+                    badAlert.setHeaderText("Invalid password");
+                    badAlert.setContentText("Please only use alphanumeric characters");
+                    badAlert.showAndWait();
+                }
+                else if(userNameTxt.getText().isEmpty()){
                     Alert nullAlert = new Alert(AlertType.ERROR);
                     nullAlert.setTitle("Failed to Add User");
                     nullAlert.setHeaderText("Username cannot be empty");
@@ -76,6 +91,13 @@ public class AddUserScene extends AdminDash implements AppScene
                     badAlert.setTitle("Failed to Add User");
                     badAlert.setHeaderText("Username already exists");
                     badAlert.setContentText("Please choose a unique username");
+                    badAlert.showAndWait();
+                }
+                else if(typeBox.getValue() == null){
+                    Alert badAlert = new Alert(AlertType.ERROR);
+                    badAlert.setTitle("Failed to Add User");
+                    badAlert.setHeaderText("No UserType Selected");
+                    badAlert.setContentText("Please choose a User Type");
                     badAlert.showAndWait();
                 }
                 else{
