@@ -22,26 +22,23 @@ import javax.swing.ButtonGroup;
  *
  * @author csc190
  */
-public class AddQuestionScene extends TeacherDash
-{
+public class AddQuestionScene extends TeacherDash {
+
     static int current = 4; //for updating index of new textfield
     static TextField txtAnsOptionN;
     static RadioButton rbAnswerChoiceN;
     protected CreateTestScene cts = null;
-    
-    public AddQuestionScene(CreateTestScene cts)
-    {
+
+    public AddQuestionScene(CreateTestScene cts) {
         this.cts = cts;
     }
-    
-    public Scene getScene(Question myQ)
-    {
+
+    public Scene getScene(Question myQ) {
         TeacherDash teachDash = this;
-        
+
         GridPane gp = drawTeacherDash();
-        
+
         //Upon clicking Add Question...
-   
 //Initialize some things 
         ArrayList<ArrayList<String>> deptLOs = utils.pullDepartmentLOs();
         ArrayList<String> answersArr = new ArrayList<String>();
@@ -49,16 +46,16 @@ public class AddQuestionScene extends TeacherDash
         ArrayList<RadioButton> rbArr = new ArrayList<RadioButton>();
         ArrayList<RadioButton> rbLOSelect = new ArrayList<RadioButton>();
         ArrayList<String> selectedLOs = new ArrayList<String>();
-        
+
         //Default question at start
         TextField txtQuestion = new TextField();
         TextField txtPoints = new TextField();
-        TextField txtAnsOption = new TextField();  
+        TextField txtAnsOption = new TextField();
         TextField txtAnsOption2 = new TextField();
         //Add first two fields to array
         textFieldArr.add(txtAnsOption);
         textFieldArr.add(txtAnsOption2);
-        
+
         //Label creation
         Label selectRB = new Label("Select Appropriate Learning Outcomes");
         Label selectCorrect = new Label("Select Correct");
@@ -66,59 +63,79 @@ public class AddQuestionScene extends TeacherDash
         Label lbPoints = new Label("Enter Number of Points ");
         Label lbCorrect = new Label("Choose Correct Option");
         Label lbTypeOption = new Label("Please type aswer options below");
-        
+
         //All kinds of buttons
         Button btnNewAnswerOption = new Button("Add New Option");
         Button btnRMOption = new Button("Delete Previous Option");
         Button btnDone = new Button("Done");
         ToggleGroup answerChoices = new ToggleGroup();
         RadioButton rbAnswerChoice = new RadioButton();
-        rbAnswerChoice.setToggleGroup(answerChoices);             
+        rbAnswerChoice.setToggleGroup(answerChoices);
         RadioButton rbAnswerChoice2 = new RadioButton();
-        rbAnswerChoice2.setToggleGroup(answerChoices); 
+        rbAnswerChoice2.setToggleGroup(answerChoices);
         //Add to rbArr for first two RB's above
         rbArr.add(rbAnswerChoice);
         rbArr.add(rbAnswerChoice2);
 //end of (main) initialization
-        
-        
+
         //Create radiobuttons for each department LO and add to third column
         RadioButton rbLO;
-        for(int i=0; i<deptLOs.size(); i++){
+        for (int i = 0; i < deptLOs.size(); i++) {
             rbLO = new RadioButton(deptLOs.get(i).toString());
-            gp.add(rbLO,3,i+1);
+            gp.add(rbLO, 3, i + 1);
             rbLOSelect.add(rbLO);
-        //rbCurr++;
+            //rbCurr++;
         }
-        
+
         //Button add to gp
-        gp.add(btnDone,1,7);
-        gp.add(btnNewAnswerOption,2,7);
+        gp.add(btnDone, 1, 7);
+        gp.add(btnNewAnswerOption, 2, 7);
         //gp.add(btnRMOption,3,7);
-       
-        if(myQ!=null){
+
+        if (myQ != null) {
             txtQuestion.setText(myQ.getQuestion());
             txtPoints.setText("" + myQ.getPointValue());
-            String[] answers = myQ.getAnswers();
-            txtAnsOption.setText(answers[0]);
-            txtAnsOption2.setText(answers[1]);
-            for(int i=2; i<answers.length; i++){
-                btnNewAnswerOption.fire();
-                textFieldArr.get(i).setText(answers[i]);
+            //txtAnsOption.setText(answers[0]);
+            //txtAnsOption2.setText(answers[1]);
+            for (int k = 0; k < myQ.getAnswers().length; k++) {
+                System.out.println("Answers: " + myQ.getAnswers()[k]);
             }
+            //if(answers.length>2){
+            for (int i = 0; i < myQ.getAnswers().length; i++) {
+                //btnNewAnswerOption
+                gp.getChildren().remove(btnDone);
+                gp.getChildren().remove(btnNewAnswerOption);
+                gp.getChildren().remove(btnRMOption);
+                rbAnswerChoiceN = new RadioButton();
+                rbAnswerChoiceN.setToggleGroup(answerChoices);
+                txtAnsOptionN = new TextField();
+                //Add newly creates option and radiobtn to their arraylists
+                textFieldArr.add(txtAnsOptionN);
+                rbArr.add(rbAnswerChoiceN);
+                //Add to gp
+                gp.add(rbAnswerChoiceN, 2, current + 1);
+                gp.add(txtAnsOptionN, 1, current + 1);
+                gp.add(btnDone, 1, current + 2);
+                gp.add(btnNewAnswerOption, 2, current + 2);
+                gp.add(btnRMOption, 2, current + 3);
+                current++;
+                System.out.println("Current Add: " + current);
+                System.out.println("ARRAY: " + textFieldArr.get(i));
+
+                textFieldArr.get(i).setText(myQ.getAnswers()[i]);
+            }
+            //}
             int correct = myQ.getCorrectAnswer();
             rbArr.get(correct).setSelected(true);
             String[] setUpLOs = myQ.getLOs();
-            for(int j=0; j<setUpLOs.length; j++){ 
-                if(setUpLOs[j].equals(deptLOs.get(j))){
+            for (int j = 0; j < setUpLOs.length; j++) {
+                if (setUpLOs[j].equals(deptLOs.get(j))) {
                     rbLOSelect.get(j).setSelected(true);
                 }
-                
-            }        
+
+            }
         }
-        
-        
-        
+
         //This button action is soley for adding more answers choices.
         btnNewAnswerOption.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -131,49 +148,47 @@ public class AddQuestionScene extends TeacherDash
                 txtAnsOptionN = new TextField();
                 //Add newly creates option and radiobtn to their arraylists
                 textFieldArr.add(txtAnsOptionN);
-                rbArr.add(rbAnswerChoiceN);                
+                rbArr.add(rbAnswerChoiceN);
                 //Add to gp
-                gp.add(rbAnswerChoiceN,2,current+1);
-                gp.add(txtAnsOptionN,1,current+1);
-                gp.add(btnDone,1,current+2);
-                gp.add(btnNewAnswerOption,2,current+2);
+                gp.add(rbAnswerChoiceN, 2, current + 1);
+                gp.add(txtAnsOptionN, 1, current + 1);
+                gp.add(btnDone, 1, current + 2);
+                gp.add(btnNewAnswerOption, 2, current + 2);
                 gp.add(btnRMOption, 2, current + 3);
                 current++;
-                System.out.println("Current Add: "+ current);
+                System.out.println("Current Add: " + current);
 
                 /*//Testing only
                 for(int i=0; i<answersArr.size(); i++){
                     System.out.print("Answer Array: " + answersArr.get(i));
                 } 
-                */
+                 */
                 //Test here
                 //String test = txtQuestion.getText();
                 //System.out.println("I return: " + test);
+            }
+        });
 
-            }   
-        });     
-        
-            btnRMOption.setOnAction(new EventHandler<ActionEvent>() {
+        btnRMOption.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(current<5){
+                if (current < 5) {
                     Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
                     DeleteAlert.setTitle("Warning!");
                     DeleteAlert.setHeaderText(null);
                     DeleteAlert.setContentText("Cannot Delete Further");
-                    DeleteAlert.showAndWait(); 
-                }
-                else{
-                    gp.getChildren().remove(textFieldArr.get(textFieldArr.size()-1));
-                    gp.getChildren().remove(rbArr.get(rbArr.size()-1));
-                    textFieldArr.remove(textFieldArr.get(textFieldArr.size()-1));
-                    rbArr.remove(rbArr.get(rbArr.size()-1));
+                    DeleteAlert.showAndWait();
+                } else {
+                    gp.getChildren().remove(textFieldArr.get(textFieldArr.size() - 1));
+                    gp.getChildren().remove(rbArr.get(rbArr.size() - 1));
+                    textFieldArr.remove(textFieldArr.get(textFieldArr.size() - 1));
+                    rbArr.remove(rbArr.get(rbArr.size() - 1));
                     current--;
-                    System.out.println("Current Minus: "+ current);
+                    System.out.println("Current Minus: " + current);
                 }
-            }   
-        }); 
-            
+            }
+        });
+
         /*
         //Creating the Drop Down
         ObservableList<String> options =
@@ -186,96 +201,90 @@ public class AddQuestionScene extends TeacherDash
         ComboBox comboBox = new ComboBox(options);
         comboBox.setItems(options);
         //end Drop Down creation
-        */
-        
+         */
         //Save question with all its parameters
         ButtonGroup buttonGroup = new ButtonGroup();
         btnDone.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Done Buttom Clicked!");
-            try{
-            //GET ALL USER INPUT
-                String StrQuestion = txtQuestion.getText();
-                int intPoints = Integer.parseInt(txtPoints.getText());
-                //Add options to arraylist                
-                answersArr.add(txtAnsOption.getText());
-                answersArr.add(txtAnsOption2.getText());
-                //Save "N" answer options
-                for(int i=0; i<textFieldArr.size();i++){
-                    answersArr.add(textFieldArr.get(i).getText());
-                    //System.out.println("Option: " + textFieldArr.get(i).getText() + "\n"); Testing what I add
-                }
-                //Find selected RB               
-                int correctAns = 0;
-                int index = 0;
-                boolean rbSelect = false;
-                while(rbSelect==false){                                                      
-                    if(rbArr.get(index).isSelected()){
-                        correctAns = index;
-                        rbSelect = true;
+                try {
+                    //GET ALL USER INPUT
+                    String StrQuestion = txtQuestion.getText();
+                    int intPoints = Integer.parseInt(txtPoints.getText());
+                    //Add options to arraylist                
+                    answersArr.add(txtAnsOption.getText());
+                    answersArr.add(txtAnsOption2.getText());
+                    //Save "N" answer options
+                    for (int i = 0; i < textFieldArr.size(); i++) {
+                        answersArr.add(textFieldArr.get(i).getText());
+                        //System.out.println("Option: " + textFieldArr.get(i).getText() + "\n"); Testing what I add
                     }
-                    else{
-                        index++;
+                    //Find selected RB               
+                    int correctAns = 0;
+                    int index = 0;
+                    boolean rbSelect = false;
+                    while (rbSelect == false) {
+                        if (rbArr.get(index).isSelected()) {
+                            correctAns = index;
+                            rbSelect = true;
+                        } else {
+                            index++;
+                        }
                     }
-                }
-                //System.out.println("Selected RB index = " + correctAns);
-                //Find selected LOs
-                for(int k=0; k<rbLOSelect.size(); k++){
-                    if(rbLOSelect.get(k).isSelected()){
-                        selectedLOs.add(rbLOSelect.get(k).getText());
-                        System.out.println("Selected LO text = " + rbLOSelect.get(k).getText());
+                    //System.out.println("Selected RB index = " + correctAns);
+                    //Find selected LOs
+                    for (int k = 0; k < rbLOSelect.size(); k++) {
+                        if (rbLOSelect.get(k).isSelected()) {
+                            selectedLOs.add(rbLOSelect.get(k).getText());
+                            System.out.println("Selected LO text = " + rbLOSelect.get(k).getText());
+                        }
                     }
-                }
-            //End get user input
-                /*TestArray
+                    //End get user input
+                    /*TestArray
                 for(int i=0; i<answersArr.size(); i++){
                     System.out.print("Answer Array: " + answersArr.get(i)+ "\n");
                 }
-                */                
-                //Finally... save the question. Call contructor.
-                //Convert ArrayLists to Array
-                String[] ansArray = answersArr.toArray(new String[answersArr.size()]);
-                String[] selLOsArray = selectedLOs.toArray(new String[selectedLOs.size()]);
-                Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selLOsArray);
-                
-                //Now go back to old scene
-                
-                cts.STAGE = teachDash.STAGE;
-                teachDash.update(cts.getScene(myQ));
-            }
-                
-                catch(NumberFormatException exc){
+                     */
+                    //Finally... save the question. Call contructor.
+                    //Convert ArrayLists to Array
+                    String[] ansArray = answersArr.toArray(new String[answersArr.size()]);
+                    String[] selLOsArray = selectedLOs.toArray(new String[selectedLOs.size()]);
+                    Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selLOsArray);
+
+                    //Now go back to old scene
+                    cts.STAGE = teachDash.STAGE;
+                    teachDash.update(cts.getScene(myQ));
+                } catch (NumberFormatException exc) {
                     Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
                     DeleteAlert.setTitle("Warning!");
                     DeleteAlert.setHeaderText(null);
                     DeleteAlert.setContentText("Add a point value!");
-                    DeleteAlert.showAndWait();                    
-                }                
+                    DeleteAlert.showAndWait();
+                }
             }
         });
-            
+
         //Add to GridPane
-        gp.add(txtQuestion,1,0);
-        gp.add(txtPoints,1,1);
-        gp.add(txtAnsOption,1,3);
-        gp.add(txtAnsOption2,1,4);
-        gp.add(rbAnswerChoice,2,3);
-        gp.add(rbAnswerChoice2,2,4);
-        gp.add(lbQuestion,2,0);
-        gp.add(lbPoints,2,1);
-        gp.add(lbTypeOption, 1,2);
-        gp.add(selectCorrect,2,2);
-        gp.add(selectRB,4,0);
+        gp.add(txtQuestion, 1, 0);
+        gp.add(txtPoints, 1, 1);
+        gp.add(txtAnsOption, 1, 3);
+        gp.add(txtAnsOption2, 1, 4);
+        gp.add(rbAnswerChoice, 2, 3);
+        gp.add(rbAnswerChoice2, 2, 4);
+        gp.add(lbQuestion, 2, 0);
+        gp.add(lbPoints, 2, 1);
+        gp.add(lbTypeOption, 1, 2);
+        gp.add(selectCorrect, 2, 2);
+        gp.add(selectRB, 4, 0);
         //gp.add(lbCorrect,2,2);
         //gp.add(rbAnswerChoice,1,3);     
         //gp.add(rbLO,1,3);         
         //end Add GridPane
-            
-        
+
         Scene scene = new Scene(gp, 700, 500);
         return scene;
-   
-    }           
-    
+
+    }
+
 }
