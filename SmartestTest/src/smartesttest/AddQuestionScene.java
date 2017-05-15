@@ -39,7 +39,7 @@ public class AddQuestionScene extends TeacherDash
         //Upon clicking Add Question...
    
 //Initialize some things 
-        ArrayList<ArrayList<String>> deptLOs = utils.pullDepartmentLOs();
+        ArrayList<ArrayList<String>> deptLOs = server.pullDepartmentLOs();
         ArrayList<String> answersArr = new ArrayList<String>();
         ArrayList<TextField> textFieldArr = new ArrayList<TextField>();
         ArrayList<RadioButton> rbArr = new ArrayList<RadioButton>();
