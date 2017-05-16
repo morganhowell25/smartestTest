@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.GridPane;
 
@@ -30,22 +31,6 @@ public class ManageUserScene extends AdminDash
     public Scene getScene()
     {
         GridPane gp = drawAdminDash();
-        /*
-        //table setup
-        TableView table = new TableView();
-        table.setEditable(true);
- 
-        TableColumn userNameCol = new TableColumn("User");
-        TableColumn roleCol = new TableColumn("Role");
-        TableColumn delCol = new TableColumn("Delete?");
-        
-        table.getColumns().addAll(userNameCol, roleCol, delCol);
-        
-        gp.add(table,1,4);
-        
-        //note: tableview and gridpane don't really get along (try gp.add(table,1,0)
-        //it would also be possible to just use gridpane as a sort of less sophisticated table
-        */
         
         Label userID = new Label("ID");
         Label userRole = new Label("Role");
@@ -92,8 +77,9 @@ public class ManageUserScene extends AdminDash
             
         }
         
-        
-        Scene scene = new Scene(gp, 700, 500);
+        ScrollPane sp = new ScrollPane();
+        sp.setContent(gp);
+        Scene scene = new Scene(sp, 700, 500);
         return scene;
     }
 }
