@@ -29,12 +29,12 @@ public class StudentDash extends DashBoard
         Question[] questions = new Question[6];
         questions[0] = new Question();
         String[] answers = new String[]{"andy", "is a", "butt"};
-        questions[1] = new Question("Question here", answers, 3, 2, new ArrayList<ArrayList<String>>());
+        questions[1] = new Question("Question here", answers, 1, 2, new ArrayList<ArrayList<String>>());
         questions[2] = new Question();
         String[] answers1 = new String[]{"True", "False"};
-        questions[3] = new Question("Question here", answers1, 3, 1, new ArrayList<ArrayList<String>>());
+        questions[3] = new Question("Question here", answers1, 1, 1, new ArrayList<ArrayList<String>>());
         String[] answers2 = new String[]{"andy", "is a", "butt", "can","this","have","more answers?"};
-        questions[4] = new Question("Question here What happens if I use a \n in the question", answers2, 3, 2, new ArrayList<ArrayList<String>>());
+        questions[4] = new Question("Question here What happens if I use a \n in the question", answers2, 1, 2, new ArrayList<ArrayList<String>>());
         questions[5] = new Question();
         
         //Notes Run time issue 2 of them.
@@ -42,11 +42,11 @@ public class StudentDash extends DashBoard
         // If there are more than 5 answers it overlaps.
                 
         Test t = new Test(questions, 8675309, 72);
-        GradedTest gt = new GradedTest(t, new int[]{0,2,2}, 23);
+        GradedTest gt = new GradedTest(t, new int[]{0,2,2,1,6,0}, 23);
         gt.grade();
-        TestScene shs = new TestScene(t);
+        //TestScene shs = new TestScene(t);
         //ViewStudentScoreSceneTeacher shs = new ViewStudentScoreSceneTeacher(gt);
-        //ViewStudentScoreScene shs = new ViewStudentScoreScene(gt);
+        ViewStudentScoreScene shs = new ViewStudentScoreScene(gt);
         //StudentHomeScene shs = new StudentHomeScene();
         shs.STAGE = this.STAGE;
         SCENE = shs.getScene();

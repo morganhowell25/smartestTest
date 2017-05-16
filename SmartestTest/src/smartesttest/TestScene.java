@@ -31,12 +31,9 @@ public class TestScene extends StudentDash {
         int currentRow = 0;
         ArrayList<ToggleGroup> answerButtons = new ArrayList<ToggleGroup>();
 
-        int highestNumAns = 0;
-        
-        
         //for each question on the test do the following
         Question[] questionList = myTest.getTestQuestions();
-        
+        int highestNumAns = -1;
         for(Question q: questionList)
         {
             if(q.getAnswers().length > highestNumAns)

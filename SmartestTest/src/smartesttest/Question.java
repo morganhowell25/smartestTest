@@ -30,7 +30,7 @@ public class Question implements java.io.Serializable
     {
         myQuestion = "default question";
         myAnswers = new String[]{"ans1", "ans2", "ans3", "ans4"};
-        myPointValue = -1;
+        myPointValue = 1;
         myCorrectAnswer = -1;
         myLOs = new ArrayList<ArrayList<String>>();        
     }
