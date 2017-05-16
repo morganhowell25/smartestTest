@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 
@@ -30,18 +31,28 @@ public class TestScene extends StudentDash {
         int currentRow = 0;
         ArrayList<ToggleGroup> answerButtons = new ArrayList<ToggleGroup>();
 
+        int highestNumAns = 0;
+        
+        
         //for each question on the test do the following
         Question[] questionList = myTest.getTestQuestions();
-        for (int i = 0; i < questionList.length * 5; i += 5) {
-            Label questionTxt = new Label((i / 5 + 1) + ") "
-                    + questionList[i / 5].getQuestion());
+        
+        for(Question q: questionList)
+        {
+            if(q.getAnswers().length > highestNumAns)
+                highestNumAns = q.getAnswers().length+1;
+        }
+        
+        for (int i = 0; i < questionList.length * highestNumAns; i += highestNumAns) {
+            Label questionTxt = new Label((i / highestNumAns+ 1) + ") "
+                    + questionList[i / highestNumAns].getQuestion());
             gp.add(questionTxt, 2, i);
 
             //makes it so only one of the radio buttons maye be selcted at a time
             ToggleGroup questionAnswers = new ToggleGroup();
 
             //loops to create the toggle buttons for the answers
-            String[] answers = questionList[i / 5].getAnswers();
+            String[] answers = questionList[i / highestNumAns].getAnswers();
             for (int j = 1; j <= answers.length; j++) {
                 RadioButton ans = new RadioButton(answers[j - 1]);
                 ans.setToggleGroup(questionAnswers);
@@ -104,8 +115,9 @@ public class TestScene extends StudentDash {
                 }
             }
         });
-
-        Scene scene = new Scene(gp, 700, 500);
+        ScrollPane sp = new ScrollPane();
+        sp.setContent(gp);
+        Scene scene = new Scene(sp, 700, 500);
         return scene;
     }
 }
