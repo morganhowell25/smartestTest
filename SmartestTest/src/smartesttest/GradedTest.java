@@ -15,7 +15,7 @@ public class GradedTest implements java.io.Serializable
     private int myStuID;
     private int[] myStuAns;
     private int myNumCorrect;
-    private double myScore;
+    private int myScore;
     private double myPercent;
     private int myTotalPoints;
     
@@ -43,7 +43,7 @@ public class GradedTest implements java.io.Serializable
     public int getNumCorrect()
     {   return myNumCorrect;    }
     
-    public double getScore()
+    public int getScore()
     {   return myScore; }
     
     public int getTotalPoints()
