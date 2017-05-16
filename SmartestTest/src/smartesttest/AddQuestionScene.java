@@ -28,12 +28,14 @@ public class AddQuestionScene extends TeacherDash {
     static TextField txtAnsOptionN;
     static RadioButton rbAnswerChoiceN;
     protected CreateTestScene cts = null;
+    protected boolean editFlag = false;
 
-    public AddQuestionScene(CreateTestScene cts) {
+    public AddQuestionScene(CreateTestScene cts, boolean editFlag) {
         this.cts = cts;
+        this.editFlag = editFlag;
     }
 
-    public Scene getScene(Question myQ) {
+    public Scene getScene(Question myQ, int indexEditQ) {
         TeacherDash teachDash = this;
 
         GridPane gp = drawTeacherDash();
@@ -53,9 +55,10 @@ public class AddQuestionScene extends TeacherDash {
         TextField txtAnsOption = new TextField();
         TextField txtAnsOption2 = new TextField();
         //Add first two fields to array
+        //if(myQ==null){
         textFieldArr.add(txtAnsOption);
         textFieldArr.add(txtAnsOption2);
-
+        //}
         //Label creation
         Label selectRB = new Label("Select Appropriate Learning Outcomes");
         Label selectCorrect = new Label("Select Correct");
@@ -110,11 +113,13 @@ public class AddQuestionScene extends TeacherDash {
                 rbAnswerChoiceN.setToggleGroup(answerChoices);
                 txtAnsOptionN = new TextField();
                 //Add newly creates option and radiobtn to their arraylists
-                textFieldArr.add(txtAnsOptionN);
-                rbArr.add(rbAnswerChoiceN);
-                //Add to gp
-                gp.add(rbAnswerChoiceN, 2, current + 1);
-                gp.add(txtAnsOptionN, 1, current + 1);
+                if (i == myQ.getAnswers().length - 1 || i == myQ.getAnswers().length - 2) {
+                    textFieldArr.add(txtAnsOptionN);
+                    rbArr.add(rbAnswerChoiceN);
+                    //Add to gp
+                    gp.add(rbAnswerChoiceN, 2, current + 1);
+                    gp.add(txtAnsOptionN, 1, current + 1);
+                }
                 gp.add(btnDone, 1, current + 2);
                 gp.add(btnNewAnswerOption, 2, current + 2);
                 gp.add(btnRMOption, 2, current + 3);
@@ -212,13 +217,11 @@ public class AddQuestionScene extends TeacherDash {
                     //GET ALL USER INPUT
                     String StrQuestion = txtQuestion.getText();
                     int intPoints = Integer.parseInt(txtPoints.getText());
-                    //Add options to arraylist                
-                    answersArr.add(txtAnsOption.getText());
-                    answersArr.add(txtAnsOption2.getText());
-                    //Save "N" answer options
+                    //Save ALL answer options in textFieldArr to answerArr
                     for (int i = 0; i < textFieldArr.size(); i++) {
                         answersArr.add(textFieldArr.get(i).getText());
-                        //System.out.println("Option: " + textFieldArr.get(i).getText() + "\n"); Testing what I add
+                        System.out.println("answer Option: " + textFieldArr.get(i).getText() + "\n"); //Testing what I add
+                        System.out.println("ACTUAL ARR: " + answersArr.get(i)); //Should match above
                     }
                     //Find selected RB               
                     int correctAns = 0;
@@ -250,11 +253,12 @@ public class AddQuestionScene extends TeacherDash {
                     //Convert ArrayLists to Array
                     String[] ansArray = answersArr.toArray(new String[answersArr.size()]);
                     String[] selLOsArray = selectedLOs.toArray(new String[selectedLOs.size()]);
+
                     Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selLOsArray);
 
                     //Now go back to old scene
                     cts.STAGE = teachDash.STAGE;
-                    teachDash.update(cts.getScene(myQ));
+                    teachDash.update(cts.getScene(myQ,editFlag, indexEditQ));
                 } catch (NumberFormatException exc) {
                     Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
                     DeleteAlert.setTitle("Warning!");
@@ -268,10 +272,12 @@ public class AddQuestionScene extends TeacherDash {
         //Add to GridPane
         gp.add(txtQuestion, 1, 0);
         gp.add(txtPoints, 1, 1);
+        //if(myQ==null){
         gp.add(txtAnsOption, 1, 3);
         gp.add(txtAnsOption2, 1, 4);
         gp.add(rbAnswerChoice, 2, 3);
         gp.add(rbAnswerChoice2, 2, 4);
+        //}
         gp.add(lbQuestion, 2, 0);
         gp.add(lbPoints, 2, 1);
         gp.add(lbTypeOption, 1, 2);
@@ -282,7 +288,7 @@ public class AddQuestionScene extends TeacherDash {
         //gp.add(rbLO,1,3);         
         //end Add GridPane
 
-        Scene scene = new Scene(gp, 700, 500);
+        Scene scene = new Scene(gp, 900, 700);
         return scene;
 
     }

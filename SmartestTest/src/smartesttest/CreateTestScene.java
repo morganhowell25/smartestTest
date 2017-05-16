@@ -26,17 +26,35 @@ public class CreateTestScene extends TeacherDash {
     public CreateTestScene() {
 
     }
+    
+    public void addQuestion(Question question)
+    {
+        arrQ.add(question);
+    }
+    
+    public void editQuestion(Question question, int index)
+    {
+        arrQ.add(index, question);
+    }
 
-    public Scene getScene(Question q) {
+    public Scene getScene(Question q, boolean editFlag, int indexEdit) {
         GridPane gp = drawTeacherDash();
 
         TeacherDash teacherDash = this;
         CreateTestScene cts = this;
         
-        if (q != null) {
-            ++numQ;
+        if (editFlag) {
+            arrQ.add(indexEdit, q);
+        }
+        else {
             arrQ.add(q);
-            for (int i = 0; i < numQ; i++) {
+        }
+        
+        
+        //if (q != null && !editFlag) {
+            //++numQ;
+            //arrQ.add(q);
+            for (int i = 0; i < arrQ.size(); i++) {
                 final int indexEditQ = i;
                 Label lblQ = new Label("Question " + (i + 1));
                 gp.add(lblQ, 1, 3 + i);
@@ -47,13 +65,14 @@ public class CreateTestScene extends TeacherDash {
                     @Override
                     public void handle(ActionEvent event) {
                         System.out.println("Edit Clicked!");
-                        AddQuestionScene aqs = new AddQuestionScene(cts);
+                        AddQuestionScene aqs = new AddQuestionScene(cts, true);
                         aqs.STAGE = teacherDash.STAGE;
-                        teacherDash.update(aqs.getScene(arrQ.get(indexEditQ)));
+                       // editQuestion((arrQ.get(indexEditQ)), indexEditQ);
+                        teacherDash.update(aqs.getScene(arrQ.get(indexEditQ), indexEditQ));
                     }
                 });
             }
-        }
+        //}
 
         System.out.println("numQ = " + numQ);
         System.out.println(arrQ);
@@ -81,9 +100,9 @@ public class CreateTestScene extends TeacherDash {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Add Question Clicked!");
-                AddQuestionScene aqs = new AddQuestionScene(cts);
+                AddQuestionScene aqs = new AddQuestionScene(cts, false);
                 aqs.STAGE = teacherDash.STAGE;
-                teacherDash.update(aqs.getScene(null));
+                teacherDash.update(aqs.getScene(null, 0));
             }
         });
 
