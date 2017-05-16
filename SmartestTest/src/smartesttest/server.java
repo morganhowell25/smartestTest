@@ -80,6 +80,14 @@ public class server {
 
         return arrSSLStruct;
     }
+    
+    
+    public static ArrayList<String> pullTakenTestList(int id)
+    {
+        String query = "SELECT pincode FROM tbl_gradedtest WHERE sid='"+id+"';";
+        ArrayList<String> pincodeList = execQuery(query);
+        return pincodeList;
+    }
 
     // What happens when student or teacher views an individual student's test
     // ***THIS WILL BE CALLED IN BOTH ViewStudentScoresSceneTeacher AND ViewStudentScoresScene***

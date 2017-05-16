@@ -46,8 +46,8 @@ public class StudentDash extends DashBoard
         gt.grade();
         //TestScene shs = new TestScene(t);
         //ViewStudentScoreSceneTeacher shs = new ViewStudentScoreSceneTeacher(gt);
-        ViewStudentScoreScene shs = new ViewStudentScoreScene(gt);
-        //StudentHomeScene shs = new StudentHomeScene();
+        //ViewStudentScoreScene shs = new ViewStudentScoreScene(gt);
+        StudentHomeScene shs = new StudentHomeScene();
         shs.STAGE = this.STAGE;
         SCENE = shs.getScene();
         

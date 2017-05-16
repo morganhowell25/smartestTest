@@ -41,17 +41,17 @@ public class SmartestTest extends Application
         //LoginForm lForm = new LoginForm();
         //lForm.start(primaryStage);
         // If you login as admin, call this:
-        AdminDash adminDash = new AdminDash();
-        adminDash.start(primaryStage);
+        //AdminDash adminDash = new AdminDash();
+       // adminDash.start(primaryStage);
         
         // If you login as teacher, call this:
-        //TeacherDash teacherDash = new TeacherDash();
-        //teacherDash.start(primaryStage);
+        TeacherDash teacherDash = new TeacherDash();
+        teacherDash.start(primaryStage);
         
         // If you login as student, call this:
 
-        StudentDash studentDash = new StudentDash();
-        studentDash.start(primaryStage);
+        //StudentDash studentDash = new StudentDash();
+        //studentDash.start(primaryStage);
             
     }
 
