@@ -7,11 +7,6 @@ package smartesttest;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import static smartesttest.DBHandler.execNonQuery;
-import static smartesttest.DBHandler.execQuery;
-import static smartesttest.DBHandler.execQuerySSL;
-import static smartesttest.utils.toObj;
-import static smartesttest.utils.toStr;
 
 /**
  *
@@ -21,33 +16,28 @@ public class server {
     
     // What happens when teacher clicks "Manage Tests" in TeacherDash
     public static ArrayList<String> pullTests(int tid) {
-        String pincodes = "";
+        String hold = "";
         try {
             String dataStr = "op=pullTests&tid=" + URLEncoder.encode(String.valueOf(tid), "UTF-8");
             String url = "http://localhost/smartestTest.php";
-            pincodes = DBHandler.httpsPost(url, dataStr);
+            hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
         }
-        ArrayList<String> arrPincodes = new ArrayList<String>();
-        arrPincodes.add(pincodes);
-        return arrPincodes;
+        return (ArrayList<String>)utils.toObj(hold);
     }
 
     // What happens when teacher clicks "LO" in ManageTestsScene
     public static ArrayList<ArrayList<String>> pullTestLO(String pincode) {
-        String pincodes = "";
+        String hold = "";
         try {
             String dataStr = "op=pullTestLO&pincode=" + URLEncoder.encode(pincode, "UTF-8");
             String url = "http://localhost/smartestTest.php";
-            pincodes = DBHandler.httpsPost(url, dataStr);
+            hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
         }
-        ArrayList<String> arrTestLOs = new ArrayList<String>();
-        arrTestLOs.add(pincodes);
-        ArrayList<ArrayList<String>> arrTestLOs2 = new ArrayList<ArrayList<String>>();
-        return arrTestLOs2;
+        return (ArrayList<ArrayList<String>>)utils.toObj(hold);
     }
 
     //increments the tests individual LOs upon a question being grading
@@ -66,49 +56,44 @@ public class server {
 
     // What happens when teacher clicks "View Student Scores" in ManageTestsScene
     public static ArrayList<StudentScoresListStruct> viewStudentScores(String pincode) {
-        String pincodes = "";
+        String hold = "";
         try {
             String dataStr = "op=viewStudentScores&pincode=" + URLEncoder.encode(String.valueOf(pincode), "UTF-8");
             String url = "http://localhost/smartestTest.php";
-            pincodes = DBHandler.httpsPost(url, dataStr);
+            hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
         }
-        ArrayList<StudentScoresListStruct> studScores = new ArrayList<StudentScoresListStruct>();
-        studScores.add((StudentScoresListStruct)utils.toObj(pincodes));
-        return studScores;
+        
+        return (ArrayList<StudentScoresListStruct>)utils.toObj(hold);
     }
 
     // What happens when student or teacher views an individual student's test
     // ***THIS WILL BE CALLED IN BOTH ViewStudentScoresSceneTeacher AND ViewStudentScoresScene***
-    public static GradedTest pullStudentGradedTest(int id, int pincode) {
-        String pincodes = "";
+    public static GradedTest pullStudentGradedTest(int id, String pincode) {
+        String hold = "";
         try {
             String dataStr = "op=pullStudentGradedTest&id=" + URLEncoder.encode(String.valueOf(id), "UTF-8")
                     +"&pincode=" + URLEncoder.encode(String.valueOf(pincode), "UTF-8");
             String url = "http://localhost/smartestTest.php";
-            pincodes = DBHandler.httpsPost(url, dataStr);
+            hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
         }
-        return (GradedTest)utils.toObj(pincodes);
+        return (GradedTest)utils.toObj(hold);
     }
 
     // What happens when teacher clicks "View Dept LOs" in TeacherDash
     public static ArrayList<ArrayList<String>> pullDepartmentLOs() {
-        String pincodes = "";
+        String hold = "";
         try {
             String dataStr = "op=viewStudentScores";
             String url = "http://localhost/smartestTest.php";
-            pincodes = DBHandler.httpsPost(url, dataStr);
+            hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
         }
-        ArrayList<String> studScores = new ArrayList<String>();
-        studScores.add(pincodes);
-        ArrayList<ArrayList<String>> studScores2 = new ArrayList<ArrayList<String>>();
-        studScores2.add(studScores);
-        return studScores2;
+        return (ArrayList<ArrayList<String>>)utils.toObj(hold);
     }
 
     //increments the department LOs upon a question being grading
@@ -126,17 +111,15 @@ public class server {
 
     // What happens when student clicks "Take a Test" after they enter valid pincode
     public static ArrayList<String> pullTest(String pincode) {
-        String pincodes = "";
+        String hold = "";
         try {
             String dataStr = "op=viewStudentScores&pincode=" + URLEncoder.encode(String.valueOf(pincode), "UTF-8");
             String url = "http://localhost/smartestTest.php";
-            pincodes = DBHandler.httpsPost(url, dataStr);
+            hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
         }
-        ArrayList<String> tests = new ArrayList<String>();
-        tests.add(pincodes);
-        return tests;
+        return (ArrayList<String>)utils.toObj(hold);
     }
 
     // What happens when student finishes taking a test and clicks "submit"
@@ -168,35 +151,27 @@ public class server {
 
     // What happens when admin clicks "Manage Users" in AdminDash
     public static ArrayList<ArrayList<String>> pullUserList() {
-        String pincodes = "";
+        String hold = "";
         try {
             String dataStr = "op=viewStudentScores";
             String url = "http://localhost/smartestTest.php";
-            pincodes = DBHandler.httpsPost(url, dataStr);
+            hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
         }
-        ArrayList<String> userList = new ArrayList<String>();
-        userList.add(pincodes);
-        ArrayList<ArrayList<String>> userList2 = new ArrayList<ArrayList<String>>();
-        userList2.add(userList);
-        return userList2;
+        return (ArrayList<ArrayList<String>>)utils.toObj(hold);
     }
 
     public static ArrayList<ArrayList<String>> pullUInfo(String uname) {
-        String info = "";
+        String hold = "";
         try {
             String dataStr = "op=viewStudentScores&uname="+URLEncoder.encode(uname, "UTF-8");
             String url = "http://localhost/smartestTest.php";
-            info = DBHandler.httpsPost(url, dataStr);
+            hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
         }
-        ArrayList<String> uInfo = new ArrayList<String>();
-        uInfo.add(info);
-        ArrayList<ArrayList<String>> uInfo2 = new ArrayList<ArrayList<String>>();
-        uInfo2.add(uInfo);
-        return uInfo2;
+        return (ArrayList<ArrayList<String>>)utils.toObj(hold);
     }
 
     // What happens when admin clicks "Reset password" in ManageUserScene

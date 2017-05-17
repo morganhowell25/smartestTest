@@ -25,14 +25,14 @@ public class server {
     public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     // What happens when teacher clicks "Manage Tests" in TeacherDash
-    public static ArrayList<String> pullTests(int tid){
+    public static String pullTests(int tid){
         String query = "SELECT pincode FROM tbl_test WHERE tid='" + tid + "';";
         ArrayList<String> arrPincodes = execQuery(query);
-        return arrPincodes;
+        return utils.toStr(arrPincodes);
     }
     
     // What happens when teacher clicks "LO" in ManageTestsScene
-    public static ArrayList<ArrayList<String>> pullTestLO(String pincode){
+    public static String pullTestLO(String pincode){
         String query1 = "SELECT cat1 FROM tbl_testLOs WHERE pincode='" + pincode + "';";
         ArrayList<String> arrCat1 = execQuery(query1);
         String query2 = "SELECT cat2 FROM tbl_testLOs WHERE pincode='" + pincode + "';";
@@ -46,7 +46,7 @@ public class server {
         arrTestLOs.add(arrCat2);
         arrTestLOs.add(arrCorrect);
         arrTestLOs.add(arrTotal);
-        return arrTestLOs;
+        return utils.toStr(arrTestLOs);
     }
     
     //increments the tests individual LOs upon a question being grading
@@ -65,7 +65,7 @@ public class server {
     }
     
     // What happens when teacher clicks "View Student Scores" in ManageTestsScene
-    public static ArrayList<StudentScoresListStruct> viewStudentScores(String pincode){
+    public static String viewStudentScores(String pincode){
         // Pull all student ids for the students who took the specific test
         // Pull all unames for each sid
         // Pull all scores associated with each uname
@@ -77,20 +77,20 @@ public class server {
         //        " WHERE pincode='" + pincode + "';";
         //ArrayList<String> arrUnames = execQuery(query2);*/
         
-        return arrSSLStruct;
+        return utils.toStr(arrSSLStruct);
     }
     
     // What happens when student or teacher views an individual student's test
     // ***THIS WILL BE CALLED IN BOTH ViewStudentScoresSceneTeacher AND ViewStudentScoresScene***
-    public static GradedTest pullStudentGradedTest(int id, int pincode){
+    public static String pullStudentGradedTest(int id, int pincode){
         String query = "SELECT gradedTestObj FROM tbl_gradedtest WHERE sid='" + id + "' AND pincode='" + pincode + "';";
         ArrayList<String> strGradedTest = execQuery(query);
         GradedTest gradedTest = (GradedTest) toObj(strGradedTest.get(0));
-        return gradedTest;
+        return utils.toStr(gradedTest);
     }
     
     // What happens when teacher clicks "View Dept LOs" in TeacherDash
-    public static ArrayList<ArrayList<String>> pullDepartmentLOs(){
+    public static String pullDepartmentLOs(){
         String query1 = "SELECT cat1 FROM tbl_deptLOs;";
         ArrayList<String> arrCat1 = execQuery(query1);
         String query2 = "SELECT cat2 FROM tbl_deptLOs;";
@@ -104,7 +104,7 @@ public class server {
         arrDeptLOs.add(arrCat2);
         arrDeptLOs.add(arrCorrect);
         arrDeptLOs.add(arrTotal);
-        return arrDeptLOs;
+        return utils.toStr(arrDeptLOs);
     }
     
     //increments the department LOs upon a question being grading
@@ -123,10 +123,10 @@ public class server {
     }
     
     // What happens when student clicks "Take a Test" after they enter valid pincode
-    public static ArrayList<String> pullTest(String pincode){
+    public static String pullTest(String pincode){
         String query = "SELECT testObj FROM tbl_test WHERE pincode='" + pincode +"';";
         ArrayList<String> test = execQuery(query);
-        return test;
+        return utils.toStr(test);
     }
     
     // What happens when student finishes taking a test and clicks "submit"
@@ -137,24 +137,16 @@ public class server {
         execNonQuery(query);
     }
     
-    // Encodes a user's password by converting the input String into a byte array
-    public static String hasher(String hashInput){
-        /*StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
-        encryptor.setPassword(mySeed);
-        String encrypted = encryptor.encrypt(hashInput);*/
-        return hashInput;
-    }
-    
+   
     // Adds a user to the database when admin clicks "Submit" in AddUserScene
     public static void addUser(String userName, String userPass, String userRole){
-        String encodedPWD = hasher(userPass);
         String query = "INSERT INTO tbl_user (role, uname, encodedPWD) VALUES ('" + userRole + "', '" +
-                userName + "', '" + encodedPWD + "');";
+                userName + "', '" + userPass + "');";
         execNonQuery(query);
     }
     
     // What happens when admin clicks "Manage Users" in AdminDash
-    public static ArrayList<ArrayList<String>> pullUserList(){
+    public static String pullUserList(){
         String query1 = "SELECT id FROM tbl_user;";
         ArrayList<String> arrIDs = execQuery(query1);
         String query2 = "SELECT role FROM tbl_user;";
@@ -165,10 +157,10 @@ public class server {
         arrUsers.add(arrIDs);
         arrUsers.add(arrRoles);
         arrUsers.add(arrUnames);
-        return arrUsers;
+        return utils.toStr(arrUsers);
     }
     
-    public static ArrayList<ArrayList<String>> pullUInfo(String uname){
+    public static String pullUInfo(String uname){
         String queryu = "SELECT uname FROM tbl_user WHERE uname='" + uname + "';";
         String queryp = "SELECT encodedPWD FROM tbl_user WHERE uname='" + uname + "';";
         String queryr = "SELECT role FROM tbl_user WHERE uname='" + uname + "';";
@@ -180,13 +172,12 @@ public class server {
         arrUnames.add(credentialsu);
         arrUnames.add(credentialsp);
         arrUnames.add(credentialsr);
-        return arrUnames;
+        return utils.toStr(arrUnames);
     }
     
     // What happens when admin clicks "Reset password" in ManageUserScene
     public static void resetPWD(String newPass, int userID){
-        String encodedPWD = hasher(newPass); // May change with implementation of hasher
-        String query = "UPDATE tbl_user SET encodedPWD='" + encodedPWD + "' WHERE id=" + userID + ";";
+        String query = "UPDATE tbl_user SET encodedPWD='" + newPass + "' WHERE id=" + userID + ";";
         execNonQuery(query);
     }
     
