@@ -55,4 +55,5 @@
 		$cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $pincode $teacherID $myTest";
 	}
 	$str = shell_exec($cmd);
+	print($str);
 ?>

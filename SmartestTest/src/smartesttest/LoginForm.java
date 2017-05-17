@@ -89,10 +89,10 @@ public class LoginForm {
                     badLogin.showAndWait();
                 } else {
                     newCred = server.pullUInfo(uname); // Pull user info from DB according to uname they entered
-                    System.out.println(newCred);
+                    System.out.println("newCred = " + newCred);
                     // If no info was pulled from the DB, the user entered an invalid username
 
-                    if (newCred.get(0).isEmpty() && newCred.get(1).isEmpty() && newCred.get(2).isEmpty()) {
+                    if (newCred == null || newCred.get(0).isEmpty() || newCred.get(1).isEmpty() || newCred.get(2).isEmpty()) {
                         Alert loginFail = new Alert(Alert.AlertType.ERROR);
                         loginFail.setTitle("Error!");
                         loginFail.setHeaderText("Login Failed!");
