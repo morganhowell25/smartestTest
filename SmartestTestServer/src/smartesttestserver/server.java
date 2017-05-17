@@ -6,15 +6,11 @@
 package smartesttestserver;
 
 import java.util.ArrayList;
-import static smartesttest.DBHandler.execNonQuery;
-import static smartesttest.DBHandler.execQuery;
-import static smartesttest.DBHandler.execQuerySSL;
-import smartesttest.GradedTest;
-import smartesttest.StudentScoresListStruct;
-import smartesttest.Test;
-import smartesttest.utils;
-import static smartesttest.utils.toObj;
-import static smartesttest.utils.toStr;
+import static smartesttestserver.DBHandler.execNonQuery;
+import static smartesttestserver.DBHandler.execQuery;
+import static smartesttestserver.DBHandler.execQuerySSL;
+import static smartesttestserver.utils.toObj;
+import static smartesttestserver.utils.toStr;
 
 /**
  *

@@ -1,4 +1,4 @@
-package smartesttest;
+package smartesttestserver;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

@@ -60,33 +60,6 @@ public class utils {
             return obj;
         }
     }
-        /**
-     * Return the first string in the last record in the query
-     *
-     * @param qry
-     * @return
-     */
-    public static String execQuery(String qry) {
-        String res = null;
-        try {
-            Class.forName(DRIVER);
-            Connection conn = DriverManager.getConnection(URL, USER, PASS);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(qry);
-
-            while (rs.next()) {
-                res = rs.getString(1);
-
-            }
-
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return res;
-    }
     
     public static String encrypt(String passText){
         String cipherText = "";
