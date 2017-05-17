@@ -15,7 +15,9 @@ public class GradedTest implements java.io.Serializable
     private int myStuID;
     private int[] myStuAns;
     private int myNumCorrect;
-    private double myScore;
+    private int myScore;
+    private double myPercent;
+    private int myTotalPoints;
     
     public GradedTest()
     {
@@ -41,11 +43,14 @@ public class GradedTest implements java.io.Serializable
     public int getNumCorrect()
     {   return myNumCorrect;    }
     
-    public double getScore()
+    public int getScore()
     {   return myScore; }
     
-    public int getTotalQuestions()
-    {   return myTest.getTestQuestions().length;    }
+    public int getTotalPoints()
+    {   return myTotalPoints;   }
+    
+    public double getPercent()
+    {   return myPercent;   }
     
     public void grade()
     {
@@ -74,11 +79,15 @@ public class GradedTest implements java.io.Serializable
             
             if(gradeQuestion(myStuAns[i], questionList[i].getCorrectAnswer()))
             {
+                myScore += questionList[i].getPointValue();
                 myNumCorrect++;
             }
         }
-        
-        myScore = Math.round((double)myNumCorrect/(double)questionList.length *100);
+        for(Question q: myTest.getTestQuestions())
+        {
+            myTotalPoints += q.getPointValue();
+        }
+        myPercent = Math.round((double)myScore/(double)myTotalPoints *100);
     }
     
     private boolean gradeQuestion(int ans, int correctAns)

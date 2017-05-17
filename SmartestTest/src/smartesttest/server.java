@@ -7,6 +7,7 @@ package smartesttest;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import static smartesttest.DBHandler.execQuery;
 
 /**
  *
@@ -66,6 +67,14 @@ public class server {
         }
         
         return (ArrayList<StudentScoresListStruct>)utils.toObj(hold);
+    }
+    
+    
+    public static ArrayList<String> pullTakenTestList(int id)
+    {
+        String query = "SELECT pincode FROM tbl_gradedtest WHERE sid='"+id+"';";
+        ArrayList<String> pincodeList = execQuery(query);
+        return pincodeList;
     }
 
     // What happens when student or teacher views an individual student's test

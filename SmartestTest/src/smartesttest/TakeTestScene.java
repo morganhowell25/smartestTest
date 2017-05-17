@@ -41,6 +41,7 @@ public class TakeTestScene extends StudentDash {
             public void handle(ActionEvent event) {
                 String pincode = input.getText();
 <<<<<<< HEAD
+<<<<<<< HEAD
                 int id  = 6;
                 ArrayList<String> newTest = server.pullTest(pincode);
                 System.out.println("sub Clicked!");
@@ -62,6 +63,8 @@ public class TakeTestScene extends StudentDash {
                     alert.setContentText("You have already taken this test.");
                     alert.showAndWait();
 =======
+=======
+>>>>>>> origin/homestretch
                 boolean validPIN = true;
                 for (int i = 0; i < pincode.length(); i++) {
                     if (!(pincode.charAt(i) >= '0' && pincode.charAt(i) <= '9')) {
@@ -76,23 +79,31 @@ public class TakeTestScene extends StudentDash {
                     badPIN.setContentText("Please use only numeric characters");
                     badPIN.showAndWait();
                 } else {
+                    int id = 6;
                     ArrayList<String> newTest = server.pullTest(pincode);
                     System.out.println("sub Clicked!");
                     if (newTest.isEmpty()) {
-                        System.out.println("if statement");
                         Alert alert = new Alert(AlertType.INFORMATION);
                         alert.setTitle("Error");
-                        alert.setHeaderText("You done fucked up");
-                        alert.setContentText("Y u pass bad pincode fucker?");
+                        alert.setHeaderText("Pincode does not exist");
+                        alert.setContentText("please input a valid pincode.");
                         alert.showAndWait();
-                    } else {
+                    } else if (server.pullStudentGradedTest(id, pincode) == null) {
                         Test myTest = (Test) utils.toObj(newTest.get(0));
-                        System.out.println("else statement");
                         TestScene ts = new TestScene(myTest);
                         ts.STAGE = tts.STAGE;
                         tts.update(ts.getScene());
+                    } else {
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setTitle("Error");
+                        alert.setHeaderText("Test Taken");
+                        alert.setContentText("You have already taken this test.");
+                        alert.showAndWait();
                     }
+<<<<<<< HEAD
 >>>>>>> origin/timV4
+=======
+>>>>>>> origin/homestretch
                 }
             }
         });

@@ -103,7 +103,7 @@ public class LoginForm {
                             passPulled = newCred.get(1).get(0);
                         } else { // If anyone else is logging in, decrypt the password from the database
                             System.out.println(newCred.get(1).get(0));
-                            passPulled = server.decrypt(newCred.get(1).get(0));
+                            passPulled = utils.decrypt(newCred.get(1).get(0));
                             System.out.println(passPulled);
                         }
                         // Compare the uname and password the user entered to the info pulled from DB
