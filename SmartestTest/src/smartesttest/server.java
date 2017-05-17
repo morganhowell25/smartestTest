@@ -174,7 +174,7 @@ public class server {
     public static ArrayList<ArrayList<String>> pullUInfo(String uname) {
         String hold = "";
         try {
-            String dataStr = "op=viewStudentScores&uname="+URLEncoder.encode(uname, "UTF-8");
+            String dataStr = "op=pullUInfo&uname="+URLEncoder.encode(uname, "UTF-8");
             String url = "http://localhost/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
