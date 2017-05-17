@@ -125,6 +125,13 @@ public class server {
         return utils.toStr(test);
     }
     
+    public static String pullTakenTestList(int id)
+    {
+        String query = "SELECT pincode FROM tbl_gradedtest WHERE sid='"+id+"';";
+        ArrayList<String> pincodeList = execQuery(query);
+        return utils.toStr(pincodeList);
+    }
+    
     // What happens when student finishes taking a test and clicks "submit"
     public static void saveGradedTest(int sid, String pincode, GradedTest gt, String score){
         String gtContent = toStr(gt);
@@ -185,6 +192,17 @@ public class server {
         execNonQuery(query); 
     }
     
+    public static void uploadOneLO(String cat1, String cat2){
+        String query = "INSERT INTO tbl_deptLOs (cat1, cat2, correct, total) VALUES ('" + cat1 + "', '" + cat2 + "', 'XX', 'ZZ');";
+        execNonQuery(query);
+    }
+    
+    public static String checkUname(String uname){
+        String query = "SELECT * from tbl_user WHERE uname='" + uname + "';";
+        ArrayList<String> unames = execQuery(query);
+        return utils.toStr(unames);
+    }
+    
     public static void main(String[] args){
         String op = args[0];
         switch(op){
@@ -227,6 +245,16 @@ public class server {
             case "saveTest":
                 saveTest(Integer.getInteger(args[1]),Integer.getInteger(args[2]),(Test)utils.toObj(args[3]));
                 break;
+            case "pullTakenTestList":
+                pullTakenTestList(Integer.getInteger(args[1]));
+                break;
+            case "uploadOneLO":
+                uploadOneLO(args[1],args[2]);
+                break;
+            case "checkUname":
+                checkUname(args[1]);
+                break;
+                
         }
         System.out.println("We made it!");
     }

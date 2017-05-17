@@ -53,7 +53,10 @@
 		$teacherID = $_POST["teacherID"];
 		$myTest = $_POST["myTest"];
 		$cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $pincode $teacherID $myTest";
-	}
+	}else if($op=="pullTakenTestList"){
+                $id = $_POST["id"];
+                $cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $id";
+        }
 	$str = shell_exec($cmd);
 	print($str);
 ?>

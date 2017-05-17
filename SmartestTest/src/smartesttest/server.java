@@ -7,7 +7,6 @@ package smartesttest;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import static smartesttest.DBHandler.execQuery;
 
 /**
  *
@@ -72,9 +71,15 @@ public class server {
     
     public static ArrayList<String> pullTakenTestList(int id)
     {
-        String query = "SELECT pincode FROM tbl_gradedtest WHERE sid='"+id+"';";
-        ArrayList<String> pincodeList = execQuery(query);
-        return pincodeList;
+        String hold = "";
+        try {
+            String dataStr = "op=pullTakenTestList&id=" + URLEncoder.encode(String.valueOf(id), "UTF-8");
+            String url = "http://localhost/smartestTest.php";
+            hold = DBHandler.httpsPost(url, dataStr);
+        } catch (Exception exc) {
+            System.out.println(exc);
+        }
+        return (ArrayList<String>)utils.toObj(hold);
     }
 
     // What happens when student or teacher views an individual student's test
@@ -96,7 +101,7 @@ public class server {
     public static ArrayList<ArrayList<String>> pullDepartmentLOs() {
         String hold = "";
         try {
-            String dataStr = "op=viewStudentScores";
+            String dataStr = "op=pullDepartmentLOs";
             String url = "http://localhost/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
@@ -122,7 +127,7 @@ public class server {
     public static ArrayList<String> pullTest(String pincode) {
         String hold = "";
         try {
-            String dataStr = "op=viewStudentScores&pincode=" + URLEncoder.encode(String.valueOf(pincode), "UTF-8");
+            String dataStr = "op=pullTest&pincode=" + URLEncoder.encode(String.valueOf(pincode), "UTF-8");
             String url = "http://localhost/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
@@ -162,7 +167,7 @@ public class server {
     public static ArrayList<ArrayList<String>> pullUserList() {
         String hold = "";
         try {
-            String dataStr = "op=viewStudentScores";
+            String dataStr = "op=pullUserList";
             String url = "http://localhost/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
@@ -207,5 +212,30 @@ public class server {
         } catch (Exception exc) {
             System.out.println(exc);
         }
+    }
+    
+    // Uploads one pair of category 1 and 2 learning outcomes
+    public static void uploadOneLO(String cat1, String cat2){
+        try {
+            String dataStr = "op=uploadOneLO&cat1=" + URLEncoder.encode(cat1, "UTF-8")
+                    + "&cat2=" + URLEncoder.encode(cat2, "UTF-8");
+            String url = "http://localhost/smartestTest.php";
+            DBHandler.httpsPost(url, dataStr);
+        } catch (Exception exc) {
+            System.out.println(exc);
+        }
+    }
+    
+    // Uploads one pair of category 1 and 2 learning outcomes
+    public static ArrayList<String> checkUname(String uname){
+        String hold = "";
+        try {
+            String dataStr = "op=checkUname&cat1=" + URLEncoder.encode(uname, "UTF-8");
+            String url = "http://localhost/smartestTest.php";
+            hold = DBHandler.httpsPost(url, dataStr);
+        } catch (Exception exc) {
+            System.out.println(exc);
+        }
+        return (ArrayList<String>)utils.toObj(hold);
     }
 }
