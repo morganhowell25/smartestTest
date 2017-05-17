@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.GridPane;
 
@@ -20,54 +21,34 @@ import javafx.scene.layout.GridPane;
  *
  * @author csc190
  */
-public class ManageUserScene extends AdminDash
-{
-    public ManageUserScene()
-    {
-        
+public class ManageUserScene extends AdminDash {
+
+    public ManageUserScene() {
+
     }
-            
-    public Scene getScene()
-    {
+
+    public Scene getScene() {
         GridPane gp = drawAdminDash();
-        /*
-        //table setup
-        TableView table = new TableView();
-        table.setEditable(true);
- 
-        TableColumn userNameCol = new TableColumn("User");
-        TableColumn roleCol = new TableColumn("Role");
-        TableColumn delCol = new TableColumn("Delete?");
-        
-        table.getColumns().addAll(userNameCol, roleCol, delCol);
-        
-        gp.add(table,1,4);
-        
-        //note: tableview and gridpane don't really get along (try gp.add(table,1,0)
-        //it would also be possible to just use gridpane as a sort of less sophisticated table
-        */
-        
+
         Label userID = new Label("ID");
         Label userRole = new Label("Role");
         Label userName = new Label("Username");
         Label delete = new Label("Change Password?");
-        gp.add(userID,1,0);
-        gp.add(userRole,2,0);
-        gp.add(userName,3,0);
-        gp.add(delete,4,0);
-        
-        
-        
+        gp.add(userID, 1, 0);
+        gp.add(userRole, 2, 0);
+        gp.add(userName, 3, 0);
+        gp.add(delete, 4, 0);
+
         ArrayList<ArrayList<String>> arrUsers = server.pullUserList();
-        
-        for (int i = 0; i < arrUsers.size(); i++){
-            for (int j = 0; j < arrUsers.get(i).size(); j++){
+
+        for (int i = 0; i < arrUsers.size(); i++) {
+            for (int j = 0; j < arrUsers.get(i).size(); j++) {
                 Label myLbl = new Label((arrUsers.get(i)).get(j));
-                gp.add(myLbl,1+i,1+j);
-                final int buttonInd = j+1;
+                gp.add(myLbl, 1 + i, 1 + j);
+                final int buttonInd = j + 1;
                 Button delBtn = new Button("Change Password");
-        
-                delBtn.setOnAction(new EventHandler<ActionEvent>() { 
+
+                delBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
                         System.out.println("ChangePass Clicked!");
@@ -76,24 +57,41 @@ public class ManageUserScene extends AdminDash
                         dialog.setHeaderText(null);
                         dialog.setContentText("Please enter new password:");
                         Optional<String> result = dialog.showAndWait();
-                        if (result.isPresent()){
-                            server.resetPWD(result.get(),buttonInd);
-                        }
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Password Changed Successfully");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Press OK to continue");
+                        if (result.isPresent()) {
+                            boolean validPass = true;
+                            for (int i = 0; i < result.get().length(); i++) {
+                                if (!((result.get().charAt(i) >= 'a' && result.get().charAt(i) <= 'z') || (result.get().charAt(i) >= 'A' && result.get().charAt(i) <= 'Z') || (result.get().charAt(i) >= '0' && result.get().charAt(i) <= '9'))) {
+                                    validPass = false;
+                                    break;
+                                }
+                            }
+                            if (validPass == false) {
+                                Alert badAlert = new Alert(Alert.AlertType.ERROR);
+                                badAlert.setTitle("Failed to Add User");
+                                badAlert.setHeaderText("Invalid password");
+                                badAlert.setContentText("Please only use alphanumeric characters");
+                                badAlert.showAndWait();
+                            } else {
+                                server.resetPWD(result.get(), buttonInd);
 
-                        alert.showAndWait();
+                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setTitle("Password Changed Successfully");
+                                alert.setHeaderText(null);
+                                alert.setContentText("Press OK to continue");
+
+                                alert.showAndWait();
+                            }
+                        }
                     }
                 });
-                gp.add(delBtn,4,1+j);
+                gp.add(delBtn, 4, 1 + j);
             }
-            
+
         }
-        
-        
-        Scene scene = new Scene(gp, 700, 500);
+
+        ScrollPane sp = new ScrollPane();
+        sp.setContent(gp);
+        Scene scene = new Scene(sp, 700, 500);
         return scene;
     }
 }
