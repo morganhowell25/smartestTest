@@ -7,6 +7,7 @@ package smartesttest;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import static smartesttest.DBHandler.execQuery;
 
 /**
  *
