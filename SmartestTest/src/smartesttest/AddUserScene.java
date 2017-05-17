@@ -62,8 +62,7 @@ public class AddUserScene extends AdminDash implements AppScene
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Confirm Clicked!");
-                String querycheck = "SELECT * from tbl_user WHERE uname='" + userNameTxt.getText() + "';";
-                ArrayList<String> unames = DBHandler.execQuery(querycheck);
+                ArrayList<String> unames = server.checkUname(userNameTxt.getText());
                 String enteredPass = userPassTxt.getText();
                 boolean validPass = true;
                 for(int i = 0; i < enteredPass.length(); i++){

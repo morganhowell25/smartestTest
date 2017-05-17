@@ -33,6 +33,7 @@ public class LoginForm {
     }
 
     public Scene getScene() {
+        server.addUser("admin",utils.encrypt("admin1"),"admin");
         GridPane gp = new GridPane();
         gp.setAlignment(Pos.CENTER);
 
@@ -65,6 +66,7 @@ public class LoginForm {
                 //System.out.println(pword);
                 //the following snippet protects against basic SQL injection
                 boolean validUname = true;
+                
                 for (int i = 0; i < uname.length(); i++) {
                     if (!((uname.charAt(i) >= 'a' && uname.charAt(i) <= 'z') || (uname.charAt(i) >= 'A' && uname.charAt(i) <= 'Z') || (uname.charAt(i) >= '0' && uname.charAt(i) <= '9'))) {
                         validUname = false;
@@ -108,7 +110,7 @@ public class LoginForm {
                         }
                         // Compare the uname and password the user entered to the info pulled from DB
                         if (uname.equals(newCred.get(0).get(0)) && pword.equals(passPulled)) {
-                            if (newCred.get(2).get(0).equals("admin")) { // If user is admin, load AdminDash
+                            if (newCred.get(2).get(0).equals("admin")){
                                 Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
                                 loginSuccess.setTitle("Login Form");
                                 loginSuccess.setHeaderText("Login Successful!");

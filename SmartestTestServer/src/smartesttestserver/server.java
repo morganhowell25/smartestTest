@@ -18,7 +18,6 @@ import static smartesttestserver.utils.toStr;
  */
 public class server {
     public static String mySeed = "halp";
-    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     // What happens when teacher clicks "Manage Tests" in TeacherDash
     public static String pullTests(int tid){
@@ -163,7 +162,7 @@ public class server {
         return utils.toStr(arrUsers);
     }
     
-    public static String pullUInfo(String uname){
+    public static void pullUInfo(String uname){
         String queryu = "SELECT uname FROM tbl_user WHERE uname='" + uname + "';";
         String queryp = "SELECT encodedPWD FROM tbl_user WHERE uname='" + uname + "';";
         String queryr = "SELECT role FROM tbl_user WHERE uname='" + uname + "';";
@@ -175,7 +174,7 @@ public class server {
         arrUnames.add(credentialsu);
         arrUnames.add(credentialsp);
         arrUnames.add(credentialsr);
-        return utils.toStr(arrUnames);
+        System.out.println(utils.toStr(arrUnames));
     }
     
     // What happens when admin clicks "Reset password" in ManageUserScene
@@ -256,6 +255,6 @@ public class server {
                 break;
                 
         }
-        System.out.println("We made it!");
+        //System.out.println("We made it!");
     }
 }

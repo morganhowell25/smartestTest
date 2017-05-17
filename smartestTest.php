@@ -56,6 +56,13 @@
 	}else if($op=="pullTakenTestList"){
                 $id = $_POST["id"];
                 $cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $id";
+        }else if($op=="uploadOneLO"){
+                $cat1 = $_POST["cat1"];
+		$cat2 = $_POST["cat2"];
+                $cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $cat1 $cat2";
+        }else if($op=="checkUname"){
+                $uname = $_POST["uname"];
+                $cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $uname";
         }
 	$str = shell_exec($cmd);
 	print($str);
