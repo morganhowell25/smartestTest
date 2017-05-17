@@ -29,7 +29,6 @@ public class AddQuestionScene extends TeacherDash {
     static RadioButton rbAnswerChoiceN;
     protected CreateTestScene cts = null;
     protected boolean editFlag = false;
-    
 
     public AddQuestionScene(CreateTestScene cts, boolean editFlag) {
         this.cts = cts;
@@ -96,7 +95,7 @@ public class AddQuestionScene extends TeacherDash {
         gp.add(btnNewAnswerOption, 2, 7);
         //gp.add(btnRMOption,3,7);
 
-        if (myQ != null) {            
+        if (myQ != null) {
             txtQuestion.setText(myQ.getQuestion());
             txtPoints.setText("" + myQ.getPointValue());
             //txtAnsOption.setText(answers[0]);
@@ -106,29 +105,29 @@ public class AddQuestionScene extends TeacherDash {
             }
             //if(answers.length>2){
             for (int i = 0; i < myQ.getAnswers().length; i++) {
-                //btnNewAnswerOption
-                gp.getChildren().remove(btnDone);
-                gp.getChildren().remove(btnNewAnswerOption);
-                gp.getChildren().remove(btnRMOption);
-                rbAnswerChoiceN = new RadioButton();
-                rbAnswerChoiceN.setToggleGroup(answerChoices);
-                txtAnsOptionN = new TextField();
-                //Add newly creates option and radiobtn to their arraylists
-                if (i == myQ.getAnswers().length - 1 || i == myQ.getAnswers().length - 2) {
+                //btnNewAnswerOption function...
+                if (i != myQ.getAnswers().length - 1 || i != myQ.getAnswers().length - 2) {
+                    gp.getChildren().remove(btnDone);
+                    gp.getChildren().remove(btnNewAnswerOption);
+                    gp.getChildren().remove(btnRMOption);
+                    rbAnswerChoiceN = new RadioButton();
+                    rbAnswerChoiceN.setToggleGroup(answerChoices);
+                    txtAnsOptionN = new TextField();
+                    //Add newly creates option and radiobtn to their arraylists
                     textFieldArr.add(txtAnsOptionN);
                     rbArr.add(rbAnswerChoiceN);
                     //Add to gp
                     gp.add(rbAnswerChoiceN, 2, current + 1);
-                    gp.add(txtAnsOptionN, 1, current + 1);
-                }
-                gp.add(btnDone, 1, current + 2);
-                gp.add(btnNewAnswerOption, 2, current + 2);
-                gp.add(btnRMOption, 2, current + 3);
-                current++;
-                System.out.println("Current Add: " + current);
-                System.out.println("ARRAY: " + textFieldArr.get(i));
+                    gp.add(txtAnsOptionN, 1, current + 1);                    
+                    gp.add(btnDone, 1, current + 2);
+                    gp.add(btnNewAnswerOption, 2, current + 2);
+                    gp.add(btnRMOption, 2, current + 3);
+                    current++;
+                    System.out.println("Current Add: " + current);
+                    System.out.println("ARRAY: " + textFieldArr.get(i));
 
-                textFieldArr.get(i).setText(myQ.getAnswers()[i]);
+                    textFieldArr.get(i).setText(myQ.getAnswers()[i]);
+                }
             }
             //}
             int correct = myQ.getCorrectAnswer();
@@ -232,10 +231,10 @@ public class AddQuestionScene extends TeacherDash {
                     boolean emptyStrings = false;
                     //Save ALL answer options in textFieldArr to answerArr
                     for (int i = 0; i < textFieldArr.size(); i++) {
-                        if(textFieldArr.get(i).getText().equals("")){
+                        if (textFieldArr.get(i).getText().equals("")) {
                             emptyStrings = true;
                         }
-                        answersArr.add(textFieldArr.get(i).getText());                        
+                        answersArr.add(textFieldArr.get(i).getText());
                         System.out.println("answer Option: " + textFieldArr.get(i).getText() + "\n"); //Testing what I add
                         System.out.println("ACTUAL ARR: " + answersArr.get(i)); //Should match above
                     }
@@ -273,7 +272,7 @@ public class AddQuestionScene extends TeacherDash {
 
                     if (!StrQuestion.equals("") && ansArray.length != 0 && selLOsArray.length != 0 && !txtPoints.getText().equals("") && correctAns != -1 && emptyStrings != true) {
                         //if(mode != true){   
-                            Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selLOsArray);
+                        Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selLOsArray);
                         //}
                         current = 4;
                         //Now go back to old scene
