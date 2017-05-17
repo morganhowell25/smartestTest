@@ -39,7 +39,7 @@ public class ViewScoresScene extends StudentDash {
                 @Override
                 public void handle(ActionEvent event) {
                     System.out.println("View Test Clicked!");
-                    GradedTest gt = server.pullStudentGradedTest(studentid, Integer.parseInt(takenTests.get(index)));
+                    GradedTest gt = server.pullStudentGradedTest(studentid, (takenTests.get(index)));
                     ViewStudentScoreScene scoreScene = new ViewStudentScoreScene(gt);
                     scoreScene.STAGE = studentDash.STAGE;
                     studentDash.update(scoreScene.getScene());

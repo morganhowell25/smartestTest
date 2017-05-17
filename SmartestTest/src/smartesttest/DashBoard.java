@@ -22,7 +22,5 @@ public abstract class DashBoard
     
     public void update(Scene newScene)
     {
-        //myStage.setScene(newScene);
-        //myStage.show();
     }
 }
