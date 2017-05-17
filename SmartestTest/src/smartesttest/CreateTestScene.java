@@ -44,9 +44,9 @@ public class CreateTestScene extends TeacherDash {
         CreateTestScene cts = this;
         
         if (editFlag) {
-            arrQ.add(indexEdit, q);
+            arrQ.set(indexEdit, q);
         }
-        else {
+        else if(!editFlag && q!=null){
             arrQ.add(q);
         }
         
