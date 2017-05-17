@@ -23,9 +23,10 @@ public class CreateTestScene extends TeacherDash {
     protected int numQ = 0; // Number of questions currently added to Test
     protected ArrayList<Question> arrQ = new ArrayList<Question>();
 
-    public CreateTestScene() {
-
+   public CreateTestScene(int cuID) {
+        super(cuID);
     }
+    
     
     public void addQuestion(Question question)
     {
@@ -65,7 +66,7 @@ public class CreateTestScene extends TeacherDash {
                     @Override
                     public void handle(ActionEvent event) {
                         System.out.println("Edit Clicked!");
-                        AddQuestionScene aqs = new AddQuestionScene(cts, true);
+                        AddQuestionScene aqs = new AddQuestionScene(currentUserID, cts, true);
                         aqs.STAGE = teacherDash.STAGE;
                        // editQuestion((arrQ.get(indexEditQ)), indexEditQ);
                         teacherDash.update(aqs.getScene(arrQ.get(indexEditQ), indexEditQ));
@@ -88,7 +89,11 @@ public class CreateTestScene extends TeacherDash {
                 finalizeAlert.setHeaderText(null);
                 finalizeAlert.setContentText("Changes cannot be made after confirmation");
                 finalizeAlert.showAndWait();
-                //utils.saveTest(dummy1, dummy2, dummy3);
+                String dummyPincode = "Pincode Test";
+                //TO-DO: switch arrQ to array.
+                Question [] quArr = new Question [5]; //Dummy code
+                Test theTest = new Test(quArr, Integer.parseInt(dummyPincode), currentUserID);
+                server.saveTest(dummyPincode, currentUserID, theTest);
             }
         });
 
@@ -100,7 +105,7 @@ public class CreateTestScene extends TeacherDash {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Add Question Clicked!");
-                AddQuestionScene aqs = new AddQuestionScene(cts, false);
+                AddQuestionScene aqs = new AddQuestionScene(currentUserID, cts, false);
                 aqs.STAGE = teacherDash.STAGE;
                 teacherDash.update(aqs.getScene(null, 0));
             }

@@ -18,9 +18,8 @@ import javafx.scene.layout.GridPane;
  */
 public class ViewDepartmentLOScene extends TeacherDash
 {
-    public ViewDepartmentLOScene()
-    {
-        
+    public ViewDepartmentLOScene(int cuID) {
+        super(cuID);
     }
             
     public Scene getScene()

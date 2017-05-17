@@ -114,7 +114,7 @@ public class LoginForm {
                                 loginSuccess.setHeaderText("Login Successful!");
                                 loginSuccess.setContentText("Press OK to proceed.");
                                 loginSuccess.showAndWait();
-                                AdminDash adminDash = new AdminDash();
+                                AdminDash adminDash = new AdminDash(/*pass int id here*/);
                                 Stage primaryStage = new Stage();
                                 adminDash.start(primaryStage);
                                 //primaryStage.close();
@@ -124,7 +124,7 @@ public class LoginForm {
                                 loginSuccess.setHeaderText("Login Successful!");
                                 loginSuccess.setContentText("Press OK to proceed.");
                                 loginSuccess.showAndWait();
-                                TeacherDash teacherDash = new TeacherDash();
+                                TeacherDash teacherDash = new TeacherDash(567);
                                 Stage primaryStage = new Stage();
                                 teacherDash.start(primaryStage);
                             } else { // If user is student, load StudentDash
@@ -133,7 +133,7 @@ public class LoginForm {
                                 loginSuccess.setHeaderText("Login Successful!");
                                 loginSuccess.setContentText("Press OK to proceed.");
                                 loginSuccess.showAndWait();
-                                StudentDash studentDash = new StudentDash();
+                                StudentDash studentDash = new StudentDash(567);
                                 Stage primaryStage = new Stage();
                                 studentDash.start(primaryStage);
                                 System.out.println("After start clicked");

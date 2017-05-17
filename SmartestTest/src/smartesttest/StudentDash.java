@@ -22,6 +22,10 @@ public class StudentDash extends DashBoard
     protected Scene SCENE;
     protected Stage STAGE;
     protected int currentUserID;
+    
+    public StudentDash(int cuID){
+            currentUserID = cuID;
+    }
           
     public void start(Stage primaryStage){
         STAGE = primaryStage;
@@ -46,7 +50,7 @@ public class StudentDash extends DashBoard
         gt.grade();
         //TestScene shs = new TestScene(t);
         //ViewStudentScoreSceneTeacher shs = new ViewStudentScoreSceneTeacher(gt);
-        ViewStudentScoreScene shs = new ViewStudentScoreScene(gt);
+        ViewStudentScoreScene shs = new ViewStudentScoreScene(gt, currentUserID);
         //StudentHomeScene shs = new StudentHomeScene();
         shs.STAGE = this.STAGE;
         SCENE = shs.getScene();
@@ -69,7 +73,7 @@ public class StudentDash extends DashBoard
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("TakeTest Clicked!");
-                TakeTestScene tts = new TakeTestScene();
+                TakeTestScene tts = new TakeTestScene(currentUserID);
                 tts.STAGE = studentDash.STAGE;
                 studentDash.update(tts.getScene());
             }
@@ -83,7 +87,7 @@ public class StudentDash extends DashBoard
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("PastTests Clicked!");
-                ViewScoresScene vss = new ViewScoresScene();
+                ViewScoresScene vss = new ViewScoresScene(currentUserID);
                 vss.STAGE = studentDash.STAGE;
                 studentDash.update(vss.getScene());
             }

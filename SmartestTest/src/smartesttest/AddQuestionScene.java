@@ -30,7 +30,8 @@ public class AddQuestionScene extends TeacherDash {
     protected CreateTestScene cts = null;
     protected boolean editFlag = false;
 
-    public AddQuestionScene(CreateTestScene cts, boolean editFlag) {
+    public AddQuestionScene(int cuID, CreateTestScene cts, boolean editFlag) {
+        super(cuID);
         this.cts = cts;
         this.editFlag = editFlag;
     }

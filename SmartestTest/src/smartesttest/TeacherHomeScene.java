@@ -14,6 +14,10 @@ import javafx.scene.text.Text;
  * @author csc190
  */
 public class TeacherHomeScene extends TeacherDash{
+
+    public TeacherHomeScene(int cuID) {
+        super(cuID);
+    }
         
     public Scene getScene(){
         GridPane gp = drawTeacherDash();

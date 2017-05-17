@@ -21,6 +21,13 @@ import javafx.scene.layout.GridPane;
  * @author csc190
  */
 public class TakeTestScene extends StudentDash {
+    public TakeTestScene(int cuID) {
+        super(cuID);
+    }
+    
+    //public TakeTestScene(int ID) { 
+    //    currentUserID = ID;
+    //}
 
     public Scene getScene() {
         GridPane gp = drawStudentDash();
@@ -65,7 +72,7 @@ public class TakeTestScene extends StudentDash {
                         alert.showAndWait();
                     } else if (server.pullStudentGradedTest(id, pincode) == null) {
                         Test myTest = (Test) utils.toObj(newTest.get(0));
-                        TestScene ts = new TestScene(myTest);
+                        TestScene ts = new TestScene(myTest, currentUserID);
                         ts.STAGE = tts.STAGE;
                         tts.update(ts.getScene());
                     } else {
