@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+
 /**
  *
  * @author csc190
@@ -24,7 +25,7 @@ public class TakeTestScene extends StudentDash {
     public Scene getScene() {
         GridPane gp = drawStudentDash();
         TakeTestScene tts = this;
-        
+
         Label lblTake = new Label("Take A Test");
         gp.add(lblTake, 1, 0);
 
@@ -39,21 +40,36 @@ public class TakeTestScene extends StudentDash {
             @Override
             public void handle(ActionEvent event) {
                 String pincode = input.getText();
-                ArrayList<String> newTest = server.pullTest(pincode);
-                System.out.println("sub Clicked!");
-                if (newTest.isEmpty()) {
-                    System.out.println("if statement");
-                    Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("You done fucked up");
-                    alert.setContentText("Y u pass bad pincode fucker?");
-                    alert.showAndWait();
+                boolean validPIN = true;
+                for (int i = 0; i < pincode.length(); i++) {
+                    if (!(pincode.charAt(i) >= '0' && pincode.charAt(i) <= '9')) {
+                        validPIN = false;
+                        break;
+                    }
+                }
+                if (validPIN == false) {
+                    Alert badPIN = new Alert(Alert.AlertType.ERROR);
+                    badPIN.setTitle("Invalid PIN");
+                    badPIN.setHeaderText("Invalid PIN");
+                    badPIN.setContentText("Please use only numeric characters");
+                    badPIN.showAndWait();
                 } else {
-                    Test myTest = (Test) utils.toObj(newTest.get(0));
-                    System.out.println("else statement");
-                    TestScene ts = new TestScene(myTest);
-                    ts.STAGE = tts.STAGE;
-                    tts.update(ts.getScene());
+                    ArrayList<String> newTest = server.pullTest(pincode);
+                    System.out.println("sub Clicked!");
+                    if (newTest.isEmpty()) {
+                        System.out.println("if statement");
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setTitle("Error");
+                        alert.setHeaderText("You done fucked up");
+                        alert.setContentText("Y u pass bad pincode fucker?");
+                        alert.showAndWait();
+                    } else {
+                        Test myTest = (Test) utils.toObj(newTest.get(0));
+                        System.out.println("else statement");
+                        TestScene ts = new TestScene(myTest);
+                        ts.STAGE = tts.STAGE;
+                        tts.update(ts.getScene());
+                    }
                 }
             }
         });

@@ -38,11 +38,10 @@ public class SmartestTest extends Application
         //3. Load AdminDash, TeacherDash, or StudentDash
         //4. Implement using a switch statement, maybe
         
-        //LoginForm lForm = new LoginForm();
-        //lForm.start(primaryStage);
+        LoginForm lForm = new LoginForm();
+        lForm.start(primaryStage);
         // If you login as admin, call this:
         //AdminDash adminDash = new AdminDash();
-       // adminDash.start(primaryStage);
         
         // If you login as teacher, call this:
         //TeacherDash teacherDash = new TeacherDash();
