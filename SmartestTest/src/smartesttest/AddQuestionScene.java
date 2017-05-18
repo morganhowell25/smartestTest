@@ -83,8 +83,8 @@ public class AddQuestionScene extends TeacherDash {
 
         //Create radiobuttons for each department LO and add to third column
         RadioButton rbLO;
-        for (int i = 0; i < deptLOs.size(); i++) {
-            rbLO = new RadioButton(deptLOs.get(i).toString());
+        for (int i = 0; i < deptLOs.get(1).size(); i++) {
+            rbLO = new RadioButton(deptLOs.get(1).get(i));
             gp.add(rbLO, 3, i + 1);
             rbLOSelect.add(rbLO);
             //rbCurr++;
@@ -118,7 +118,7 @@ public class AddQuestionScene extends TeacherDash {
                     rbArr.add(rbAnswerChoiceN);
                     //Add to gp
                     gp.add(rbAnswerChoiceN, 2, current + 1);
-                    gp.add(txtAnsOptionN, 1, current + 1);                    
+                    gp.add(txtAnsOptionN, 1, current + 1);
                     gp.add(btnDone, 1, current + 2);
                     gp.add(btnNewAnswerOption, 2, current + 2);
                     gp.add(btnRMOption, 2, current + 3);
@@ -223,70 +223,84 @@ public class AddQuestionScene extends TeacherDash {
                 System.out.println("Done Buttom Clicked!");
                 try {
                     //GET ALL USER INPUT
-                    String StrQuestion = txtQuestion.getText();
-                    System.out.println("HELLO: " + StrQuestion);
-                    System.out.println("HELLO22: " + txtQuestion.getText());
-
-                    int intPoints = Integer.parseInt(txtPoints.getText());
                     boolean emptyStrings = false;
-                    //Save ALL answer options in textFieldArr to answerArr
+                    //Do a check
                     for (int i = 0; i < textFieldArr.size(); i++) {
                         if (textFieldArr.get(i).getText().equals("")) {
                             emptyStrings = true;
                         }
-                        answersArr.add(textFieldArr.get(i).getText());
+                        //answersArr.add(textFieldArr.get(i).getText());
                         System.out.println("answer Option: " + textFieldArr.get(i).getText() + "\n"); //Testing what I add
-                        System.out.println("ACTUAL ARR: " + answersArr.get(i)); //Should match above
                     }
-                    //Find selected RB               
-                    int correctAns = -1;
-                    int index = 0;
-                    boolean rbSelect = false;
-                    while (rbSelect == false) {
-                        if (rbArr.get(index).isSelected()) {
-                            correctAns = index;
-                            rbSelect = true;
-                        } else {
-                            index++;
+                    if (!emptyStrings) { //Do this
+                        //Add to array answers
+                        for (int i = 0; i < textFieldArr.size(); i++) {
+                            answersArr.add(textFieldArr.get(i).getText());
                         }
-                    }
-                    //System.out.println("Selected RB index = " + correctAns);
-                    //Find selected LOs
-                    for (int k = 0; k < rbLOSelect.size(); k++) {
-                        if (rbLOSelect.get(k).isSelected()) {
-                            //selectedLOs.add(rbLOSelect.get(k).getText());
-                            selectedLOs.add("" + k);
-                            System.out.println("Selected LO index = " + k);
-                        }
-                    }
-                    //End get user input
-                    /*TestArray
-                for(int i=0; i<answersArr.size(); i++){
-                    System.out.print("Answer Array: " + answersArr.get(i)+ "\n");
-                }
-                     */
-                    //Finally... save the question. Call contructor.
-                    //Convert ArrayLists to Array
-                    String[] ansArray = answersArr.toArray(new String[answersArr.size()]);
-                    String[] selLOsArray = selectedLOs.toArray(new String[selectedLOs.size()]);
+                        String StrQuestion = txtQuestion.getText();
+                        System.out.println("HELLO: " + StrQuestion);
+                        System.out.println("HELLO22: " + txtQuestion.getText());
 
-                    if (!StrQuestion.equals("") && ansArray.length != 0 && selLOsArray.length != 0 && !txtPoints.getText().equals("") && correctAns != -1 && emptyStrings != true) {
-                        //if(mode != true){   
-                        Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selLOsArray);
-                        //}
-                        current = 4;
-                        //Now go back to old scene
-                        cts.STAGE = teachDash.STAGE;
-                        teachDash.update(cts.getScene(myQ, editFlag, indexEditQ));
+                        int intPoints = Integer.parseInt(txtPoints.getText());
+
+                        //Save ALL answer options in textFieldArr to answerArr
+                        //Find selected RB               
+                        int correctAns = -1;
+                        int index = 0;
+                        boolean rbSelect = false;
+                        while (rbSelect == false) {
+                            if (rbArr.get(index).isSelected()) {
+                                correctAns = index;
+                                rbSelect = true;
+                            } else {
+                                index++;
+                            }
+                        }
+                        //System.out.println("Selected RB index = " + correctAns);
+                        //Find selected LOs
+                        for (int k = 0; k < rbLOSelect.size(); k++) {
+                            if (rbLOSelect.get(k).isSelected()) {
+                                //selectedLOs.add(rbLOSelect.get(k).getText());
+                                selectedLOs.add("" + k);
+                                System.out.println("Selected LO index = " + k);
+                            }
+                        }
+                        //End get user input
+                        /*TestArray
+                        for(int i=0; i<answersArr.size(); i++){
+                            System.out.print("Answer Array: " + answersArr.get(i)+ "\n");
+                        }
+                         */
+                        //Finally... save the question. Call contructor.
+                        //Convert ArrayLists to Array
+                        String[] ansArray = answersArr.toArray(new String[answersArr.size()]);
+                        String[] selLOsArray = selectedLOs.toArray(new String[selectedLOs.size()]);
+
+                        if (!StrQuestion.equals("") && ansArray.length != 0 && selLOsArray.length != 0 && !txtPoints.getText().equals("") && correctAns != -1) {                              
+                            Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selLOsArray);                           
+                            current = 4;
+                            //Now go back to old scene
+                            cts.STAGE = teachDash.STAGE;
+                            teachDash.update(cts.getScene(myQ, editFlag, indexEditQ));
+                        }
+                        //} else {
+                        /*
+                            Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
+                            DeleteAlert.setTitle("Warning!");
+                            DeleteAlert.setHeaderText(null);
+                            DeleteAlert.setContentText("Please Fill out all fields and buttons!");
+                            DeleteAlert.showAndWait();
+                        }*/
+                        
                     } else {
                         Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
                         DeleteAlert.setTitle("Warning!");
                         DeleteAlert.setHeaderText(null);
                         DeleteAlert.setContentText("Please Fill out all fields and buttons!");
                         DeleteAlert.showAndWait();
-                    }
+                    }                                               
 
-                } catch (NumberFormatException exc) {
+                } catch (IndexOutOfBoundsException exc) {
                     Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
                     DeleteAlert.setTitle("Warning!");
                     DeleteAlert.setHeaderText(null);
@@ -298,33 +312,17 @@ public class AddQuestionScene extends TeacherDash {
         );
 
         //Add to GridPane
-        gp.add(txtQuestion,
-                1, 0);
-        gp.add(txtPoints,
-                1, 1);
-        //if(myQ==null){
-        gp.add(txtAnsOption,
-                1, 3);
-        gp.add(txtAnsOption2,
-                1, 4);
-        gp.add(rbAnswerChoice,
-                2, 3);
-        gp.add(rbAnswerChoice2,
-                2, 4);
-        //}
-        gp.add(lbQuestion,
-                2, 0);
-        gp.add(lbPoints,
-                2, 1);
-        gp.add(lbTypeOption,
-                1, 2);
-        gp.add(selectCorrect,
-                2, 2);
-        gp.add(selectRB,
-                4, 0);
-        //gp.add(lbCorrect,2,2);
-        //gp.add(rbAnswerChoice,1,3);     
-        //gp.add(rbLO,1,3);         
+        gp.add(txtQuestion, 1, 0);
+        gp.add(txtPoints, 1, 1);
+        gp.add(txtAnsOption, 1, 3);
+        gp.add(txtAnsOption2, 1, 4);
+        gp.add(rbAnswerChoice, 2, 3);
+        gp.add(rbAnswerChoice2, 2, 4);
+        gp.add(lbQuestion, 2, 0);
+        gp.add(lbPoints, 2, 1);
+        gp.add(lbTypeOption, 1, 2);
+        gp.add(selectCorrect, 2, 2);
+        gp.add(selectRB, 4, 0);
         //end Add GridPane
 
         Scene scene = new Scene(gp, 900, 700);
