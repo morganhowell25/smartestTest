@@ -12,7 +12,7 @@ import java.util.Base64;
 public class utils {
 
     static final String DRIVER = "com.mysql.jdbc.Driver";
-    static final String URL = "jdbc:mysql://localhost/smartTest_db";
+    static final String URL = "jdbc:mysql://localhost/smarttest_db";
     static final String USER = "root";
     static final String PASS = "goodyear123!@#";
     public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -27,7 +27,7 @@ public class utils {
             oos.writeObject(obj);
             byte[] barr = baos.toByteArray();
             sRet = Base64.getEncoder().encodeToString(barr);
-            sRet = URLEncoder.encode(sRet, "UTF-8");
+            //sRet = URLEncoder.encode(sRet, "UTF-8");
 
         } catch (Exception exc) {
             System.out.println(exc);
@@ -40,8 +40,8 @@ public class utils {
     public static Object toObj(String str) {
         Object obj = null;
         try {
-            String sDecoded = URLDecoder.decode(str, "UTF-8");
-            byte[] barr = Base64.getDecoder().decode(sDecoded);
+            //String sDecoded = URLDecoder.decode(str, "UTF-8");
+            byte[] barr = Base64.getDecoder().decode(str);
             ByteArrayInputStream bios = new ByteArrayInputStream(barr);
             ObjectInputStream ois = new ObjectInputStream(bios);
             obj = ois.readObject();

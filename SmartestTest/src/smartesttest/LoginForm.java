@@ -33,19 +33,16 @@ public class LoginForm {
     }
 
     public Scene getScene() {
-        server.addUser("admin",utils.encrypt("admin1"),"admin");
+        //server.addUser("admin",utils.encrypt("admin1"),"admin");
         GridPane gp = new GridPane();
         gp.setAlignment(Pos.CENTER);
 
-        /*Question q = new Question();
+        /*Question q = new Question("My Question?", new String[]{"True","False"}, 5, 1,new ArrayList<ArrayList<String>>());
         String strQ = utils.toStr(q);
         System.out.println(strQ);
         Question q2 = (Question) utils.toObj(strQ);
-        System.out.println("q2 = " + q2);
-        if (q.equals(q2)) {
-            System.out.println("Equal");
-        }*/
-        
+        System.out.println("q2 = " + q2);*/
+                
         LoginForm lf = this;
 
         Text scenetitle = new Text("Welcome");

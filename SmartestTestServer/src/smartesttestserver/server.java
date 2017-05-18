@@ -169,12 +169,20 @@ public class server {
         ArrayList<String> credentialsu = execQuery(queryu);
         ArrayList<String> credentialsp = execQuery(queryp);
         ArrayList<String> credentialsr = execQuery(queryr);
-        //System.out.println(credentialsu + " " + credentialsp + " " + credentialsr);
+        //System.out.println(credentialsu.get(0) + " " + credentialsp.get(0) + " " + credentialsr.get(0));
         ArrayList<ArrayList<String>> arrUnames = new ArrayList<ArrayList<String>>();
         arrUnames.add(credentialsu);
         arrUnames.add(credentialsp);
         arrUnames.add(credentialsr);
-        System.out.println(utils.toStr(arrUnames));
+        //System.out.println(arrUnames.get(0).get(0) + " " + arrUnames.get(1).get(0) + " " + arrUnames.get(2).get(0));
+        String strArr = utils.toStr(arrUnames);
+        System.out.println(strArr);
+        //ArrayList<ArrayList<String>> arr = (ArrayList<ArrayList<String>>)utils.toObj(strArr);
+        //Object obj1 = utils.toObj(strArr);
+        //ArrayList<ArrayList<String>> arr1 = new ArrayList<ArrayList<String>>();
+        //arr1 = (ArrayList<ArrayList<String>>)obj1;
+        //System.out.println(arr.get(0).get(0) + " " + arr.get(1).get(0) + " " + arr.get(2).get(0));
+        
     }
     
     // What happens when admin clicks "Reset password" in ManageUserScene
@@ -255,6 +263,5 @@ public class server {
                 break;
                 
         }
-        //System.out.println("We made it!");
     }
 }
