@@ -42,6 +42,7 @@ public class DBHandler {
         String line = br.readLine();
         while (line != null) {
             sb.append(line + "\n");
+            //strReturn = line;
             line = br.readLine();
         }
         String sRet = sb.toString();

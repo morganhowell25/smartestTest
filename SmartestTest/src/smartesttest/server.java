@@ -185,7 +185,8 @@ public class server {
         } catch (Exception exc) {
             System.out.println(exc);
         }
-        return (ArrayList<ArrayList<String>>)utils.toObj(hold);
+        ArrayList<ArrayList<String>> arr = (ArrayList<ArrayList<String>>)utils.toObj(hold);
+        return arr;
     }
 
     // What happens when admin clicks "Reset password" in ManageUserScene

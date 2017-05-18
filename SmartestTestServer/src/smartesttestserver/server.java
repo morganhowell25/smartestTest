@@ -169,7 +169,7 @@ public class server {
         ArrayList<String> credentialsu = execQuery(queryu);
         ArrayList<String> credentialsp = execQuery(queryp);
         ArrayList<String> credentialsr = execQuery(queryr);
-        System.out.println(credentialsu + " " + credentialsp + " " + credentialsr);
+        //System.out.println(credentialsu + " " + credentialsp + " " + credentialsr);
         ArrayList<ArrayList<String>> arrUnames = new ArrayList<ArrayList<String>>();
         arrUnames.add(credentialsu);
         arrUnames.add(credentialsp);

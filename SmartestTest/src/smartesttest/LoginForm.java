@@ -37,6 +37,15 @@ public class LoginForm {
         GridPane gp = new GridPane();
         gp.setAlignment(Pos.CENTER);
 
+        /*Question q = new Question();
+        String strQ = utils.toStr(q);
+        System.out.println(strQ);
+        Question q2 = (Question) utils.toObj(strQ);
+        System.out.println("q2 = " + q2);
+        if (q.equals(q2)) {
+            System.out.println("Equal");
+        }*/
+        
         LoginForm lf = this;
 
         Text scenetitle = new Text("Welcome");
