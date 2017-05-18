@@ -45,7 +45,7 @@ public class StudentDash extends DashBoard
         // Need to be able to scroll, tests ill have mutiple questions. Applies to all scenes.
         // If there are more than 5 answers it overlaps.
                 
-        Test t = new Test(questions, "dummy pincode", 72);
+        Test t = new Test(questions, "dummy pincode" , 72);
         GradedTest gt = new GradedTest(t, new int[]{0,2,2,1,6,0}, 23);
         gt.grade();
         //TestScene shs = new TestScene(t);
