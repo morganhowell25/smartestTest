@@ -229,6 +229,9 @@ public class server {
             case "pullStudentGradedTest":
                 pullStudentGradedTest(Integer.parseInt(args[1]),Integer.parseInt(args[2]));
                 break;
+            case "pullDepartmentLOs":
+                pullDepartmentLOs();
+                break;    
             case "updateDepartmentLOs":
                 updateDepartmentLOs(args[1],args[2],Boolean.getBoolean(args[3]));
                 break;
