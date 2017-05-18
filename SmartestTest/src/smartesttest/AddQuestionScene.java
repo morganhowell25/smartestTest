@@ -30,7 +30,8 @@ public class AddQuestionScene extends TeacherDash {
     protected CreateTestScene cts = null;
     protected boolean editFlag = false;
 
-    public AddQuestionScene(CreateTestScene cts, boolean editFlag) {
+    public AddQuestionScene(int cuID, CreateTestScene cts, boolean editFlag) {
+        super(cuID);
         this.cts = cts;
         this.editFlag = editFlag;
     }
@@ -105,44 +106,46 @@ public class AddQuestionScene extends TeacherDash {
             }
             //if(answers.length>2){
             for (int i = 0; i < myQ.getAnswers().length; i++) {
-                //btnNewAnswerOption
-                gp.getChildren().remove(btnDone);
-                gp.getChildren().remove(btnNewAnswerOption);
-                gp.getChildren().remove(btnRMOption);
-                rbAnswerChoiceN = new RadioButton();
-                rbAnswerChoiceN.setToggleGroup(answerChoices);
-                txtAnsOptionN = new TextField();
-                //Add newly creates option and radiobtn to their arraylists
-                if (i == myQ.getAnswers().length - 1 || i == myQ.getAnswers().length - 2) {
+                //btnNewAnswerOption function...
+                if (i != myQ.getAnswers().length - 1 || i != myQ.getAnswers().length - 2) {
+                    gp.getChildren().remove(btnDone);
+                    gp.getChildren().remove(btnNewAnswerOption);
+                    gp.getChildren().remove(btnRMOption);
+                    rbAnswerChoiceN = new RadioButton();
+                    rbAnswerChoiceN.setToggleGroup(answerChoices);
+                    txtAnsOptionN = new TextField();
+                    //Add newly creates option and radiobtn to their arraylists
                     textFieldArr.add(txtAnsOptionN);
                     rbArr.add(rbAnswerChoiceN);
                     //Add to gp
                     gp.add(rbAnswerChoiceN, 2, current + 1);
-                    gp.add(txtAnsOptionN, 1, current + 1);
-                }
-                gp.add(btnDone, 1, current + 2);
-                gp.add(btnNewAnswerOption, 2, current + 2);
-                gp.add(btnRMOption, 2, current + 3);
-                current++;
-                System.out.println("Current Add: " + current);
-                System.out.println("ARRAY: " + textFieldArr.get(i));
+                    gp.add(txtAnsOptionN, 1, current + 1);                    
+                    gp.add(btnDone, 1, current + 2);
+                    gp.add(btnNewAnswerOption, 2, current + 2);
+                    gp.add(btnRMOption, 2, current + 3);
+                    current++;
+                    System.out.println("Current Add: " + current);
+                    System.out.println("ARRAY: " + textFieldArr.get(i));
 
-                textFieldArr.get(i).setText(myQ.getAnswers()[i]);
+                    textFieldArr.get(i).setText(myQ.getAnswers()[i]);
+                }
             }
             //}
             int correct = myQ.getCorrectAnswer();
             rbArr.get(correct).setSelected(true);
-            ArrayList<ArrayList<String>> setUpLOs = myQ.getLOs();
-            for (int j = 0; j < setUpLOs.size(); j++) {
-                if (setUpLOs.get(j).equals(deptLOs.get(j))) {
-                    rbLOSelect.get(j).setSelected(true);
-                }
+            //String[] setUpLOs = myQ.getLOs();
 
-            }
+
+            /*for (int j = 0; j < setUpLOs.length; j++) {
+                int index = Integer.parseInt(setUpLOs[j]);
+                rbLOSelect.get(index).setSelected(true);
+            }*/
+
         }
 
         //This button action is soley for adding more answers choices.
-        btnNewAnswerOption.setOnAction(new EventHandler<ActionEvent>() {
+        btnNewAnswerOption.setOnAction(
+                new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 gp.getChildren().remove(btnDone);
@@ -172,11 +175,14 @@ public class AddQuestionScene extends TeacherDash {
                 //String test = txtQuestion.getText();
                 //System.out.println("I return: " + test);
             }
-        });
+        }
+        );
 
-        btnRMOption.setOnAction(new EventHandler<ActionEvent>() {
+        btnRMOption.setOnAction(
+                new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
+            public void handle(ActionEvent event
+            ) {
                 if (current < 5) {
                     Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
                     DeleteAlert.setTitle("Warning!");
@@ -192,7 +198,8 @@ public class AddQuestionScene extends TeacherDash {
                     System.out.println("Current Minus: " + current);
                 }
             }
-        });
+        }
+        );
 
         /*
         //Creating the Drop Down
@@ -209,22 +216,32 @@ public class AddQuestionScene extends TeacherDash {
          */
         //Save question with all its parameters
         ButtonGroup buttonGroup = new ButtonGroup();
-        btnDone.setOnAction(new EventHandler<ActionEvent>() {
+
+        btnDone.setOnAction(
+                new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
+            public void handle(ActionEvent event
+            ) {
                 System.out.println("Done Buttom Clicked!");
                 try {
                     //GET ALL USER INPUT
                     String StrQuestion = txtQuestion.getText();
+                    System.out.println("HELLO: " + StrQuestion);
+                    System.out.println("HELLO22: " + txtQuestion.getText());
+
                     int intPoints = Integer.parseInt(txtPoints.getText());
+                    boolean emptyStrings = false;
                     //Save ALL answer options in textFieldArr to answerArr
                     for (int i = 0; i < textFieldArr.size(); i++) {
+                        if (textFieldArr.get(i).getText().equals("")) {
+                            emptyStrings = true;
+                        }
                         answersArr.add(textFieldArr.get(i).getText());
                         System.out.println("answer Option: " + textFieldArr.get(i).getText() + "\n"); //Testing what I add
                         System.out.println("ACTUAL ARR: " + answersArr.get(i)); //Should match above
                     }
                     //Find selected RB               
-                    int correctAns = 0;
+                    int correctAns = -1;
                     int index = 0;
                     boolean rbSelect = false;
                     while (rbSelect == false) {
@@ -239,8 +256,9 @@ public class AddQuestionScene extends TeacherDash {
                     //Find selected LOs
                     for (int k = 0; k < rbLOSelect.size(); k++) {
                         if (rbLOSelect.get(k).isSelected()) {
-                            selectedLOs.add(rbLOSelect.get(k).getText());
-                            System.out.println("Selected LO text = " + rbLOSelect.get(k).getText());
+                            //selectedLOs.add(rbLOSelect.get(k).getText());
+                            selectedLOs.add("" + k);
+                            System.out.println("Selected LO index = " + k);
                         }
                     }
                     //End get user input
@@ -252,37 +270,61 @@ public class AddQuestionScene extends TeacherDash {
                     //Finally... save the question. Call contructor.
                     //Convert ArrayLists to Array
                     String[] ansArray = answersArr.toArray(new String[answersArr.size()]);
-                    //ArrayList<ArrayList<String>> selLOsArray = selectedLOs.toArray(new String[selectedLOs.size()]);
-                    ArrayList<ArrayList<String>> selLOsArray = new ArrayList<ArrayList<String>>(); //please fix
-                    Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selLOsArray);
+                    String[] selLOsArray = selectedLOs.toArray(new String[selectedLOs.size()]);
 
-                    //Now go back to old scene
-                    cts.STAGE = teachDash.STAGE;
-                    teachDash.update(cts.getScene(myQ,editFlag, indexEditQ));
+                    if (!StrQuestion.equals("") && ansArray.length != 0 && selLOsArray.length != 0 && !txtPoints.getText().equals("") && correctAns != -1 && emptyStrings != true) {
+                        //if(mode != true){   
+                        //Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selLOsArray);
+                        //}
+                        current = 4;
+                        //Now go back to old scene
+                        cts.STAGE = teachDash.STAGE;
+                        teachDash.update(cts.getScene(myQ, editFlag, indexEditQ));
+                    } else {
+                        Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
+                        DeleteAlert.setTitle("Warning!");
+                        DeleteAlert.setHeaderText(null);
+                        DeleteAlert.setContentText("Please Fill out all fields and buttons!");
+                        DeleteAlert.showAndWait();
+                    }
+
+
                 } catch (NumberFormatException exc) {
                     Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
                     DeleteAlert.setTitle("Warning!");
                     DeleteAlert.setHeaderText(null);
-                    DeleteAlert.setContentText("Add a point value!");
+                    DeleteAlert.setContentText("Please Fill out all fields and buttons!");
                     DeleteAlert.showAndWait();
                 }
             }
-        });
+        }
+        );
 
         //Add to GridPane
-        gp.add(txtQuestion, 1, 0);
-        gp.add(txtPoints, 1, 1);
+        gp.add(txtQuestion,
+                1, 0);
+        gp.add(txtPoints,
+                1, 1);
         //if(myQ==null){
-        gp.add(txtAnsOption, 1, 3);
-        gp.add(txtAnsOption2, 1, 4);
-        gp.add(rbAnswerChoice, 2, 3);
-        gp.add(rbAnswerChoice2, 2, 4);
+        gp.add(txtAnsOption,
+                1, 3);
+        gp.add(txtAnsOption2,
+                1, 4);
+        gp.add(rbAnswerChoice,
+                2, 3);
+        gp.add(rbAnswerChoice2,
+                2, 4);
         //}
-        gp.add(lbQuestion, 2, 0);
-        gp.add(lbPoints, 2, 1);
-        gp.add(lbTypeOption, 1, 2);
-        gp.add(selectCorrect, 2, 2);
-        gp.add(selectRB, 4, 0);
+        gp.add(lbQuestion,
+                2, 0);
+        gp.add(lbPoints,
+                2, 1);
+        gp.add(lbTypeOption,
+                1, 2);
+        gp.add(selectCorrect,
+                2, 2);
+        gp.add(selectRB,
+                4, 0);
         //gp.add(lbCorrect,2,2);
         //gp.add(rbAnswerChoice,1,3);     
         //gp.add(rbLO,1,3);         

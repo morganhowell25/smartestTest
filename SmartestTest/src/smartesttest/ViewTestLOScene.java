@@ -16,6 +16,9 @@ import javafx.scene.layout.GridPane;
  */
 public class ViewTestLOScene extends TeacherDash {
     
+    public ViewTestLOScene(int cuID) {
+        super(cuID);
+    }
     public Scene getScene(String pincode) {
         
         GridPane gp = drawTeacherDash();

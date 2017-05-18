@@ -21,7 +21,8 @@ public class TestScene extends StudentDash {
 
     private Test myTest;
 
-    public TestScene(Test test) {
+    public TestScene(Test test, int cuID) {
+        super(cuID);
         myTest = test;
     }
 

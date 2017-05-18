@@ -20,15 +20,13 @@ import static smartesttest.server.pullTests;
  *
  * @author csc190
  */
-public class ManageTestsScene extends TeacherDash
-{
+public class ManageTestsScene extends TeacherDash{
+    
+    public ManageTestsScene(int cuID) {
+        super(cuID);
+    }
     //hold until we have tid
     int tid = 0;
-
-    public ManageTestsScene()
-    {
-    
-    }
     
     public Scene getScene()
     {
@@ -53,7 +51,7 @@ public class ManageTestsScene extends TeacherDash
             score.setOnAction(new EventHandler<ActionEvent>() { 
                     @Override
                     public void handle(ActionEvent event) {
-                        StudentScoresListScene ssls = new StudentScoresListScene(tTests.get(x));
+                        StudentScoresListScene ssls = new StudentScoresListScene(/*tTests.get(x)*/ currentUserID);
                         ssls.STAGE = mts.STAGE;
                         mts.update(ssls.getScene());
                     }
@@ -61,7 +59,7 @@ public class ManageTestsScene extends TeacherDash
             LOs.setOnAction(new EventHandler<ActionEvent>() { 
                     @Override
                     public void handle(ActionEvent event) {
-                        ViewTestLOScene vtl = new ViewTestLOScene();
+                        ViewTestLOScene vtl = new ViewTestLOScene(currentUserID);
                         vtl.STAGE = mts.STAGE;
                         mts.update(vtl.getScene(tTests.get(x)));
                     }

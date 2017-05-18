@@ -20,7 +20,8 @@ public class ViewStudentScoreSceneTeacher extends TeacherDash {
 
     protected GradedTest myGradedTest;
 
-    public ViewStudentScoreSceneTeacher(GradedTest test) {
+    public ViewStudentScoreSceneTeacher(GradedTest test, int cuID) {
+        super(cuID);
         myGradedTest = test;
     }
 
