@@ -90,9 +90,8 @@ public class CreateTestScene extends TeacherDash {
                 finalizeAlert.setContentText("Changes cannot be made after confirmation");
                 finalizeAlert.showAndWait();
                 String dummyPincode = "Pincode Test";
-                //TO-DO: switch arrQ to array.
-                Question [] quArr = new Question [5]; //Dummy code
-                Test theTest = new Test(quArr, Integer.parseInt(dummyPincode), currentUserID);
+                Question [] quArr = arrQ.toArray(new Question[arrQ.size()]); 
+                Test theTest = new Test(quArr, dummyPincode, currentUserID);
                 server.saveTest(dummyPincode, currentUserID, theTest);
             }
         });
