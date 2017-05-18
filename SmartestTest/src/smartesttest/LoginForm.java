@@ -42,7 +42,14 @@ public class LoginForm {
         System.out.println(strQ);
         Question q2 = (Question) utils.toObj(strQ);
         System.out.println("q2 = " + q2);*/
-                
+        
+        /*String goop1 = "rO0ABXNyABNqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAADdwQAAAADc3EAfgAAAAAAAXcEAAAAAXQABWFkbWlueHNxAH4AAAAAAAF3BAAAAAF0AAZkZ3BscTR4c3EAfgAAAAAAAXcEAAAAAXQABWFkbWlueHg=";
+        String goop2 = "rO0ABXNyABNqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAADdwQAAAADc3EAfgAAAAAAAXcEAAAAAXQABWFkbWlueHNxAH4AAAAAAAF3BAAAAAF0AAZkZ3BscTR4c3EAfgAAAAAAAXcEAAAAAXQABWFkbWlueHg=";
+        System.out.println(goop1.equals(goop2));
+        
+        ArrayList<ArrayList<String>> arr = (ArrayList<ArrayList<String>>)utils.toObj(goop1);
+        System.out.println(arr.get(0).get(0) + " " + arr.get(1).get(0) + " " + arr.get(2).get(0));*/
+        
         LoginForm lf = this;
 
         Text scenetitle = new Text("Welcome");

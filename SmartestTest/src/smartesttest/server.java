@@ -231,7 +231,7 @@ public class server {
     public static ArrayList<String> checkUname(String uname){
         String hold = "";
         try {
-            String dataStr = "op=checkUname&cat1=" + URLEncoder.encode(uname, "UTF-8");
+            String dataStr = "op=checkUname&uname=" + URLEncoder.encode(uname, "UTF-8");
             String url = "http://localhost/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {

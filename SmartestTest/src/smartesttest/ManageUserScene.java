@@ -57,6 +57,8 @@ public class ManageUserScene extends AdminDash {
                         dialog.setHeaderText(null);
                         dialog.setContentText("Please enter new password:");
                         Optional<String> result = dialog.showAndWait();
+                        System.out.println(result.get() + " " + buttonInd);
+                        
                         if (result.isPresent()) {
                             boolean validPass = true;
                             for (int i = 0; i < result.get().length(); i++) {
@@ -72,7 +74,7 @@ public class ManageUserScene extends AdminDash {
                                 badAlert.setContentText("Please only use alphanumeric characters");
                                 badAlert.showAndWait();
                             } else {
-                                server.resetPWD(result.get(), buttonInd);
+                                server.resetPWD(utils.encrypt(result.get()), buttonInd);
 
                                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                                 alert.setTitle("Password Changed Successfully");

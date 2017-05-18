@@ -20,14 +20,14 @@ public class server {
     public static String mySeed = "halp";
 
     // What happens when teacher clicks "Manage Tests" in TeacherDash
-    public static String pullTests(int tid){
+    public static void pullTests(int tid){
         String query = "SELECT pincode FROM tbl_test WHERE tid='" + tid + "';";
         ArrayList<String> arrPincodes = execQuery(query);
-        return utils.toStr(arrPincodes);
+        System.out.println(utils.toStr(arrPincodes));
     }
     
     // What happens when teacher clicks "LO" in ManageTestsScene
-    public static String pullTestLO(String pincode){
+    public static void pullTestLO(String pincode){
         String query1 = "SELECT cat1 FROM tbl_testLOs WHERE pincode='" + pincode + "';";
         ArrayList<String> arrCat1 = execQuery(query1);
         String query2 = "SELECT cat2 FROM tbl_testLOs WHERE pincode='" + pincode + "';";
@@ -41,7 +41,7 @@ public class server {
         arrTestLOs.add(arrCat2);
         arrTestLOs.add(arrCorrect);
         arrTestLOs.add(arrTotal);
-        return utils.toStr(arrTestLOs);
+        System.out.println(utils.toStr(arrTestLOs));
     }
     
     //increments the tests individual LOs upon a question being grading
@@ -60,7 +60,7 @@ public class server {
     }
     
     // What happens when teacher clicks "View Student Scores" in ManageTestsScene
-    public static String viewStudentScores(String pincode){
+    public static void viewStudentScores(String pincode){
         // Pull all student ids for the students who took the specific test
         // Pull all unames for each sid
         // Pull all scores associated with each uname
@@ -72,20 +72,20 @@ public class server {
         //        " WHERE pincode='" + pincode + "';";
         //ArrayList<String> arrUnames = execQuery(query2);*/
         
-        return utils.toStr(arrSSLStruct);
+        System.out.println(utils.toStr(arrSSLStruct));
     }
     
     // What happens when student or teacher views an individual student's test
     // ***THIS WILL BE CALLED IN BOTH ViewStudentScoresSceneTeacher AND ViewStudentScoresScene***
-    public static String pullStudentGradedTest(int id, int pincode){
+    public static void pullStudentGradedTest(int id, int pincode){
         String query = "SELECT gradedTestObj FROM tbl_gradedtest WHERE sid='" + id + "' AND pincode='" + pincode + "';";
         ArrayList<String> strGradedTest = execQuery(query);
         GradedTest gradedTest = (GradedTest) toObj(strGradedTest.get(0));
-        return utils.toStr(gradedTest);
+        System.out.println(utils.toStr(gradedTest));
     }
     
     // What happens when teacher clicks "View Dept LOs" in TeacherDash
-    public static String pullDepartmentLOs(){
+    public static void pullDepartmentLOs(){
         String query1 = "SELECT cat1 FROM tbl_deptLOs;";
         ArrayList<String> arrCat1 = execQuery(query1);
         String query2 = "SELECT cat2 FROM tbl_deptLOs;";
@@ -99,7 +99,7 @@ public class server {
         arrDeptLOs.add(arrCat2);
         arrDeptLOs.add(arrCorrect);
         arrDeptLOs.add(arrTotal);
-        return utils.toStr(arrDeptLOs);
+        System.out.println(utils.toStr(arrDeptLOs));
     }
     
     //increments the department LOs upon a question being grading
@@ -118,17 +118,17 @@ public class server {
     }
     
     // What happens when student clicks "Take a Test" after they enter valid pincode
-    public static String pullTest(String pincode){
+    public static void pullTest(String pincode){
         String query = "SELECT testObj FROM tbl_test WHERE pincode='" + pincode +"';";
         ArrayList<String> test = execQuery(query);
-        return utils.toStr(test);
+        System.out.println(utils.toStr(test));
     }
     
-    public static String pullTakenTestList(int id)
+    public static void pullTakenTestList(int id)
     {
         String query = "SELECT pincode FROM tbl_gradedtest WHERE sid='"+id+"';";
         ArrayList<String> pincodeList = execQuery(query);
-        return utils.toStr(pincodeList);
+        System.out.println(utils.toStr(pincodeList));
     }
     
     // What happens when student finishes taking a test and clicks "submit"
@@ -148,7 +148,7 @@ public class server {
     }
     
     // What happens when admin clicks "Manage Users" in AdminDash
-    public static String pullUserList(){
+    public static void pullUserList(){
         String query1 = "SELECT id FROM tbl_user;";
         ArrayList<String> arrIDs = execQuery(query1);
         String query2 = "SELECT role FROM tbl_user;";
@@ -159,7 +159,7 @@ public class server {
         arrUsers.add(arrIDs);
         arrUsers.add(arrRoles);
         arrUsers.add(arrUnames);
-        return utils.toStr(arrUsers);
+        System.out.println(utils.toStr(arrUsers));
     }
     
     public static void pullUInfo(String uname){
@@ -204,17 +204,18 @@ public class server {
         execNonQuery(query);
     }
     
-    public static String checkUname(String uname){
-        String query = "SELECT * from tbl_user WHERE uname='" + uname + "';";
+    public static void checkUname(String uname){
+        String query = "SELECT uname from tbl_user WHERE uname='" + uname + "';";
         ArrayList<String> unames = execQuery(query);
-        return utils.toStr(unames);
+        String arr = utils.toStr(unames);
+        System.out.println(arr);
     }
     
     public static void main(String[] args){
         String op = args[0];
         switch(op){
             case "pullTests":
-                pullTests(Integer.getInteger(args[1]));
+                pullTests(Integer.parseInt(args[1]));
                 break;
             case "pullTestLO":
                 pullTestLO(args[1]);
@@ -226,7 +227,7 @@ public class server {
                 viewStudentScores(args[1]);
                 break;
             case "pullStudentGradedTest":
-                pullStudentGradedTest(Integer.getInteger(args[1]),Integer.getInteger(args[2]));
+                pullStudentGradedTest(Integer.parseInt(args[1]),Integer.parseInt(args[2]));
                 break;
             case "updateDepartmentLOs":
                 updateDepartmentLOs(args[1],args[2],Boolean.getBoolean(args[3]));
@@ -235,7 +236,7 @@ public class server {
                 pullTest(args[1]);
                 break;
             case "saveGradedTest":
-                saveGradedTest(Integer.getInteger(args[1]),args[2],(GradedTest)utils.toObj(args[3]),args[4]);
+                saveGradedTest(Integer.parseInt(args[1]),args[2],(GradedTest)utils.toObj(args[3]),args[4]);
                 break;
             case "addUser": 
                 addUser(args[1],args[2],args[3]);
@@ -247,13 +248,13 @@ public class server {
                 pullUInfo(args[1]);
                 break;
             case "resetPWD":
-                resetPWD(args[1],Integer.getInteger(args[2]));
+                resetPWD(args[1],Integer.parseInt(args[2]));
                 break;
             case "saveTest":
-                saveTest(Integer.getInteger(args[1]),Integer.getInteger(args[2]),(Test)utils.toObj(args[3]));
+                saveTest(Integer.parseInt(args[1]),Integer.parseInt(args[2]),(Test)utils.toObj(args[3]));
                 break;
             case "pullTakenTestList":
-                pullTakenTestList(Integer.getInteger(args[1]));
+                pullTakenTestList(Integer.parseInt(args[1]));
                 break;
             case "uploadOneLO":
                 uploadOneLO(args[1],args[2]);

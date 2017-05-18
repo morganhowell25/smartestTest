@@ -85,7 +85,7 @@ public class AddUserScene extends AdminDash implements AppScene
                     nullAlert.setContentText("Please enter a non-empty username");
                     nullAlert.showAndWait();
                 }
-                else if(!unames.isEmpty()){
+                else if(!(unames.isEmpty())){
                     Alert badAlert = new Alert(AlertType.ERROR);
                     badAlert.setTitle("Failed to Add User");
                     badAlert.setHeaderText("Username already exists");
@@ -100,7 +100,7 @@ public class AddUserScene extends AdminDash implements AppScene
                     badAlert.showAndWait();
                 }
                 else{
-                    server.addUser(userNameTxt.getText(), userPassTxt.getText(), typeBox.getValue().toString().toLowerCase());
+                    server.addUser(userNameTxt.getText(), utils.encrypt(userPassTxt.getText()), typeBox.getValue().toString().toLowerCase());
                     Alert goodAlert = new Alert(AlertType.INFORMATION);
                     goodAlert.setTitle("User Added Successfully");
                     goodAlert.setHeaderText(null);
