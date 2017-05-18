@@ -85,9 +85,9 @@ public class CreateTestScene extends TeacherDash {
             public void handle(ActionEvent event) {
                 System.out.println("Finalize Button Clicked!");
                 Alert finalizeAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                finalizeAlert.setTitle("Confirm.");
+                finalizeAlert.setTitle("Confirmation");
                 finalizeAlert.setHeaderText(null);
-                finalizeAlert.setContentText("Changes cannot be made after confirmation");
+                finalizeAlert.setContentText("Changes cannot be made after finalizing test.");
                 finalizeAlert.showAndWait();
                 String dummyPincode = "Pincode Test";
                 Question [] quArr = arrQ.toArray(new Question[arrQ.size()]); 

@@ -43,12 +43,12 @@ public class LoginForm {
         Question q2 = (Question) utils.toObj(strQ);
         System.out.println("q2 = " + q2);*/
         
-        /*String goop1 = "rO0ABXNyABNqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAADdwQAAAADc3EAfgAAAAAAAXcEAAAAAXQABWFkbWlueHNxAH4AAAAAAAF3BAAAAAF0AAZkZ3BscTR4c3EAfgAAAAAAAXcEAAAAAXQABWFkbWlueHg=";
-        String goop2 = "rO0ABXNyABNqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAADdwQAAAADc3EAfgAAAAAAAXcEAAAAAXQABWFkbWlueHNxAH4AAAAAAAF3BAAAAAF0AAZkZ3BscTR4c3EAfgAAAAAAAXcEAAAAAXQABWFkbWlueHg=";
-        System.out.println(goop1.equals(goop2));
-        
-        ArrayList<ArrayList<String>> arr = (ArrayList<ArrayList<String>>)utils.toObj(goop1);
-        System.out.println(arr.get(0).get(0) + " " + arr.get(1).get(0) + " " + arr.get(2).get(0));*/
+        /*Question[] arrQ = new Question[3];
+        arrQ[0] = new Question("My Question1?", new String[]{"True","False"}, 5, 1,new ArrayList<ArrayList<String>>());
+        arrQ[1] = new Question("My Question2?", new String[]{"Dog","Cat"}, 4, 0,new ArrayList<ArrayList<String>>());
+        arrQ[2] = new Question("My Question3?", new String[]{"Hi","There"}, 3, 1,new ArrayList<ArrayList<String>>());
+        Test myTest = new Test(arrQ, "8675309", 2);
+        server.saveTest(myTest.getPincode(),myTest.getTeacherID(),myTest);*/
         
         LoginForm lf = this;
 

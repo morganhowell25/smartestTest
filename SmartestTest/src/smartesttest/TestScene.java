@@ -69,7 +69,7 @@ public class TestScene extends StudentDash {
 
         //create the sumbit button
         Button btnSumbit = new Button();
-        btnSumbit.setText("Sumbit");
+        btnSumbit.setText("Submit");
         gp.add(btnSumbit, 4, currentRow);
         btnSumbit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -95,9 +95,9 @@ public class TestScene extends StudentDash {
 
                     System.out.println("Sumbit Clicked!");
 
-                    GradedTest graded = new GradedTest(myTest, stuAns, 1);
+                    GradedTest graded = new GradedTest(myTest, stuAns, currentUserID);
                     graded.grade();
-                    server.saveGradedTest(currentUserID, "" + myTest.getPincode(), graded, "" + graded.getScore());
+                    server.saveGradedTest(currentUserID, myTest.getPincode(), graded, "" + graded.getScore());
 
                     //testing to see if it correctly pulls the students answers
                     //#worksfristtime

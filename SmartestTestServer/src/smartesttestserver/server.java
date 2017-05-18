@@ -132,10 +132,9 @@ public class server {
     }
     
     // What happens when student finishes taking a test and clicks "submit"
-    public static void saveGradedTest(int sid, String pincode, GradedTest gt, String score){
-        String gtContent = toStr(gt);
+    public static void saveGradedTest(int sid, String pincode, String gt, String score){
         String query = "INSERT INTO tbl_gradedtest (sid, pincode, gradedTestObj, score) VALUES ('" +
-                sid + "', '" + pincode + "', '" + gtContent + "', '" + score + "');";
+                sid + "', '" + pincode + "', '" + gt + "', '" + score + "');";
         execNonQuery(query);
     }
     
@@ -192,10 +191,10 @@ public class server {
     }
     
     // What happens when teacher clicks "Finalize" after creating a Test
-    public static void saveTest(int pincode , int teacherID, Test myTest){
-        String testContent = toStr(myTest);
+    public static void saveTest(String pincode , int teacherID, String myTest){
+        //String testContent = toStr(myTest);
         String query = "INSERT INTO tbl_test (pincode, tid, testObj) VALUES ('" + pincode + "', '" +
-                teacherID + "', '" + testContent + "');";
+                teacherID + "', '" + myTest + "');";
         execNonQuery(query); 
     }
     
@@ -239,7 +238,7 @@ public class server {
                 pullTest(args[1]);
                 break;
             case "saveGradedTest":
-                saveGradedTest(Integer.parseInt(args[1]),args[2],(GradedTest)utils.toObj(args[3]),args[4]);
+                saveGradedTest(Integer.parseInt(args[1]),args[2],args[3],args[4]);
                 break;
             case "addUser": 
                 addUser(args[1],args[2],args[3]);
@@ -254,7 +253,7 @@ public class server {
                 resetPWD(args[1],Integer.parseInt(args[2]));
                 break;
             case "saveTest":
-                saveTest(Integer.parseInt(args[1]),Integer.parseInt(args[2]),(Test)utils.toObj(args[3]));
+                saveTest(args[1],Integer.parseInt(args[2]),args[3]);
                 break;
             case "pullTakenTestList":
                 pullTakenTestList(Integer.parseInt(args[1]));

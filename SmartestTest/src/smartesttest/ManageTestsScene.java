@@ -39,7 +39,7 @@ public class ManageTestsScene extends TeacherDash{
         Label lbScores = new Label("Student Scores");
         Label lbLO = new Label("Learning Outcomes");
         
-        ArrayList<String> tTests = pullTests(tid);
+        ArrayList<String> tTests = pullTests(2);
         for (int i = 0; i<tTests.size(); i++){
             final int x = i;
             Label pin = new Label(tTests.get(i));
