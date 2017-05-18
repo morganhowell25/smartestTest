@@ -60,7 +60,7 @@ public class utils {
             char newChar = ALPHABET.charAt(keyVal);
             cipherText += newChar;
         }
-    return cipherText;
+        return cipherText;
     }
     
     public static String decrypt(String cipherText){
@@ -75,6 +75,6 @@ public class utils {
             char newChar = ALPHABET.charAt(keyVal);
             passText += newChar;
         }
-    return passText;
+        return passText;
     }
 }

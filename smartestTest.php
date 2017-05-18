@@ -38,7 +38,8 @@
 		$userName = $_POST["userName"];
 		$userPass = $_POST["userPass"];
 		$userRole = $_POST["userRole"];
-		$cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $userName $userPass $iserRole";
+		print("Made it into php file with $op $userName $userPass $userRole");
+		$cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $userName $userPass $userRole";
 	}else if($op=="pullUserList"){
 		$cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op";
 	}else if($op=="pullUInfo"){

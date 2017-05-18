@@ -9,7 +9,6 @@ CREATE TABLE tbl_user(
 	uname VARCHAR(255),
 	encodedPWD VARCHAR(255)
 );
-INSERT INTO tbl_user (role, uname, encodedPWD) VALUES ('admin', 'admin', 'admin1');
 
 CREATE TABLE tbl_test(
 	pincode VARCHAR(255) PRIMARY KEY,
