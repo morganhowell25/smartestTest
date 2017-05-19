@@ -41,9 +41,9 @@ public class ViewScoresScene extends StudentDash {
             btnViewScores.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    System.out.println("View Test Clicked!");
+                    //System.out.println("View Test Clicked!");
                     /*ArrayList<String> arrGT = server.pullStudentGradedTest(currentUserID, takenTests.get(index));
-                    System.out.println(arrGT.get(0));
+                    //System.out.println(arrGT.get(0));
                     GradedTest gt = (GradedTest)utils.toObj(arrGT.get(0));*/
                     GradedTest gt = server.pullStudentGradedTest(currentUserID, takenTests.get(index));
                     ViewStudentScoreScene scoreScene = new ViewStudentScoreScene(gt, currentUserID);

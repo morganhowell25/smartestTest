@@ -94,7 +94,7 @@ public class TestScene extends StudentDash {
                 }
                 if (flag) {
 
-                    System.out.println("Sumbit Clicked!");
+                    //System.out.println("Sumbit Clicked!");
 
                     GradedTest graded = new GradedTest(myTest, stuAns, currentUserID);
                     graded.grade();
@@ -107,7 +107,7 @@ public class TestScene extends StudentDash {
                     //testing to see if it correctly pulls the students answers
                     //#worksfristtime
                     /*for (int x = 0; x < stuAns.length; x++) {
-                        System.out.println("Student Answered: " + stuAns[x]);
+                        //System.out.println("Student Answered: " + stuAns[x]);
                     }*/
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);

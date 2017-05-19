@@ -105,7 +105,7 @@ public class AddQuestionScene extends TeacherDash {
             //txtAnsOption.setText(answers[0]);
             //txtAnsOption2.setText(answers[1]);
             for (int k = 0; k < myQ.getAnswers().length; k++) {
-                System.out.println("Answers: " + myQ.getAnswers()[k]);
+                //System.out.println("Answers: " + myQ.getAnswers()[k]);
             }
             //if(answers.length>2){
             for (int i = 0; i < myQ.getAnswers().length; i++) {
@@ -127,8 +127,8 @@ public class AddQuestionScene extends TeacherDash {
                     gp.add(btnNewAnswerOption, 2, current + 2);
                     gp.add(btnRMOption, 2, current + 3);
                     current++;
-                    System.out.println("Current Add: " + current);
-                    System.out.println("ARRAY: " + textFieldArr.get(i));
+                    //System.out.println("Current Add: " + current);
+                    //System.out.println("ARRAY: " + textFieldArr.get(i));
 
                     textFieldArr.get(i).setText(myQ.getAnswers()[i]);
                 }
@@ -168,16 +168,16 @@ public class AddQuestionScene extends TeacherDash {
                 gp.add(btnNewAnswerOption, 2, current + 2);
                 gp.add(btnRMOption, 2, current + 3);
                 current++;
-                System.out.println("Current Add: " + current);
+                //System.out.println("Current Add: " + current);
 
                 /*//Testing only
                 for(int i=0; i<answersArr.size(); i++){
-                    System.out.print("Answer Array: " + answersArr.get(i));
+                    //System.out.print("Answer Array: " + answersArr.get(i));
                 } 
                  */
                 //Test here
                 //String test = txtQuestion.getText();
-                //System.out.println("I return: " + test);
+                ////System.out.println("I return: " + test);
             }
         }
         );
@@ -199,7 +199,7 @@ public class AddQuestionScene extends TeacherDash {
                     textFieldArr.remove(textFieldArr.get(textFieldArr.size() - 1));
                     rbArr.remove(rbArr.get(rbArr.size() - 1));
                     current--;
-                    System.out.println("Current Minus: " + current);
+                    //System.out.println("Current Minus: " + current);
                 }
             }
         }
@@ -226,12 +226,12 @@ public class AddQuestionScene extends TeacherDash {
             @Override
             public void handle(ActionEvent event
             ) {
-                System.out.println("Done Buttom Clicked!");
+                ////System.out.println("Done Buttom Clicked!");
                 try {
                     //GET ALL USER INPUT
                     String StrQuestion = txtQuestion.getText();
-                    System.out.println("HELLO: " + StrQuestion);
-                    System.out.println("HELLO22: " + txtQuestion.getText());
+                    //System.out.println("HELLO: " + StrQuestion);
+                    //System.out.println("HELLO22: " + txtQuestion.getText());
 
                     int intPoints = Integer.parseInt(txtPoints.getText());
                     boolean emptyStrings = false;
@@ -241,8 +241,8 @@ public class AddQuestionScene extends TeacherDash {
                             emptyStrings = true;
                         }
                         answersArr.add(textFieldArr.get(i).getText());
-                        System.out.println("answer Option: " + textFieldArr.get(i).getText() + "\n"); //Testing what I add
-                        System.out.println("ACTUAL ARR: " + answersArr.get(i)); //Should match above
+                        //System.out.println("answer Option: " + textFieldArr.get(i).getText() + "\n"); //Testing what I add
+                        //System.out.println("ACTUAL ARR: " + answersArr.get(i)); //Should match above
                     }
                     //Find selected RB               
                     int correctAns = -1;                    int index = 0;
@@ -269,7 +269,7 @@ public class AddQuestionScene extends TeacherDash {
                         DeleteAlert.setContentText("Please select an answer choice!");
                         DeleteAlert.showAndWait();
                     }
-                    //System.out.println("Selected RB index = " + correctAns);
+                    ////System.out.println("Selected RB index = " + correctAns);
                     //Find selected LOs
                     ArrayList<String> arrList = new ArrayList<String>();
                     for (int k = 0; k < rbLOSelect.size(); k++) {
@@ -285,13 +285,13 @@ public class AddQuestionScene extends TeacherDash {
                             //selectedLOs.add(rbLOSelect.get(k).getText());
                             arrList.add(""+ k);
                             selectedLOs.add(arrList);
-                            System.out.println("Selected LO index = " + k);
+                            //System.out.println("Selected LO index = " + k);
                         }
                     }
                     //End get user input
                     /*TestArray
                 for(int i=0; i<answersArr.size(); i++){
-                    System.out.print("Answer Array: " + answersArr.get(i)+ "\n");
+                    //System.out.print("Answer Array: " + answersArr.get(i)+ "\n");
                 }
                      */
                     //Finally... save the question. Call contructor.

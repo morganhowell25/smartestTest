@@ -51,13 +51,13 @@ public class ManageUserScene extends AdminDash {
                 delBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        System.out.println("ChangePass Clicked!");
+                        //System.out.println("ChangePass Clicked!");
                         TextInputDialog dialog = new TextInputDialog("password");
                         dialog.setTitle("Password Change");
                         dialog.setHeaderText(null);
                         dialog.setContentText("Please enter new password:");
                         Optional<String> result = dialog.showAndWait();
-                        System.out.println(result.get() + " " + buttonInd);
+                        //System.out.println(result.get() + " " + buttonInd);
                         
                         if (result.isPresent()) {
                             boolean validPass = true;

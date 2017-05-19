@@ -25,7 +25,7 @@ public class ImportLOsScene extends AdminDash {
     //public boolean disabled;
     
     public Scene getScene() {
-        //System.out.println(disabled);
+        ////System.out.println(disabled);
         
         GridPane gp = drawAdminDash();
 
@@ -52,7 +52,7 @@ public class ImportLOsScene extends AdminDash {
         btnUpload.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Upload Clicked!");
+                //System.out.println("Upload Clicked!");
                 String filepath = tfEnter.getText();
                 filepath = filepath.trim(); // Remove leading and trailing whitespace
                 try {
@@ -69,7 +69,7 @@ public class ImportLOsScene extends AdminDash {
                             strCat1 = strCat1.replaceFirst("([^;]*;){1}", ""); // Remove all characters before the semicolon ";" in the string
                             strCat1 = strCat1.replaceAll("\\s","");
                             strCat1 = strCat1.trim(); // Remove the leading whitespace
-                            System.out.println(strCat1);
+                            //System.out.println(strCat1);
                             server.uploadOneLO(strCat1, "default");
                         } else { // The line read is a category 2 Learning Outcome
                             String strCat2 = line;
@@ -77,7 +77,7 @@ public class ImportLOsScene extends AdminDash {
                             strCat2 = strCat2.replaceFirst("([^;]*;){1}", ""); // Remove all characters before the semicolon ";" in the string
                             strCat2 = strCat2.replaceAll("\\s","");
                             strCat2 = strCat2.trim(); // Remove the leading whitespace
-                            System.out.println(strCat2);
+                            //System.out.println(strCat2);
                             server.uploadOneLO(strCat1, strCat2);
                         }
                     }
@@ -90,9 +90,9 @@ public class ImportLOsScene extends AdminDash {
                     uploadSuccess.showAndWait();
                     //disabled = true; // Set protected class variable to true
                     btnUpload.setDisable(true);// Disable the button so it cannot be clicked again.
-                    //System.out.println(disabled);
+                    ////System.out.println(disabled);
                 } catch (Exception e) {
-                    System.out.println(e.toString());
+                    //System.out.println(e.toString());
                     Alert uploadFail = new Alert(Alert.AlertType.ERROR);
                     uploadFail.setTitle("Upload Learning Outcomes");
                     uploadFail.setHeaderText("File Not Found!");

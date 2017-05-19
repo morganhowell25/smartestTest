@@ -67,7 +67,7 @@ public class CreateTestScene extends TeacherDash {
                 btnEdit.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        System.out.println("Edit Clicked!");
+                        //System.out.println("Edit Clicked!");
                         AddQuestionScene aqs = new AddQuestionScene(currentUserID, cts, true);
                         aqs.STAGE = teacherDash.STAGE;
                        // editQuestion((arrQ.get(indexEditQ)), indexEditQ);
@@ -77,15 +77,15 @@ public class CreateTestScene extends TeacherDash {
             }
         //}
 
-        System.out.println("numQ = " + numQ);
-        System.out.println(arrQ);
+        //System.out.println("numQ = " + numQ);
+        //System.out.println(arrQ);
         //Upon clicking Create Test
         Button btnFinalize = new Button("Finalize");
         gp.add(btnFinalize, 1, 0);
         btnFinalize.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Finalize Button Clicked!");
+                //System.out.println("Finalize Button Clicked!");
                 Alert finalizeAlert = new Alert(Alert.AlertType.CONFIRMATION);
                 finalizeAlert.setTitle("Confirmation");
                 finalizeAlert.setHeaderText(null);
@@ -113,7 +113,7 @@ public class CreateTestScene extends TeacherDash {
         btnAddQuestion.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Add Question Clicked!");
+                //System.out.println("Add Question Clicked!");
                 AddQuestionScene aqs = new AddQuestionScene(currentUserID, cts, false);
                 aqs.STAGE = teacherDash.STAGE;
                 teacherDash.update(aqs.getScene(null, 0));
