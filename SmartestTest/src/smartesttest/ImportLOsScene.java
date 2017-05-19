@@ -6,6 +6,7 @@
 package smartesttest;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,6 +44,10 @@ public class ImportLOsScene extends AdminDash {
         //    btnUpload.setDisable(disabled); // Disable upload the button
         //}
         gp.add(btnUpload, 1, 2);
+        ArrayList<ArrayList<String>> existingLO = server.pullDepartmentLOs();
+        if(!(existingLO.get(0).isEmpty())){
+            btnUpload.setDisable(true);
+        }
         
         btnUpload.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -62,6 +67,7 @@ public class ImportLOsScene extends AdminDash {
                             //strCat1 = line.substring(5); // Extract the LO from the file
                             strCat1 = line;
                             strCat1 = strCat1.replaceFirst("([^;]*;){1}", ""); // Remove all characters before the semicolon ";" in the string
+                            strCat1 = strCat1.replaceAll("\\s","");
                             strCat1 = strCat1.trim(); // Remove the leading whitespace
                             System.out.println(strCat1);
                             server.uploadOneLO(strCat1, "default");
@@ -69,6 +75,7 @@ public class ImportLOsScene extends AdminDash {
                             String strCat2 = line;
                             //strCat2 = strCat2.substring(7); // Extract the LO from the file
                             strCat2 = strCat2.replaceFirst("([^;]*;){1}", ""); // Remove all characters before the semicolon ";" in the string
+                            strCat2 = strCat2.replaceAll("\\s","");
                             strCat2 = strCat2.trim(); // Remove the leading whitespace
                             System.out.println(strCat2);
                             server.uploadOneLO(strCat1, strCat2);
