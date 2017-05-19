@@ -59,7 +59,7 @@ public class GradedTest implements java.io.Serializable
         for(int i =0; i < questionList.length; i ++)
         {
             //for every LO in that Question
-            int k = questionList[i].getLOs().get(0).size();
+            int k = questionList[i].getLOs().get(1).size();
             for(int j=0; j< k; j++){
                 //updates department LO
                 String cat1 = questionList[i].getLOs().get(0).get(j);

@@ -1,0 +1,1272 @@
+commit 580455ec61958adb1838979ea5d92e1d2df4a0b4
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Fri May 19 11:57:30 2017 -0400
+
+    Fixed a bunch of errors in AddQuestionScene
+    Please enter the commit message for your changes. Lines starting
+
+commit 47e8e43b7cfe9d6c5a6166fb93a8707ebc30c399
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri May 19 10:29:28 2017 -0400
+
+    adjusted server LO should work now
+
+commit 3d00ab31fdb770bedc329c2e245a8d9e146e5085
+Merge: 16cba0a 0157113
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri May 19 08:02:27 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV5' into morganWork
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/AddQuestionScene.java
+    	SmartestTestServer/build/built-jar.properties
+    	SmartestTestServer/dist/SmartestTestServer.jar
+
+commit 16cba0ae58e8689f439e3073005405971a935999
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri May 19 07:24:52 2017 -0400
+
+    fix uploadOneTestLO in server
+
+commit 01571135c5397a7090e43450333763ce0fadd18b
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 19 06:56:37 2017 -0400
+
+    fixed loginform and removed superfluous print statements
+
+commit 5e25c1f041611acccb887b99b076efb18c0c3ea6
+Merge: 301362f ccafd5b
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 19 06:46:19 2017 -0400
+
+    Merge remote-tracking branch 'origin/VictorBranchNew' into timV5
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/AddQuestionScene.java
+    	SmartestTestServer/build/classes/smartesttestserver/DBHandler.class
+
+commit 4398806cbc6299bdda600e4c4f69572f2ce49fca
+Merge: 658c8bb ccafd5b
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri May 19 05:51:40 2017 -0400
+
+    Merge remote-tracking branch 'origin/VictorBranchNew' into morganWork
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/AddQuestionScene.java
+    	SmartestTestServer/build/classes/smartesttestserver/DBHandler.class
+
+commit 658c8bb63d2ff9857fee1d8e0bfe9d1373fa68f0
+Merge: 4823c14 a4d57c5
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri May 19 05:49:15 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV5' into morganWork
+    
+    Conflicts:
+    	SmartestTestServer/build/built-jar.properties
+    	SmartestTestServer/build/classes/smartesttestserver/server.class
+    	SmartestTestServer/dist/SmartestTestServer.jar
+
+commit 301362ff6bfcd62ccb4b6667ff4b8dde3472f786
+Merge: a4d57c5 4823c14
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 19 05:46:44 2017 -0400
+
+    Merge remote-tracking branch 'origin/morganWork' into timV5
+    
+    Conflicts:
+    	SmartestTestServer/build/built-jar.properties
+    	SmartestTestServer/build/classes/smartesttestserver/server.class
+    	SmartestTestServer/dist/SmartestTestServer.jar
+
+commit ccafd5b247195ca6397f45e690b450e6ed6acd9f
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Fri May 19 05:42:45 2017 -0400
+
+    Changes made
+
+commit 4823c14fe7883bb2c55223ad0144dec95d685be2
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri May 19 05:42:26 2017 -0400
+
+    Fixed viewstudentscore scene and finished checking server
+
+commit a4d57c530990a7808b7c7f9265f4b35412a3f8e7
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 19 03:55:03 2017 -0400
+
+    fixed the LOs and their display
+
+commit 4bbfdc457442ae49f2fcc302ac2846839d255bea
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 19 02:29:34 2017 -0400
+
+    made it so that LOs can only be uploaded once
+
+commit 381bfe8a293e8f053c55c28d76b0e89822d95195
+Merge: e05d2d4 8723861
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 19 01:59:29 2017 -0400
+
+    Merge remote-tracking branch 'origin/homestretch2' into timV5
+    
+    Conflicts:
+    	SmartestTestServer/build/built-jar.properties
+    	SmartestTestServer/build/classes/smartesttestserver/server.class
+    	SmartestTestServer/dist/SmartestTestServer.jar
+
+commit e05d2d47ee6a9695ad2799e7d3a7a44d7e2c0eed
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 19 01:58:17 2017 -0400
+
+    did some ip stuff
+
+commit 87238614d6646af2f4c1d2ee1f5f702a11cc5705
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Fri May 19 01:11:54 2017 -0400
+
+    Most sql queries work. Still need updateTestLOs
+
+commit 1f9346404079e6e488bcb1c2cd881e25fd4fa371
+Merge: 9fd1a8c 5c0f604
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 19 00:49:54 2017 -0400
+
+    Merge remote-tracking branch 'origin/homestretch2' into timV5
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/AddUserScene.java
+
+commit 8dc8205cb6c3375b3e924cb9e57286544bef2c66
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Fri May 19 00:02:34 2017 -0400
+
+    hmm
+
+commit 5c0f6040425144fd518561ea832d1e1c5a55dcd8
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 18 23:03:44 2017 -0400
+
+    Push updated php file
+
+commit a1c46a671f32920b5a8270696e0c351ecb2f78e0
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 18 22:11:42 2017 -0400
+
+    mit message for your changes. Lines starting
+
+commit 601012f4b84fee1baaf5b4d00d9c272963f6063c
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 18 20:22:39 2017 -0400
+
+    StudentScoresListStruct still not found in server project
+
+commit 333cf8bd15451e5cade3e77ab62f01d5de745efd
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 18 18:15:39 2017 -0400
+
+    saveGradedTest works.
+
+commit 822f5cf8b871961de38cc1549990062bc49b09a0
+Merge: 3dfa86a 4d4dd3b
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 18 17:00:19 2017 -0400
+
+    Merge remote-tracking branch 'origin/VictorBranch' into homestretch2
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/TeacherDash.java
+
+commit 3dfa86a1e549ab94fdf1099741bf6c2d4e7fcc45
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 18 16:53:54 2017 -0400
+
+    Getting ready to test Victor's work
+
+commit 1800d3834dbf9585475d932a0473e14252b62382
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 18 16:19:14 2017 -0400
+
+    Made lots of changes. Bugfixed Admin except for disallow mult LO upload.
+
+commit bdf72ef3b3a44feeb1cde503afb834c47bffe5ad
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 18 14:38:57 2017 -0400
+
+    Saving changes to server. Commented out URLEncode and URLDecode in toStr and toObj
+
+commit 4d4dd3b6cc5e0ee081e025c328e10b698cec1bcd
+Merge: bd70df9 30bb386
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Thu May 18 13:20:35 2017 -0400
+
+    Changes
+    Merge remote-tracking branch 'origin/branchJohn' into VictorBranch
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/AddQuestionScene.java
+
+commit 308b3dca35161d62945d6872e857f2753b1e7de8
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Thu May 18 13:18:57 2017 -0400
+
+    sure
+
+commit bd70df902b9341c89f1558f304325ba4748bd42a
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Thu May 18 12:49:59 2017 -0400
+
+    Further changes (finalize finished)
+
+commit 67d9ef4d9a4616d6c1d61298bc6e133e699e7cbc
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Wed May 17 20:03:56 2017 -0400
+
+    Attempted to fix toObj decode. Almost there.
+
+commit 1d3ff967e911b167e7ada5e4f3ba79c1fe780088
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Wed May 17 19:01:47 2017 -0400
+
+    Checking breakpoints
+
+commit 30bb38619e0db1dfb10c44561469c444dda7f524
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Wed May 17 18:24:30 2017 -0400
+
+    fixed addquestion to allow for more than 5 options
+
+commit 67026409e5ba50502217dc32ee222fa917827978
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Wed May 17 18:09:49 2017 -0400
+
+    Made some changes
+
+commit eab61d2b43c702cb1b392668e9e4ef358da5adc5
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Wed May 17 17:32:23 2017 -0400
+
+    Added checkUname method for AddUserScene. Still need to add this method to php file.
+
+commit 986fcb25aa135ac2b574311a0f6072fc25c80fff
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Wed May 17 16:58:07 2017 -0400
+
+    Add Question scene does what its supposed to now
+
+commit a2b28fcf55db1f6a0b209a201e62f2d58cfe2560
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Wed May 17 16:55:44 2017 -0400
+
+    Made minor changes in server.java
+
+commit 53e0853dd14148dc7b352d945119fcc57d513c42
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Wed May 17 16:51:30 2017 -0400
+
+    Organized smarttestserver package
+
+commit 593bf33b0621daa11d59508e5ce0a3f777f095d0
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Wed May 17 16:36:18 2017 -0400
+
+    Added null case to if statement in LoginForm
+
+commit 054d35d89b5e4f05fb65db61cedc3eeeafe10c28
+Merge: a216802 23a4c06
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Wed May 17 16:02:36 2017 -0400
+
+    Merge remote-tracking branch 'origin/homestretch' into Andy
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/TakeTestScene.java
+
+commit a21680285c36d173c45a8a211bd3454c20354d99
+Author: root <root@localhost.localdomain>
+Date:   Wed May 17 12:49:47 2017 -0400
+
+    merging attempt
+
+commit e09215889450109b5f69a59c48de47a0214db837
+Merge: 663578a 18b194d
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Wed May 17 12:35:45 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV4' into Andy
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/TakeTestScene.java
+
+commit 9fd1a8c27f72704884833c7182ec27bac61ad762
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Wed May 17 11:57:37 2017 -0400
+
+    new branch for tim
+
+commit 23a4c0671707628f7f6df0a2e00d513e8337f9d8
+Merge: 94b7a58 79b25ee
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Wed May 17 11:52:35 2017 -0400
+
+    Merge remote-tracking branch 'origin/branchJohn' into timV4
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/AddQuestionScene.java
+
+commit 94b7a58cd851352d192c4996bf3529b677e1d0b0
+Merge: 65c9096 f0b1aa2
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Wed May 17 11:46:56 2017 -0400
+
+    Merge remote-tracking branch 'origin/MorganWork' into timV4
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/SmartestTest.java
+
+commit 65c9096a082676449f2217a88ffa335b162e2db0
+Merge: 18b194d 663578a
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Wed May 17 11:43:06 2017 -0400
+
+    Merge remote-tracking branch 'origin/Andy' into timV4
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/TakeTestScene.java
+
+commit 663578a76a8c3a0b915a7b9c400d2117ec7991d3
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Wed May 17 11:10:22 2017 -0400
+
+    hopefully fixed server
+
+commit 79b25eea2b1330e70948ad3d4e778239d4cea14d
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Tue May 16 19:26:39 2017 -0400
+
+    Added mroe to edit function
+
+commit f0b1aa28d285794d7ce7b998e683172a21ccd783
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Tue May 16 17:58:09 2017 -0400
+
+    fiixed an issue with scores
+
+commit e2886e43db1bedaf062104559dcbde1c05aa2d3a
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Tue May 16 17:48:32 2017 -0400
+
+    implementation of View Scores Scene
+    as well as added a needed method to server
+
+commit 18b194d897590a27d5007584a69682c628971900
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Tue May 16 17:36:16 2017 -0400
+
+    updated manageuserscene
+
+commit 2ee8dd72ef1390ec46f3b53f630967f7b0816fc0
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Tue May 16 17:17:05 2017 -0400
+
+    fixed another sql vulnerability and added scrolling to manageuser
+
+commit 2e24572f8da8ba4af36ab95ebb96a382afb72484
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Tue May 16 17:12:14 2017 -0400
+
+    fixed some sql injection vulnerabilites along with loginform
+
+commit 5e01a5d6ceb64ba0ecd4774723f0d46df8eaee5d
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Tue May 16 16:12:55 2017 -0400
+
+    fixed GT runtime logci issues. As well as corrected the scoring
+
+commit bf2e33311cb9ad285a4b659acbe35b0948c5fe71
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Tue May 16 15:44:45 2017 -0400
+
+    Fixed some runtime logic issues with Test Scene -> caused issues within graded test
+
+commit 7a6f64e78e3a167d57b99910a09a12b07e5c7b7c
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Sun May 14 20:51:16 2017 -0400
+
+    Added edite button. Mostly works except for it adding two additions options. Whatever....
+
+commit 86bef62f3733b71deb9b4da8c3169a89e4c9800a
+Merge: b7ead03 5aacb69
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Sun May 14 20:13:36 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV4' into MorganWork
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/SmartestTest.java
+
+commit c3103a60449e89a3c97006b5b5f437cd255a25c7
+Merge: 3d3b99e 99a8e91
+Author: root <root@localhost.localdomain>
+Date:   Sun May 14 20:12:17 2017 -0400
+
+    Merge remote-tracking branch 'origin/branchMATT' into Andy
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/DashBoard.java
+
+commit 3d3b99e44e837e7eee2cd0832c9e4797d6b5b248
+Merge: 942b896 2347b8b
+Author: root <root@localhost.localdomain>
+Date:   Sun May 14 20:02:48 2017 -0400
+
+    Merge remote-tracking branch 'origin/branchJohn' into Andy
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/SmartestTest.java
+    	SmartestTest/src/smartesttest/utils.java
+
+commit 942b896847f94ab132c4dd6e2bed48509e8ada50
+Merge: 7874f54 5aacb69
+Author: root <root@localhost.localdomain>
+Date:   Sun May 14 19:51:07 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV4' into Andy
+
+commit 7874f542ebc08caaafa20cc71b94e7b1f2bf3211
+Merge: d4de141 b7ead03
+Author: root <root@localhost.localdomain>
+Date:   Sun May 14 19:49:09 2017 -0400
+
+    Merge remote-tracking branch 'origin/MorganWork' into Andy
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/SmartestTest.java
+
+commit adc57da34e9b3522ec9c636b2a3fb816e1aee8bf
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Sun May 14 19:36:55 2017 -0400
+
+    Add Question and edit functin complete(maybe) Also added a delete function.
+
+commit d4de141a0a16138d3efbb9300cf839d1adff25d6
+Author: root <root@localhost.localdomain>
+Date:   Sun May 14 19:36:26 2017 -0400
+
+    possibly broken server...
+
+commit b7ead03f463795f23089e1ef81618922fb7d5598
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Sun May 14 19:34:57 2017 -0400
+
+    added a completeltion alert to TestScene
+
+commit 78bba1a9d2620a454b39c4c776977e93704d7566
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Sun May 14 19:15:18 2017 -0400
+
+    finished implementation of view student tests and fixed parts of graded tests
+
+commit 5aacb69f33b9c344f99158429493125559c2756d
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Sun May 14 17:39:25 2017 -0400
+
+    updated adduser to check for alphanumeric passwords
+
+commit e97fbdcdc4744b7f49c04047af68f6ec0648beba
+Merge: ac3af9e 81387e8
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Sun May 14 17:10:44 2017 -0400
+
+    Merge remote-tracking branch 'origin/Andy' into timV4
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/server.java
+
+commit ac3af9e98295372d7537d5ce87f6040f5cf2266b
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Sun May 14 17:06:28 2017 -0400
+
+    so done
+
+commit 8693deed9ffdc52d3354af062237e2a71334ad98
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Sun May 14 16:56:38 2017 -0400
+
+    Finished grading method and saving method implementation
+
+commit 81387e89eef3a326cdf74beffab458af4088af71
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Sun May 14 14:45:47 2017 -0400
+
+    attempt
+
+commit 9a8595375081baa8d9e2463ed6a9e900d947d7fd
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Sun May 14 14:27:46 2017 -0400
+
+    commit before pulling Johns
+
+commit 2347b8b1d63034a22e0087b926ca952d4a995d13
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Sun May 14 14:24:12 2017 -0400
+
+    Add Question scene
+
+commit e9cff23fd4e9d96a567aef49de6cbb364e3001c0
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri May 12 09:59:25 2017 -0400
+
+    remember how to use inheiritance changedd back to radio button bios
+
+commit 6543b5141e61d679d929c4fdd49b7f855b5a29c5
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri May 12 09:41:59 2017 -0400
+
+    Changed radio buttons to toggle buttons to be able to pull the answers form the test
+
+commit 5002a2aa74cd119778e3b0c40417f1d0881c45e7
+Merge: b65a9f5 611e907
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Thu May 11 17:31:57 2017 -0400
+
+    Merge remote-tracking branch 'origin/implMATT' into Andy
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/SmartestTest.java
+    	SmartestTest/src/smartesttest/utils.java
+
+commit b65a9f59d534d230c226fec92f8a3add05f0a7a2
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Thu May 11 17:24:36 2017 -0400
+
+    Manage Test Scene complete
+
+commit 611e907fbc60da94bccffafdbb7ed1f064d3f2fd
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 11 17:11:27 2017 -0400
+
+    Removed unused imports in utils.java
+
+commit bda1a013926694d8c092bee4d2dcab905b6fb4cc
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 11 17:01:43 2017 -0400
+
+    Finished LO Upload. Secured LoginForm to make many more scurity checks. Added alerts to both LoginForm and ImportLosScene.
+
+commit f331f4490d548d0d5a4b8ceec5cbf0b7644e9ece
+Merge: 7e0ac92 6b596a9
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 11 15:09:04 2017 -0400
+
+    Merge remote-tracking branch 'origin/VictorBranch' into implMATT
+
+commit 7e0ac920921f5d3933bed77608b227ce8b04a31c
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Thu May 11 15:08:22 2017 -0400
+
+    Commit to save changes before merge with victor's branch
+
+commit 9e7859917810bd05171a6b4272bac93cffc27c88
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Wed May 10 20:30:38 2017 -0400
+
+    Implemented a potential way to read from the input txt file to add LOs to db.
+
+commit 6b596a9eda3b5ef51bf630087e048faabf176604
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Wed May 10 20:25:51 2017 -0400
+
+    Changes
+
+commit ae9628d0057794a4c453494ac3a21997b188a395
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Wed May 10 20:22:53 2017 -0400
+
+    AddQuestion Scene, reformatted and added variable option and radio functionality
+
+commit 6ced501186cffe5ba892c4065ccc75a1b0c6c4f4
+Merge: 99886e0 8df9aa7
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Wed May 10 20:20:23 2017 -0400
+
+    Merge branch 'Andy2' of https://github.com/morganhowell25/smartestTest into MorganWork
+
+commit 99886e0d085e09ca085cf90205dd05e2ac5bb69c
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Wed May 10 20:19:31 2017 -0400
+
+    implementation on Score screen half complete
+
+commit 8df9aa7321587e242e9d052af94a3ce822ee580b
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Wed May 10 20:19:08 2017 -0400
+
+    added update LOs
+
+commit ca23f86fdd00192a5dd03992bfca7441d07a0413
+Merge: 5e9179e 8dc896b
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Wed May 10 19:57:53 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV3' into Andy2
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/utils.java
+
+commit 5e9179e9c2e928fc0d50e19a5fa2406bd3456c11
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Wed May 10 19:54:43 2017 -0400
+
+    commiting to pull
+
+commit 837bbcc68d4f4da1fe8e4c1f9c14464b560707a4
+Merge: 084a41f 8dc896b
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Wed May 10 18:55:14 2017 -0400
+
+    hbsMerge remote-tracking branch 'origin/timV3' into VictorBranch
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/utils.java
+
+commit 084a41f01fd6dc8d2f7708eba197f88929c75888
+Merge: 76c50cb 43f9d51
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Wed May 10 18:49:18 2017 -0400
+
+    UpMerge remote-tracking branch 'origin/timV2' into VictorBranch
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/SmartestTest.java
+
+commit 8dc896bdc2a107a41b00410f70f7d40fd6ec2cbd
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Wed May 10 18:47:06 2017 -0400
+
+    fixed the difference between server.java and utils.java, and the hasher
+
+commit bf6c2ed7a2ca7c2b314b7fa7a1b56b9ca364f882
+Merge: 02654a1 76c50cb
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Wed May 10 18:39:03 2017 -0400
+
+    Merge remote-tracking branch 'origin/VictorBranch' into branchJohn
+
+commit 02654a14ef259c5501a5f5460ed97fd6c70a992a
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Wed May 10 18:38:42 2017 -0400
+
+    Added to addQuestion scene
+
+commit a9a5c07fa6053264cdb303744aa05a9ee820820f
+Merge: a68194f dbf81bd
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Mon May 8 21:20:40 2017 -0400
+
+    Merge remote-tracking branch 'origin/master' into Andy2
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/utils.java
+
+commit a68194f239fc90788cef26f9e16b0637cc2b24de
+Merge: dff8b20 43f9d51
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Mon May 8 21:15:20 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV2' into Andy2
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/utils.java
+
+commit dbf81bd39461959b0f1c50677bd3815929b5f1d4
+Merge: 16972e3 dff8b20
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Mon May 8 20:56:10 2017 -0400
+
+    Merge remote-tracking branch 'origin/Andy2' into implMATT
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/utils.java
+
+commit 16972e3f064b8e128d40694dae4edd6904494f81
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Mon May 8 20:51:57 2017 -0400
+
+    Save changes to project.properties
+
+commit 3166e3ea5efbf4957badae32853921f8731c708d
+Merge: c390bb3 43f9d51
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Mon May 8 20:45:24 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV2' into implMATT
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/TestScene.java
+
+commit 76c50cb7081f5acafd551c81677fe8b11107230b
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Mon May 8 20:40:33 2017 -0400
+
+    yup
+
+commit dff8b20986a0dd5d4ab6076aa083ec7c0aed36d5
+Author: root <root@localhost.localdomain>
+Date:   Mon May 8 20:33:54 2017 -0400
+
+    Added implementation for the second level of scenes.
+
+commit 43f9d51e483bb002dd9d5d36a835ba56d1baeb81
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Mon May 8 20:27:32 2017 -0400
+
+    added morgan's work on test and testscene
+
+commit c390bb3fb4203337a48d8bebda46541f6082336c
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Mon May 8 20:23:01 2017 -0400
+
+    Fixed some spacing.
+
+commit 324de3aef981c11505654871d325fa65fb77ad28
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Mon May 8 20:18:58 2017 -0400
+
+    fixed the hasher implementation
+
+commit 7309370c1fe8f39bbe6935f2a7dbde5639218702
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Mon May 8 19:48:26 2017 -0400
+
+    updated AddUser and ManageUsers to be fully functioning w/ database
+
+commit 2cc6f251ee510de2e387bfdcfa28fdf1d8f73345
+Merge: f8b465b 3e0cdd7
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Mon May 8 19:13:15 2017 -0400
+
+    Merge remote-tracking branch 'origin/implMATT' into implementationMorgan
+    
+    Conflicts:
+    	SmartestTest/nbproject/project.properties
+    	SmartestTest/src/smartesttest/SmartestTest.java
+
+commit f8b465b74cf3afc40a0f915222bbf6eff25cc67b
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Mon May 8 19:07:45 2017 -0400
+
+    implementation of test scene complete
+
+commit c847a7418a89a67050c4060b4c4ea512ef3f8889
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Mon May 8 18:26:10 2017 -0400
+
+    Another Update.
+
+commit 3e0cdd7452275317673f26def6d0af08b888ae7c
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Mon May 8 18:24:05 2017 -0400
+
+    John commit
+
+commit 8210003d2aeecf67df62a080838f012ca4bef64d
+Merge: 3f5d7ba bea4c8e
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Mon May 8 12:08:13 2017 -0400
+
+    Further Changes
+    Merge remote-tracking branch 'origin/implMATT' into VictorBranch
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/CreateTestScene.java
+    	SmartestTest/src/smartesttest/SmartestTest.java
+
+commit 3f5d7ba2ef183c5c6dafb11c17193dbb4f594aea
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Mon May 8 11:08:11 2017 -0400
+
+    Changes
+
+commit f763d647ed109d901c933b2477684da7d0ff8541
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Sun May 7 22:34:48 2017 -0400
+
+    Updates
+
+commit bea4c8e32a2febda71fd4c9f5547b9d8fe4a6665
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Sun May 7 22:05:40 2017 -0400
+
+    StudentScoresListScene is mostly complete. The Scene successfully displays a dynamic amount of students based on the data in the database that match the query. Also, the system successfully executed the SQL queries to insert into the db.
+
+commit fc2683668e06266f028ac5de51bc5fcb875248d9
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Sun May 7 19:02:22 2017 -0400
+
+    Lots of implementation done in StudentScoresListScene. Added StudentScoresListStruct class and ViewStudentScoreSceneTeacher class
+
+commit 310233197244125b4b866d98a435c8b55ada40c8
+Merge: eaaf7bd 6ac3429
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Fri May 5 12:54:22 2017 -0400
+
+    Merge remote-tracking branch 'origin/Andy2' into implMATT
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/SmartestTest.java
+    	SmartestTest/src/smartesttest/utils.java
+
+commit eaaf7bdf6644039a67d33428e2f2b67eb8f46326
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Fri May 5 12:48:40 2017 -0400
+
+    Saving changes to utils.java
+
+commit 6ac342969f28b1dbdd92b813799977e3fb2bbcb1
+Merge: 120d130 1063b1a
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Fri May 5 12:47:03 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV1' into Andy2
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/SmartestTest.java
+    	SmartestTest/src/smartesttest/utils.java
+
+commit 120d130405603522f3312432dce48e80a1a6d4de
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Fri May 5 12:40:56 2017 -0400
+
+    Added implementation in most of utlis.java methods. Minor changes to smartTest.sql
+
+commit 1063b1aec91073f02b99d4db015529376d25ced8
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 5 12:40:50 2017 -0400
+
+    added the libraries and implemented hasher
+
+commit ae4f3c773d1aeb655bde867415da04b0f0b53299
+Merge: 81b9b13 834ccac
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 5 10:20:08 2017 -0400
+
+    Merge remote-tracking branch 'origin/implMATT' into timV1
+
+commit 81b9b13c0b2b60ff7556f048212ffe6fad2c7241
+Merge: 0ab8742 49c6cd1
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 5 10:19:13 2017 -0400
+
+    Merge remote-tracking branch 'origin/implementationMorgan' into timV1
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/SmartestTest.java
+
+commit 0ab8742d4e12943f423e1e4fde0725cb189090c3
+Merge: 9ab8c94 a3cabcd
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 5 10:17:56 2017 -0400
+
+    Merge remote-tracking branch 'origin/Andy2' into timV1
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/utils.java
+
+commit ada27a1b4f7ea5af3488ba4f2c786da25dbac5a7
+Merge: c5d40a1 a3cabcd
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Fri May 5 10:14:44 2017 -0400
+
+    Merge remote-tracking branch 'origin/Andy2' into implMATT
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/SmartestTest.java
+    	SmartestTest/src/smartesttest/utils.java
+
+commit 62447d22ffcafef6f0448beec4336c97cf501e00
+Merge: f525b3c 9ab8c94
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Fri May 5 10:09:34 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV1' into Andy2
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/utils.java
+
+commit c5d40a1fdfcd3596cb8ddc8742f7ca8ae303c73a
+Merge: 47050cb 9ab8c94
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Fri May 5 10:09:00 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV1' into implMATT
+
+commit 9ab8c945fb89a1ed344ec2ed0ea6270c5187483f
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 5 10:07:30 2017 -0400
+
+    trying utils again
+
+commit f525b3c7cf6c10b783153b8d36971eccc8883262
+Merge: f8eabde 485041a
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Fri May 5 10:07:04 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV1' into Andy2
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/utils.java
+
+commit 47050cbdc5406a740d7dba4f7c3710deb031be9b
+Merge: a8718dd 485041a
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Fri May 5 10:06:59 2017 -0400
+
+    Merge remote-tracking branch 'origin/timV1' into implMATT
+
+commit f8eabde2a87decd65ce287361d6156ba098f1da7
+Merge: bf4b7db 49c6cd1
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Fri May 5 10:03:24 2017 -0400
+
+    Merge remote-tracking branch 'origin/implementationMorgan' into Andy2
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/SmartestTest.java
+
+commit bf4b7db205b2a04ab66a1a8458562aade6cefe4f
+Merge: a3cabcd 834ccac
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Fri May 5 10:01:56 2017 -0400
+
+    Merge remote-tracking branch 'origin/implMATT' into Andy2
+
+commit a8718dd3f417aa7d65b5e680cc2fd7cde2fdfdb2
+Merge: 834ccac 49c6cd1
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Fri May 5 10:00:05 2017 -0400
+
+    Merge remote-tracking branch 'origin/implementationMorgan' into implMATT
+
+commit a3cabcd9aa02693f49ea332b67949b9a3e654efa
+Merge: 1efeec4 ed2e7a2
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Fri May 5 09:59:48 2017 -0400
+
+    Merge branch 'Andy' into Andy2
+
+commit 485041a65a534db1e83477d5b09afba0b5fff6a0
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Fri May 5 09:59:31 2017 -0400
+
+    first half of empty methods for utils.java
+
+commit 1efeec424e7f4ea3a00ebdead2d58c7fc33eedf1
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Fri May 5 09:59:23 2017 -0400
+
+    utils DBHandler
+
+commit 834ccac7cb7b1187be5d7d52f9f0eb03ca272a99
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Fri May 5 09:53:42 2017 -0400
+
+    Added smartTest.sql file
+
+commit 49c6cd1ece8c8c759b6af35d12b0508cfadc2b82
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri May 5 09:42:31 2017 -0400
+
+    GradedTest class added
+
+commit 02e0ab804748a7a06cbc20ead0d9ec78e82c0b6b
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri May 5 09:39:36 2017 -0400
+
+    implementation of test class complete
+
+commit ed2e7a20577a774678c79b2d46ce4d0658d1dff4
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Fri May 5 09:37:27 2017 -0400
+
+    rando commit
+
+commit bee65f59bc6df39c99d4aa8ffe8dd987d0a75060
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri May 5 09:20:37 2017 -0400
+
+    implementation of teh Question Class
+
+commit 6d8dca594b46926e7702e6c1861a4af6f6b5c19c
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Wed May 3 19:33:55 2017 -0400
+
+    added currentUserId to each dashboard
+
+commit 75f767988843b67c322a3eff4d7d9af30fe6cae0
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Mon May 1 20:45:05 2017 -0400
+
+    All three dashes load onto home scene, and buttons switch scenes successfully.
+
+commit e30915a32dc829d1a8b3e1a819a1506df9c86abc
+Merge: 0c10a2a af5fbe4
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Mon May 1 18:39:59 2017 -0400
+
+    Merge remote-tracking branch 'origin/branchMorgan' into Andy
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/AdminDash.java
+    	SmartestTest/src/smartesttest/DashBoard.java
+    	SmartestTest/src/smartesttest/SmartestTest.java
+
+commit 0c10a2a8e5dd8627e21954058f27b4e578eaf833
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Mon May 1 18:23:07 2017 -0400
+
+    Random Andy commit
+
+commit 99a8e913716cbf3a97ebbfe3a71d10dc87c6bc27
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Fri Apr 28 09:47:57 2017 -0400
+
+    Saving local changes
+
+commit af5fbe454092a9004013a9444c22d7ec30081e6f
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Fri Apr 28 09:33:43 2017 -0400
+
+    itest test
+
+commit 676cf4f8b0a084a44635c371ea509a0f714536ab
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Wed Apr 26 21:10:41 2017 -0400
+
+    finalized group work. work for Fu to look at
+
+commit 09c1a451842035fde33f817c8529c1c7be2ee43a
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Wed Apr 26 20:51:49 2017 -0400
+
+    4/26 work on button clicks and the ability to switch between scenes - group
+
+commit df6c799b445a7fbc35f710ad630e2e8e4d2ae729
+Author: MorganHowell <morganhowell2007@gmail.com>
+Date:   Wed Apr 26 15:18:27 2017 -0400
+
+    fixed login form - added combobox
+
+commit 9220805d47c9330193d08d4558091eec3807255b
+Merge: ba21b06 fd32387
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Mon Apr 24 18:44:34 2017 -0400
+
+    Merge remote-tracking branch 'origin/VictorBranch'
+
+commit ba21b06e80ce7432d5086a8f17630ce11627f1ba
+Merge: 04ad867 37ba1d6
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Mon Apr 24 18:44:16 2017 -0400
+
+    Merge remote-tracking branch 'origin/branchMATT'
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/DashBoard.java
+
+commit 37ba1d695f9080cb083d7ebdf8a4cfe49183db68
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Mon Apr 24 18:41:49 2017 -0400
+
+    Matt's first commit
+
+commit fd32387c375eaa76f7df5d65aa66e2a4ceb17f7d
+Author: Victor Daniel-Kalio <v.danielkalio@gmail.com>
+Date:   Mon Apr 24 18:41:24 2017 -0400
+
+    Updated
+
+commit 04ad867f57a8452329fcbc251ff661ccf88fbbbe
+Merge: cedfe10 8339abb
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Mon Apr 24 18:38:12 2017 -0400
+
+    Merge remote-tracking branch 'origin/currentWorkMorgan'
+    
+    Conflicts:
+    	SmartestTest/src/smartesttest/DashBoard.java
+
+commit cedfe10a3a64c541afecafa59f9901e93d7c6f2d
+Merge: c075c73 fdb47dc
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Mon Apr 24 18:33:33 2017 -0400
+
+    Merge remote-tracking branch 'origin/branchJohn'
+
+commit c075c737485ed47373b3abc5b86d7cf674d1ba23
+Merge: 1a1e34a b80690c
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Mon Apr 24 18:29:38 2017 -0400
+
+    Merge remote-tracking branch 'origin/timdaigle'
+
+commit fdb47dc6c1124d58321c2eb4ce3e3776e66ee68b
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Mon Apr 24 18:29:19 2017 -0400
+
+    John's Commit
+
+commit 8339abbed76b7fef57b71cfa9e7e1caf2f41be0f
+Author: Morgan Howell <morganhowell2007@gmail.com>
+Date:   Mon Apr 24 17:53:08 2017 -0400
+
+    finshed ViewStudentScoreScene
+
+commit 84cc871e83b28af5c3be6a305db62d6ce26ade13
+Author: Morgan Howell <morganhowell2007@gmail.com>
+Date:   Mon Apr 24 17:11:40 2017 -0400
+
+    test scene and viewScoresScene compelte
+
+commit 1a1e34a4dc7e4fd9e2316e1c8d083bd544502548
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Mon Apr 24 16:24:32 2017 -0400
+
+    Scene GUI
+
+commit 4019b8fe45146ffc6954768f4c32851df6b5200c
+Author: Morgan Howell <morganhowell2007@gmail.com>
+Date:   Mon Apr 24 16:14:02 2017 -0400
+
+    Fixed naming issue with classes
+
+commit b80690c3684934517d485cfc8dd3e354f9431f71
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Mon Apr 24 16:10:56 2017 -0400
+
+    try #2 adding my 3 classes
+
+commit 1d5bf3b14deae3aa5694602aebf895c8c4f994eb
+Author: Morgan Howell <morganhowell2007@gmail.com>
+Date:   Mon Apr 24 16:02:40 2017 -0400
+
+    Morgan Branch begin
+
+commit 501eb1bc9f33f6e91a5e9f889a7932d70d88b360
+Author: Morgan Howell <morganhowell2007@gmail.com>
+Date:   Wed Apr 19 20:35:14 2017 -0400
+
+    Begining Implementation of GUI interfaces and abstract classes as well as the dashBoard
+
+commit d9ed8d4d23cfdf9b986e441ff392e003ed3c2670
+Merge: 8d3f176 d727585
+Author: Morgan Howell <morganhowell2007@gmail.com>
+Date:   Wed Apr 19 19:14:54 2017 -0400
+
+    Merge branch 'master' of https://github.com/morganhowell25/smartestTest
+
+commit 8d3f176a0accf3fc49a0e7c1ce8b8c919b993609
+Author: Morgan Howell <morganhowell2007@gmail.com>
+Date:   Wed Apr 19 19:12:07 2017 -0400
+
+    Removing profanity
+
+commit d7275855b67ee7da4caaa6bbe6dbc56dae125f5d
+Merge: 342b00f a559d68
+Author: U-STUDENTS\h702007224 <STUDENTS+h702007224@ADAMS0203005.labs.hofstra.univ>
+Date:   Wed Apr 12 11:15:38 2017 -0400
+
+    iiMerge branch 'master' of https://github.com/morganhowell25/smartestTest
+
+commit 342b00f651e061c199c304914ac7aa95d7bee3e5
+Author: U-STUDENTS\h702007224 <STUDENTS+h702007224@ADAMS0203005.labs.hofstra.univ>
+Date:   Wed Apr 12 11:15:04 2017 -0400
+
+    ii
+
+commit a559d688cef26f5b1e461d927fdb9796816d573c
+Merge: 123666f 2d53e6e
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Wed Apr 12 11:14:14 2017 -0400
+
+    Merge branch 'master' of https://github.com/morganhowell25/smartestTest
+    KrippO
+
+commit 123666f48ea5cc5b64667e4bfb84d39fb09d512e
+Merge: eb13dfe 0a50773
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Wed Apr 12 11:14:07 2017 -0400
+
+    KrippO
+
+commit 09e6b4f52cb1dfa317efb67ab878c536744efc3a
+Merge: 6a9d708 2d53e6e
+Author: U-STUDENTS\h702007224 <STUDENTS+h702007224@ADAMS0203005.labs.hofstra.univ>
+Date:   Wed Apr 12 11:13:07 2017 -0400
+
+    Merge branch 'master' of https://github.com/morganhowell25/smartestTest
+
+commit 2d53e6ec1164eb65452c6c412e25b9b1ee4ef553
+Merge: 0599599 64ca88b
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Wed Apr 12 11:11:25 2017 -0400
+
+    Merge branch 'master' of https://github.com/morganhowell25/smartestTest
+
+commit 0599599848a51725803086681e2e4405f8619d01
+Merge: 116613e 0a50773
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Wed Apr 12 11:10:14 2017 -0400
+
+    Hi Merge branch 'master' of https://github.com/morganhowell25/smartestTest
+
+commit 64ca88bd9342710c8d30f92a1ce6b535a9a9498e
+Merge: 980e86d 0a50773
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Wed Apr 12 11:10:11 2017 -0400
+
+    Merge branch 'master' of https://github.com/morganhowell25/smartestTest
+
+commit 6a9d708ba9bdccfdc96e3f761868dddad32003f7
+Author: U-STUDENTS\h702007224 <STUDENTS+h702007224@ADAMS0203005.labs.hofstra.univ>
+Date:   Wed Apr 12 11:09:16 2017 -0400
+
+    ii
+
+commit eb13dfe015fb250fda5a9a8776b404188813af9d
+Author: MatthewHirsch1 <mhirsch309@gmail.com>
+Date:   Wed Apr 12 11:09:12 2017 -0400
+
+    KrippO
+
+commit 980e86d325ec8adf3dee6fdd35810f4d3a137a03
+Author: Andrew Jenkins <ajenkins2@pride.hofstra.edu>
+Date:   Wed Apr 12 11:08:55 2017 -0400
+
+    Andy
+
+commit 116613e82f7db37ed5badd0917357dc5a70a7a7e
+Author: GianfrancoLeto <gleto1@pride.hofstra.edu>
+Date:   Wed Apr 12 11:07:40 2017 -0400
+
+    Commit by John
+
+commit 0a5077366a5499dd96006fc981962573932a9358
+Author: Tim D <tim.daigle13@yahoo.com>
+Date:   Wed Apr 12 11:06:46 2017 -0400
+
+    Tim
+
+commit 335760bf3769d5f401ac8a0a104c40328a4947aa
+Author: Morgan Howell <morganhowell2007@gmail.com>
+Date:   Wed Apr 12 11:02:37 2017 -0400
+
+    added helloWorld
+
+commit 6b6152d21957b4246ed7d30e603df8289e178709
+Author: Morgan Howell <morganhowell2007@gmail.com>
+Date:   Wed Apr 12 10:53:36 2017 -0400
+
+    here we go boys
