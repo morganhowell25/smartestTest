@@ -58,7 +58,7 @@ public class server {
     public static ArrayList<StudentScoresListStruct> viewStudentScores(String pincode) {
         String hold = "";
         try {
-            String dataStr = "op=viewStudentScores&pincode=" + URLEncoder.encode(String.valueOf(pincode), "UTF-8");
+            String dataStr = "op=viewStudentScores&pincode=" + URLEncoder.encode(pincode, "UTF-8");
             String url = "http://localhost/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
@@ -227,11 +227,24 @@ public class server {
         }
     }
     
-    // Uploads one pair of category 1 and 2 learning outcomes
+    // Checks for duplicate username in database
     public static ArrayList<String> checkUname(String uname){
         String hold = "";
         try {
             String dataStr = "op=checkUname&uname=" + URLEncoder.encode(uname, "UTF-8");
+            String url = "http://localhost/smartestTest.php";
+            hold = DBHandler.httpsPost(url, dataStr);
+        } catch (Exception exc) {
+            System.out.println(exc);
+        }
+        return (ArrayList<String>)utils.toObj(hold);
+    }
+    
+    // Pulls id of username
+    public static ArrayList<String> pullID(String uname){
+        String hold = "";
+        try {
+            String dataStr = "op=pullID&uname=" + URLEncoder.encode(uname, "UTF-8");
             String url = "http://localhost/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {

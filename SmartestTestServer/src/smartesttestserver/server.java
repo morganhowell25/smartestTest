@@ -210,6 +210,13 @@ public class server {
         System.out.println(arr);
     }
     
+    public static void pullID(String uname){
+        String query = "SELECT id from tbl_user WHERE uname='" + uname + "';";
+        ArrayList<String> arrID = execQuery(query);
+        String arr = utils.toStr(arrID);
+        System.out.println(arr);
+    }
+    
     public static void main(String[] args){
         String op = args[0];
         switch(op){
@@ -264,7 +271,9 @@ public class server {
             case "checkUname":
                 checkUname(args[1]);
                 break;
-                
+            case "pullID":
+                pullID(args[1]);
+                break;   
         }
     }
 }

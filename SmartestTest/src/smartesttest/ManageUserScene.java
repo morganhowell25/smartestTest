@@ -33,7 +33,7 @@ public class ManageUserScene extends AdminDash {
         Label userID = new Label("ID");
         Label userRole = new Label("Role");
         Label userName = new Label("Username");
-        Label delete = new Label("Change Password?");
+        Label delete = new Label("Reset Password?");
         gp.add(userID, 1, 0);
         gp.add(userRole, 2, 0);
         gp.add(userName, 3, 0);
@@ -46,7 +46,7 @@ public class ManageUserScene extends AdminDash {
                 Label myLbl = new Label((arrUsers.get(i)).get(j));
                 gp.add(myLbl, 1 + i, 1 + j);
                 final int buttonInd = j + 1;
-                Button delBtn = new Button("Change Password");
+                Button delBtn = new Button("Reset");
 
                 delBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override

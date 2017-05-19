@@ -24,8 +24,9 @@ public class StudentScoresListScene extends TeacherDash {
     protected String pincode; // The pincode of the specific test that the teacher is viewing the student scores for
 
     // Specific Constructor: pass in pincode from ManageTestsScene when clicking the "View Student Scores" button for a specific test.
-    public StudentScoresListScene(int cuID) {
+    public StudentScoresListScene(int cuID, String pincode) {
         super(cuID);
+        this.pincode = pincode;
     }
 
     public Scene getScene() {
