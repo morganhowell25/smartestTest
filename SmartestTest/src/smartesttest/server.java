@@ -19,7 +19,7 @@ public class server {
         String hold = "";
         try {
             String dataStr = "op=pullTests&tid=" + URLEncoder.encode(String.valueOf(tid), "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -32,7 +32,7 @@ public class server {
         String hold = "";
         try {
             String dataStr = "op=pullTestLO&pincode=" + URLEncoder.encode(pincode, "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -47,7 +47,7 @@ public class server {
                     + "&cat1=" + URLEncoder.encode(cat1, "UTF-8")
                     + "&cat2=" + URLEncoder.encode(cat2, "UTF-8")
                     + "&right=" + URLEncoder.encode(String.valueOf(right), "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -59,7 +59,7 @@ public class server {
         String hold = "";
         try {
             String dataStr = "op=viewStudentScores&pincode=" + URLEncoder.encode(pincode, "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -74,7 +74,7 @@ public class server {
         String hold = "";
         try {
             String dataStr = "op=pullTakenTestList&id=" + URLEncoder.encode(String.valueOf(id), "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -89,7 +89,7 @@ public class server {
         try {
             String dataStr = "op=pullStudentGradedTest&id=" + URLEncoder.encode(String.valueOf(id), "UTF-8")
                     +"&pincode=" + URLEncoder.encode(pincode, "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -102,7 +102,7 @@ public class server {
         String hold = "";
         try {
             String dataStr = "op=pullDepartmentLOs";
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -116,7 +116,7 @@ public class server {
             String dataStr = "op=updateDepartmentLOs&cat1=" + URLEncoder.encode(cat1, "UTF-8")
                     + "&cat2=" + URLEncoder.encode(cat2, "UTF-8")
                     + "&right=" + URLEncoder.encode(String.valueOf(right), "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -128,7 +128,7 @@ public class server {
         String hold = "";
         try {
             String dataStr = "op=pullTest&pincode=" + URLEncoder.encode(String.valueOf(pincode), "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -143,7 +143,7 @@ public class server {
                     + "&pincode=" + URLEncoder.encode(pincode, "UTF-8")
                     + "&gt=" + URLEncoder.encode(utils.toStr(gt), "UTF-8")
                     + "&score=" + URLEncoder.encode(score, "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -156,7 +156,7 @@ public class server {
             String dataStr = "op=addUser&userName=" + URLEncoder.encode(userName, "UTF-8")
                     + "&userPass=" + URLEncoder.encode(userPass, "UTF-8")
                     + "&userRole=" + URLEncoder.encode(userRole, "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -168,7 +168,7 @@ public class server {
         String hold = "";
         try {
             String dataStr = "op=pullUserList";
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -180,7 +180,7 @@ public class server {
         String hold = "";
         try {
             String dataStr = "op=pullUInfo&uname="+URLEncoder.encode(uname, "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -195,7 +195,7 @@ public class server {
         try {
             String dataStr = "op=resetPWD&newPass=" + URLEncoder.encode(newPass, "UTF-8")
                     + "&userID=" + URLEncoder.encode(String.valueOf(userID), "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -208,7 +208,7 @@ public class server {
             String dataStr = "op=saveTest&pincode=" + URLEncoder.encode(pincode, "UTF-8")
                     + "&teacherID=" + URLEncoder.encode(String.valueOf(teacherID), "UTF-8")
                     + "&myTest=" + URLEncoder.encode(utils.toStr(myTest), "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -220,7 +220,7 @@ public class server {
         try {
             String dataStr = "op=uploadOneLO&cat1=" + URLEncoder.encode(cat1, "UTF-8")
                     + "&cat2=" + URLEncoder.encode(cat2, "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -232,7 +232,7 @@ public class server {
         String hold = "";
         try {
             String dataStr = "op=checkUname&uname=" + URLEncoder.encode(uname, "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);
@@ -245,7 +245,7 @@ public class server {
         String hold = "";
         try {
             String dataStr = "op=pullID&uname=" + URLEncoder.encode(uname, "UTF-8");
-            String url = "http://localhost/smartestTest.php";
+            String url = "http://10.22.13.74/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {
             System.out.println(exc);

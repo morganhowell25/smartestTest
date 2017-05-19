@@ -11,10 +11,6 @@ import java.util.Base64;
 
 public class utils {
 
-    static final String DRIVER = "com.mysql.jdbc.Driver";
-    static final String URL = "jdbc:mysql://localhost/smarttest_db";
-    static final String USER = "root";
-    static final String PASS = "goodyear123!@#";
     public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   
     // Converts an object into a string
