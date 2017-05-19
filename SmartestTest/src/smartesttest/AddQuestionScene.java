@@ -260,30 +260,6 @@ public class AddQuestionScene extends TeacherDash {
                                 index++;
                             }
                         }
-<<<<<<< HEAD
-                        //System.out.println("Selected RB index = " + correctAns);
-                        //Find selected LOs
-                        for (int k = 0; k < rbLOSelect.size(); k++) {
-                            if (rbLOSelect.get(k).isSelected()) {
-                                //selectedLOs.add(rbLOSelect.get(k).getText());
-                                selectedLOs.add("" + k);
-                                System.out.println("Selected LO index = " + k);
-                            }
-                        }
-                        //End get user input
-                        /*TestArray
-                        for(int i=0; i<answersArr.size(); i++){
-                            System.out.print("Answer Array: " + answersArr.get(i)+ "\n");
-                        }
-                         */
-                        //Finally... save the question. Call contructor.
-                        //Convert ArrayLists to Array
-                        String[] ansArray = answersArr.toArray(new String[answersArr.size()]);
-                        String[] selLOsArray = selectedLOs.toArray(new String[selectedLOs.size()]);
-
-                        if (!StrQuestion.equals("") && ansArray.length != 0 && selLOsArray.length != 0 && !txtPoints.getText().equals("") && correctAns != -1) {                              
-                            Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selLOsArray);                           
-=======
 
                         //System.out.println("Selected RB index = " + correctAns);
                         //Find selected LOs
@@ -309,7 +285,7 @@ public class AddQuestionScene extends TeacherDash {
 
                         if (!StrQuestion.equals("") && ansArray.length != 0 && selectedLOs.size() != 0 && !txtPoints.getText().equals("") && correctAns != -1) {                              
                             Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selectedLOs);                           
->>>>>>> homestretch2
+
                             current = 4;
                             //Now go back to old scene
                             cts.STAGE = teachDash.STAGE;
@@ -331,11 +307,7 @@ public class AddQuestionScene extends TeacherDash {
                         DeleteAlert.setContentText("Please Fill out all fields and buttons!");
                         DeleteAlert.showAndWait();
                     }                                               
-
-<<<<<<< HEAD
-=======
-
->>>>>>> homestretch2
+                    
                 } catch (IndexOutOfBoundsException exc) {
                     Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
                     DeleteAlert.setTitle("Warning!");
