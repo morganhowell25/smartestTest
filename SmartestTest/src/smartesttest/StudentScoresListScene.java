@@ -57,7 +57,7 @@ public class StudentScoresListScene extends TeacherDash {
         gp.add(lblScore, 3, 2);
 
         // Collect a set of corresponding unames and scores that match the give pincode.
-        ArrayList<StudentScoresListStruct> arrSSLStruct = server.viewStudentScores(pincode);
+        ArrayList<ArrayList<String>> arrSSLStruct = server.viewStudentScores(pincode);
 
         // Test case: if no students have taken the specific test, don't open the scene, and return to ManageTestsScene.
         // IDK if this will work.
@@ -73,6 +73,7 @@ public class StudentScoresListScene extends TeacherDash {
         });
         }*/
         
+        
         // Pop up a dialog box with a warning that no students have taken the test
         if (arrSSLStruct.isEmpty()) { // If no students have taken the specific test
             Alert alert = new Alert(AlertType.WARNING);
@@ -86,17 +87,18 @@ public class StudentScoresListScene extends TeacherDash {
             for (int i = 0; i < arrSSLStruct.size(); i++) {
                 // Add each student's id to a label
                 Label lblStuID = new Label();
-                lblStuID.setText(String.valueOf(arrSSLStruct.get(i).id));
+                lblStuID.setText(String.valueOf(arrSSLStruct.get(i).get(0)));
                 gp.add(lblStuID, 1, i + 3);
+                final int stuID = Integer.parseInt(arrSSLStruct.get(i).get(0));
 
                 // Add each student's uname to a label
                 Label lblUname = new Label();
-                lblUname.setText(arrSSLStruct.get(i).uname);
+                lblUname.setText(arrSSLStruct.get(i).get(1));
                 gp.add(lblUname, 2, i + 3);
 
                 // Add each student's correspoding score to a label in the same row
                 Label lblStuScore = new Label();
-                lblStuScore.setText(arrSSLStruct.get(i).score);
+                lblStuScore.setText(arrSSLStruct.get(i).get(2));
                 gp.add(lblStuScore, 3, i + 3);
 
                 // Add a "View Score" button for each row in the table
@@ -112,7 +114,7 @@ public class StudentScoresListScene extends TeacherDash {
                     @Override
                     public void handle(ActionEvent event) {
                         System.out.println("View Score Clicked!");
-                        GradedTest gt = new GradedTest();
+                        GradedTest gt = server.pullStudentGradedTest(stuID, pincode);
                         ViewStudentScoreSceneTeacher vssst = new ViewStudentScoreSceneTeacher(gt, currentUserID);
                         vssst.STAGE = teacherDash.STAGE;
                         teacherDash.update(vssst.getScene());
@@ -139,7 +141,7 @@ public class StudentScoresListScene extends TeacherDash {
         btnViewScore1.setText("View Score");
         gp.add(btnViewScore1, 4, 3);*/
         
-        Scene scene = new Scene(gp, 700, 500);
+       Scene scene = new Scene(gp, 700, 500);
         return scene;
     }
 }

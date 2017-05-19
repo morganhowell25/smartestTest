@@ -55,7 +55,7 @@ public class server {
     }
 
     // What happens when teacher clicks "View Student Scores" in ManageTestsScene
-    public static ArrayList<StudentScoresListStruct> viewStudentScores(String pincode) {
+    public static ArrayList<ArrayList<String>> viewStudentScores(String pincode) {
         String hold = "";
         try {
             String dataStr = "op=viewStudentScores&pincode=" + URLEncoder.encode(pincode, "UTF-8");
@@ -64,8 +64,8 @@ public class server {
         } catch (Exception exc) {
             System.out.println(exc);
         }
-        
-        return (ArrayList<StudentScoresListStruct>)utils.toObj(hold);
+        ArrayList<ArrayList<String>> temp = (ArrayList<ArrayList<String>>)utils.toObj(hold);
+        return temp;
     }
     
     
@@ -253,5 +253,17 @@ public class server {
             System.out.println(exc);
         }
         return (ArrayList<String>)utils.toObj(hold);
+    }
+    
+    public static void uploadOneTestLO(String pincode, String cat1, String cat2)
+    {
+        try {
+            String dataStr = "op=uploadOneLO&cat1=" + URLEncoder.encode(cat1, "UTF-8")
+                    + "&cat2=" + URLEncoder.encode(cat2, "UTF-8");
+            String url = "http://localhost/smartestTest.php";
+            DBHandler.httpsPost(url, dataStr);
+        } catch (Exception exc) {
+            System.out.println(exc);
+        }
     }
 }

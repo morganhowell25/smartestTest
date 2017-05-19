@@ -41,7 +41,7 @@ public class DBHandler {
         StringBuilder sb = new StringBuilder();
         String line = br.readLine();
         while (line != null) {
-            sb.append(line + "\n");
+            sb.append(line);// + "\n");
             line = br.readLine();
         }
         String sRet = sb.toString();
@@ -74,8 +74,8 @@ public class DBHandler {
     // Basically, it's a 2-D array where each element in the first array holds an array of two Strings,
     // but this implementation ensures that each uname is associated with the correct score.
     // That means that each uname is part of the same StudentScoresListStruct as its score.
-    public static ArrayList<StudentScoresListStruct> execQuerySSL(String qry) {
-        ArrayList<StudentScoresListStruct> arrSSLStruct = new ArrayList<StudentScoresListStruct>();
+    public static ArrayList<String> execQuerySSL(String qry) {
+        ArrayList<String> arrSSLStruct = new ArrayList<String>();
         try {
             Class.forName(DRIVER);
             Connection conn = DriverManager.getConnection(URL, USER, PASS);
@@ -83,10 +83,10 @@ public class DBHandler {
             ResultSet rs = stmt.executeQuery(qry);
             
             while (rs.next()) {
-                StudentScoresListStruct sslStruct = new StudentScoresListStruct();
-                sslStruct.id = rs.getInt(1);
-                sslStruct.uname = rs.getString(2);
-                sslStruct.score = rs.getString(3);
+                String sslStruct = "";
+                sslStruct += rs.getInt(1);
+                sslStruct += rs.getString(2);
+                sslStruct += rs.getString(3);
                 arrSSLStruct.add(sslStruct);
             }
 
