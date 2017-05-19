@@ -102,10 +102,10 @@ public class CreateTestScene extends TeacherDash {
                 
                 for(int i =0; i < theTest.getTestQuestions().length; i++)
                 {
-                    for(int j=0; j<theTest.getTestQuestions()[i].getLOs().get(0).size(); j++)
+                    for(int j=0; j<theTest.getTestQuestions()[i].getLOs().get(1).size(); j++)
                     {
                        server.uploadOneTestLO(theTest.getPincode(),
-                                theTest.getTestQuestions()[i].getLOs().get(0).get(i), 
+                                theTest.getTestQuestions()[i].getLOs().get(0).get(j), 
                                 theTest.getTestQuestions()[i].getLOs().get(1).get(j));
                     }
                 }

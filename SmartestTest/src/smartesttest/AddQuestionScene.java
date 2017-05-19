@@ -87,12 +87,14 @@ public class AddQuestionScene extends TeacherDash {
 
         //Create radiobuttons for each department LO and add to third column
         RadioButton rbLO;
+        int countLocation = 0;
         for (int i = 0; i < deptLOs.get(1).size(); i++) {
             if(!(deptLOs.get(1).get(i).equals("default"))){
                 rbLO = new RadioButton(deptLOs.get(1).get(i));
-                gp.add(rbLO, 3, i + 1);
+                gp.add(rbLO, 3, countLocation + 1);
                 rbLOSelect.add(rbLO);
-                indicies.add(i);
+                indicies.add(countLocation);                
+                countLocation++;
             }          
         }
 
@@ -142,9 +144,15 @@ public class AddQuestionScene extends TeacherDash {
             ArrayList<ArrayList<String>> setUpLOs = myQ.getLOs();
 
 
-            for (int j = 0; j < setUpLOs.size(); j++) {
-                int index = Integer.parseInt(setUpLOs.get(1).get(j));
-                rbLOSelect.get(index).setSelected(true);
+            for (int j = 0; j < setUpLOs.get(1).size(); j++) {
+                //if(rbLOSelect.get(j).getText().equals(setUpLOs.get(1).get(j))){
+                //    rbLOSelect.get(j).setSelected(true);
+                //}
+                for (RadioButton rbCat2 : rbLOSelect){
+                    if (setUpLOs.get(1).get(j).equals(rbCat2.getText())){
+                        rbCat2.setSelected(true);
+                    }
+                } 
             }
 
         }
@@ -265,8 +273,14 @@ public class AddQuestionScene extends TeacherDash {
                     for (int k = 0; k < rbLOSelect.size(); k++) {
                         if (rbLOSelect.get(k).isSelected()) {
                             //selectedLOs.add(rbLOSelect.get(k).getText());
+                            arrCat2.add(rbLOSelect.get(k).getText());
+                            //arrCat2.add(deptLOs.get(1).get(indicies.get(k)));
+                            for (int p = 0; p < deptLOs.get(1).size(); p++){
+                                if (deptLOs.get(1).get(p).equals(rbLOSelect.get(k).getText())){
+                                    arrCat1.add(deptLOs.get(0).get(p));
+                                }
+                            }
                             arrCat1.add(deptLOs.get(0).get(indicies.get(k)));
-                            arrCat2.add(deptLOs.get(1).get(indicies.get(k)));
                         }
                     }
                     selectedLOs.add(arrCat1);
