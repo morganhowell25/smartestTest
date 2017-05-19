@@ -57,7 +57,7 @@ public class LoginForm {
         arrQ[1] = new Question("My Question2?", new String[]{"Dog","Cat"}, 4, 0,arrLOs);
         arrQ[2] = new Question("My Question3?", new String[]{"Hi","There"}, 3, 1,arrLOs);
         Test myTest = new Test(arrQ, "8", 2);
-        server.saveTest(myTest.getPincode(),myTest.getTeacherID(),myTest);
+        //server.saveTest(myTest.getPincode(),myTest.getTeacherID(),myTest);
  
         /*StudentScoresListStruct ssls = new StudentScoresListStruct();
         ssls.id = 3;

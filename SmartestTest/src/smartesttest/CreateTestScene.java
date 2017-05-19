@@ -102,9 +102,9 @@ public class CreateTestScene extends TeacherDash {
                 
                 for(int i =0; i < theTest.getTestQuestions().length; i++)
                 {
-                    for(int j=0; j<theTest.getTestQuestions()[i].getLOs().size(); j++)
+                    for(int j=0; j<theTest.getTestQuestions()[i].getLOs().get(0).size(); j++)
                     {
-                        server.uploadOneTestLO(theTest.getPincode(),
+                       server.uploadOneTestLO(theTest.getPincode(),
                                 theTest.getTestQuestions()[i].getLOs().get(0).get(i), 
                                 theTest.getTestQuestions()[i].getLOs().get(1).get(j));
                     }
@@ -112,7 +112,7 @@ public class CreateTestScene extends TeacherDash {
                 
                 finalizeAlert.setTitle("Success");
                 finalizeAlert.setHeaderText(null);
-                finalizeAlert.setContentText("Lesson Submitted.");
+                finalizeAlert.setContentText("Lesson Submitted.\nTest Pincode: "+ thePin);
                 finalizeAlert.showAndWait();
             }
         });

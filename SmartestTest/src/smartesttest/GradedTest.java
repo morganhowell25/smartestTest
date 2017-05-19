@@ -59,21 +59,24 @@ public class GradedTest implements java.io.Serializable
         for(int i =0; i < questionList.length; i ++)
         {
             //for every LO in that Question
-            for(int j=0; j< questionList[i].getLOs().size(); j++){
+            int k = questionList[i].getLOs().get(0).size();
+            for(int j=0; j< k; j++){
                 //updates department LO
-                server.updateDepartmentLOs(questionList[i].getLOs().get(0).get(j),
-                       questionList[i].getLOs().get(1).get(j), 
+                String cat1 = questionList[i].getLOs().get(0).get(j);
+                String cat2 = questionList[i].getLOs().get(1).get(j);
+                server.updateDepartmentLOs(cat1, cat2, 
                        gradeQuestion(myStuAns[i], questionList[i].getCorrectAnswer()));
                 //updates department LO category overall
-                server.updateDepartmentLOs(questionList[i].getLOs().get(0).get(j),
+                String cat3 = questionList[i].getLOs().get(0).get(j);
+                server.updateDepartmentLOs(cat3,
                        "default", gradeQuestion(myStuAns[i], questionList[i].getCorrectAnswer()));
                
                 //updatesTest los
-                server.updateTestLOs(""+myTest.getPincode(), questionList[i].getLOs().get(0).get(j),
+                server.updateTestLO(""+myTest.getPincode(), questionList[i].getLOs().get(0).get(j),
                        questionList[i].getLOs().get(1).get(j), 
                        gradeQuestion(myStuAns[i], questionList[i].getCorrectAnswer()));
                 //updates test lo category overall
-                server.updateTestLOs(""+myTest.getPincode(), questionList[i].getLOs().get(0).get(j),
+                server.updateTestLO(""+myTest.getPincode(), questionList[i].getLOs().get(0).get(j),
                        "default", gradeQuestion(myStuAns[i], questionList[i].getCorrectAnswer()));
             }
             

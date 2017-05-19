@@ -41,7 +41,7 @@ public class server {
     }
 
     //increments the tests individual LOs upon a question being grading
-    public static void updateTestLOs(String pincode, String cat1, String cat2, boolean right) {
+    public static void updateTestLO(String pincode, String cat1, String cat2, boolean right) {
         try {
             String dataStr = "op=updateTestLOs&pincode=" + URLEncoder.encode(pincode, "UTF-8")
                     + "&cat1=" + URLEncoder.encode(cat1, "UTF-8")
@@ -258,7 +258,8 @@ public class server {
     public static void uploadOneTestLO(String pincode, String cat1, String cat2)
     {
         try {
-            String dataStr = "op=uploadOneTestLO&cat1=" + URLEncoder.encode(cat1, "UTF-8")
+            String dataStr = "op=uploadOneTestLO&pincode=" + URLEncoder.encode(pincode, "UTF-8")
+                    + "&cat1=" + URLEncoder.encode(cat1, "UTF-8")
                     + "&cat2=" + URLEncoder.encode(cat2, "UTF-8");
             String url = "http://localhost/smartestTest.php";
             DBHandler.httpsPost(url, dataStr);
