@@ -6,12 +6,14 @@
 package smartesttest;
 
 import java.util.ArrayList;
+import java.util.Random;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -89,10 +91,18 @@ public class CreateTestScene extends TeacherDash {
                 finalizeAlert.setHeaderText(null);
                 finalizeAlert.setContentText("Changes cannot be made after finalizing test.");
                 finalizeAlert.showAndWait();
-                String dummyPincode = "Pincode Test";
+                //String dummyPincode = "56072";
+                Random rand = new Random();
+                int n = rand.nextInt(100000);
+                n = n < 0 ? 0 - n : n;
+                String thePin = ""+ n;
                 Question [] quArr = arrQ.toArray(new Question[arrQ.size()]); 
-                Test theTest = new Test(quArr, dummyPincode, currentUserID);
-                server.saveTest(dummyPincode, currentUserID, theTest);
+                Test theTest = new Test(quArr, thePin, currentUserID);
+                server.saveTest(thePin, currentUserID, theTest);
+                finalizeAlert.setTitle("Success");
+                finalizeAlert.setHeaderText(null);
+                finalizeAlert.setContentText("Lesson Submitted.");
+                finalizeAlert.showAndWait();
             }
         });
 
@@ -111,8 +121,10 @@ public class CreateTestScene extends TeacherDash {
         });
 
         //Button btnBack = new Button("< Back");
-        //gp.add(btnBack, 1, 3);        
-        Scene scene = new Scene(gp, 700, 500);
+        //gp.add(btnBack, 1, 3);    
+        ScrollPane sp = new ScrollPane();
+        sp.setContent(gp);
+        Scene scene = new Scene(sp, 700, 500);
         return scene;
     }
 
