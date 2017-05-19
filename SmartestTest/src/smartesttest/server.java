@@ -258,7 +258,7 @@ public class server {
     public static void uploadOneTestLO(String pincode, String cat1, String cat2)
     {
         try {
-            String dataStr = "op=uploadOneLO&cat1=" + URLEncoder.encode(cat1, "UTF-8")
+            String dataStr = "op=uploadOneTestLO&cat1=" + URLEncoder.encode(cat1, "UTF-8")
                     + "&cat2=" + URLEncoder.encode(cat2, "UTF-8");
             String url = "http://localhost/smartestTest.php";
             DBHandler.httpsPost(url, dataStr);

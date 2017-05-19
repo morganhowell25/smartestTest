@@ -61,7 +61,7 @@ public class AddUserScene extends AdminDash implements AppScene
         confirm.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Confirm Clicked!");
+                //System.out.println("Confirm Clicked!");
                 ArrayList<String> unames = server.checkUname(userNameTxt.getText());
                 String enteredPass = userPassTxt.getText();
                 boolean validPass = true;

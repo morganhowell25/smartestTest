@@ -63,7 +63,7 @@ public class TakeTestScene extends StudentDash {
                 } else {
                     
                     ArrayList<String> newTest = server.pullTest(pincode);
-                    System.out.println("sub Clicked!");
+                    //System.out.println("sub Clicked!");
                     if (newTest.isEmpty()) {
                         Alert alert = new Alert(AlertType.INFORMATION);
                         alert.setTitle("Error");

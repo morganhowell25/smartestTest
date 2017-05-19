@@ -65,7 +65,7 @@ public class StudentScoresListScene extends TeacherDash {
             TeacherDash.btnManageTests.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("ManageTests Clicked!");
+                //System.out.println("ManageTests Clicked!");
                 ManageTestsScene mts = new ManageTestsScene();
                 mts.STAGE = teacherDash.STAGE;
                 teacherDash.update(mts.getScene());
@@ -83,7 +83,7 @@ public class StudentScoresListScene extends TeacherDash {
             alert.showAndWait();
         } else { // At least one student has taken the specific test
             // Create four controls in the same row for each student that took the specific test.
-            System.out.println(String.valueOf(arrSSLStruct.size()));
+            //System.out.println(String.valueOf(arrSSLStruct.size()));
             for (int i = 0; i < arrSSLStruct.size(); i++) {
                 // Add each student's id to a label
                 Label lblStuID = new Label();
@@ -113,7 +113,7 @@ public class StudentScoresListScene extends TeacherDash {
                 btnViewScore.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        System.out.println("View Score Clicked!");
+                        //System.out.println("View Score Clicked!");
                         GradedTest gt = server.pullStudentGradedTest(stuID, pincode);
                         ViewStudentScoreSceneTeacher vssst = new ViewStudentScoreSceneTeacher(gt, currentUserID);
                         vssst.STAGE = teacherDash.STAGE;

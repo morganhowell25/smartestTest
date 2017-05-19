@@ -25,11 +25,12 @@ import javafx.stage.Stage;
  */
 public class LoginForm {
 
-    //protected Stage pStage;
+    protected Stage pStage = new Stage();
     public void start(Stage primaryStage) {
         LoginForm lForm = this;
-        primaryStage.setTitle("SmartTest");
-        update(primaryStage, lForm.getScene());
+        pStage = primaryStage;
+        pStage.setTitle("SmartTest");
+        update(pStage, lForm.getScene());
     }
 
     public Scene getScene() {
@@ -39,9 +40,9 @@ public class LoginForm {
 
         /*Question q = new Question("My Question?", new String[]{"True","False"}, 5, 1,new ArrayList<ArrayList<String>>());
         String strQ = utils.toStr(q);
-        System.out.println(strQ);
+        //System.out.println(strQ);
         Question q2 = (Question) utils.toObj(strQ);
-        System.out.println("q2 = " + q2);*/
+        //System.out.println("q2 = " + q2);*/
         Question[] arrQ = new Question[3];
         ArrayList<String> arrCat1 = new ArrayList<String>();
         arrCat1.add("Colors");
@@ -63,7 +64,7 @@ public class LoginForm {
         ssls.uname = "cheese";
         ssls.score = "100";
         String ss = utils.toStr(ssls);
-        System.out.println(ss);
+        //System.out.println(ss);
         StudentScoresListStruct ssl = (StudentScoresListStruct)utils.toObj(ss);*/
         
         /*GradedTest gt = new GradedTest(myTest, new int[]{1,0,1}, 3);
@@ -94,11 +95,11 @@ public class LoginForm {
         btnSignIn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Sign-In Clicked!");
+                //System.out.println("Sign-In Clicked!");
                 String uname = userTextField.getText(); // Uname the user entered
                 uname = uname.trim(); // Remove leading and trailing whitespace
                 String pword = pwBox.getText(); // Password the user entered
-                //System.out.println(pword);
+                ////System.out.println(pword);
                 //the following snippet protects against basic SQL injection
                 boolean validUname = true;
 
@@ -126,7 +127,7 @@ public class LoginForm {
                     badLogin.showAndWait();
                 } else {
                     newCred = server.pullUInfo(uname); // Pull user info from DB according to uname they entered
-                    System.out.println("newCred = " + newCred);
+                    ////System.out.println("newCred = " + newCred);
                     // If no info was pulled from the DB, the user entered an invalid username
 
                     if (newCred == null || newCred.get(0).isEmpty() || newCred.get(1).isEmpty() || newCred.get(2).isEmpty()) {
@@ -137,15 +138,15 @@ public class LoginForm {
                         loginFail.showAndWait();
                     } else { // Info was pulled from DB
                         // Decrypt the password from the database
-                        System.out.println(newCred.get(1).get(0));
+                        ////System.out.println(newCred.get(1).get(0));
                         passPulled = utils.decrypt(newCred.get(1).get(0));
-                        System.out.println(passPulled);
+                        ////System.out.println(passPulled);
                         
                         // Compare the uname and password the user entered to the info pulled from DB
                         if (uname.equals(newCred.get(0).get(0)) && pword.equals(passPulled)) {
                             ArrayList<String> arrID = server.pullID(newCred.get(0).get(0));
                             int userID = Integer.parseInt(arrID.get(0));
-                            System.out.println("User ID = " + userID);
+                            //System.out.println("User ID = " + userID);
                             if (newCred.get(2).get(0).equals("admin")) {
                                 Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
                                 loginSuccess.setTitle("Login Form");
@@ -155,7 +156,7 @@ public class LoginForm {
                                 AdminDash adminDash = new AdminDash(userID);
                                 Stage primaryStage = new Stage();
                                 adminDash.start(primaryStage);
-                                //primaryStage.close();
+                                pStage.close();
                             } else if (newCred.get(2).get(0).equals("teacher")) { // If user is teacher, load TeacherDash
                                 Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
                                 loginSuccess.setTitle("Login Form");
@@ -165,6 +166,7 @@ public class LoginForm {
                                 TeacherDash teacherDash = new TeacherDash(userID);
                                 Stage primaryStage = new Stage();
                                 teacherDash.start(primaryStage);
+                                pStage.close();
                             } else { // If user is student, load StudentDash
                                 Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
                                 loginSuccess.setTitle("Login Form");
@@ -174,9 +176,7 @@ public class LoginForm {
                                 StudentDash studentDash = new StudentDash(userID);
                                 Stage primaryStage = new Stage();
                                 studentDash.start(primaryStage);
-                                System.out.println("After start clicked");
-                                //this..close();
-                                System.out.println("After close clicked");
+                                pStage.close();
                             }
                         } else { // The user entered invalid login credentials
                             Alert loginFail = new Alert(Alert.AlertType.ERROR);
@@ -187,7 +187,6 @@ public class LoginForm {
                         }
                     }
                 }
-
             }
         });
 

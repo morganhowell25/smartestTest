@@ -72,7 +72,7 @@ public class StudentDash extends DashBoard
         btnTakeTest.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("TakeTest Clicked!");
+                //System.out.println("TakeTest Clicked!");
                 TakeTestScene tts = new TakeTestScene(currentUserID);
                 tts.STAGE = studentDash.STAGE;
                 studentDash.update(tts.getScene());
@@ -86,7 +86,7 @@ public class StudentDash extends DashBoard
         btnViewScores.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("PastTests Clicked!");
+                //System.out.println("PastTests Clicked!");
                 ViewScoresScene vss = new ViewScoresScene(currentUserID);
                 vss.STAGE = studentDash.STAGE;
                 studentDash.update(vss.getScene());

@@ -57,7 +57,7 @@ public class AdminDash extends DashBoard
         btnAddUser.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("AddUser Clicked!");
+                //System.out.println("AddUser Clicked!");
                 AddUserScene aus = new AddUserScene();
                 aus.STAGE = adminDash.STAGE;
                 adminDash.update(aus.getScene());
@@ -71,7 +71,7 @@ public class AdminDash extends DashBoard
         btnManageUser.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("ManageUser Clicked!");
+                //System.out.println("ManageUser Clicked!");
                 ManageUserScene mus = new ManageUserScene();
                 mus.STAGE = adminDash.STAGE;
                 adminDash.update(mus.getScene());
@@ -85,7 +85,7 @@ public class AdminDash extends DashBoard
         btnImportLO.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("ImportLO Clicked!");
+                //System.out.println("ImportLO Clicked!");
                 ImportLOsScene ilos = new ImportLOsScene();
                 ilos.STAGE = adminDash.STAGE;
                 adminDash.update(ilos.getScene());

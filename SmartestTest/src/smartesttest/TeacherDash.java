@@ -53,7 +53,7 @@ public class TeacherDash extends DashBoard {
         btnCreateTest.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("CreateTest Clicked!");
+                //System.out.println("CreateTest Clicked!");
                 CreateTestScene cts = new CreateTestScene(currentUserID);
                 cts.STAGE = teacherDash.STAGE;
                 teacherDash.update(cts.getScene(null, false, 0));
@@ -67,7 +67,7 @@ public class TeacherDash extends DashBoard {
         btnManageTests.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("ManageTests Clicked!");
+                //System.out.println("ManageTests Clicked!");
                 ManageTestsScene mts = new ManageTestsScene(currentUserID);
                 mts.STAGE = teacherDash.STAGE;
                 teacherDash.update(mts.getScene());
@@ -81,7 +81,7 @@ public class TeacherDash extends DashBoard {
         btnViewLO.setOnAction(new EventHandler<ActionEvent>() { 
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("ViewLO Clicked!");
+                //System.out.println("ViewLO Clicked!");
                 ViewDepartmentLOScene vdlos = new ViewDepartmentLOScene(currentUserID);
                 vdlos.STAGE = teacherDash.STAGE;
                 teacherDash.update(vdlos.getScene());
