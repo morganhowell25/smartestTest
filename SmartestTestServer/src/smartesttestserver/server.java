@@ -27,6 +27,7 @@ public class server {
     }
     
     // What happens when teacher clicks "LO" in ManageTestsScene
+    // CONFIRMED WORKS 1 AM FRIDAY
     public static void pullTestLO(String pincode){
         String query1 = "SELECT cat1 FROM tbl_testLOs WHERE pincode='" + pincode + "';";
         ArrayList<String> arrCat1 = execQuery(query1);
@@ -45,6 +46,7 @@ public class server {
     }
     
     //increments the tests individual LOs upon a question being grading
+    // NEEDS TO BE FIXED 1 AM FRIDAY
     public static void updateTestLOs(String pincode,String cat1, String cat2, Boolean right){
         String query1 = "SELECT correct FROM tbl_testLOs WHERE pincode='" + pincode + "' AND cat1='"+ cat1 +"' AND cat2='" + cat2 + "';";
         ArrayList<String> correctS = execQuery(query1);
@@ -60,6 +62,7 @@ public class server {
     }
     
     // What happens when teacher clicks "View Student Scores" in ManageTestsScene
+    // DOES NOT WORK AS OF 1 AM FRIDAY
     public static void viewStudentScores(String pincode){
         // Pull all student ids for the students who took the specific test
         // Pull all unames for each sid
@@ -110,12 +113,16 @@ public class server {
         ArrayList<String> correctS = execQuery(query1);
         String query2 = "SELECT total FROM tbl_deptLOs WHERE cat1='"+ cat1 +"' AND cat2='" + cat2 + "';";
         ArrayList<String> totalS = execQuery(query2);
-        int correct = Integer.valueOf(correctS.get(0)); int total = Integer.valueOf(totalS.get(0));
-        if (right){correct++; total++;}
-        else {total++;}
-        String query3 = "UPDATE correct FROM tbl_deptLOs WHERE cat1='"+ cat1 +"' AND cat2='" + cat2 + "' VALUE('" + correct +"');";
+        int correct = Integer.valueOf(correctS.get(0)); 
+        int total = Integer.valueOf(totalS.get(0));
+        if (right==true){
+            correct++; 
+            total++;
+        }
+        else total++;
+        String query3 = "UPDATE tbl_deptLOs SET correct='" + correct + "' WHERE cat1='"+ cat1 +"' AND cat2='" + cat2 + "';";
         execNonQuery(query3);
-        String query4 = "UPDATE total FROM tbl_deptLOs WHERE cat1='"+ cat1 +"' AND cat2='" + cat2 + "' VALUE('" + total +"');";
+        String query4 = "UPDATE tbl_deptLOs SET total='" + total + "' WHERE cat1='"+ cat1 +"' AND cat2='" + cat2 + "';";
         execNonQuery(query4);
     }
     
@@ -201,7 +208,7 @@ public class server {
     }
     
     public static void uploadOneLO(String cat1, String cat2){
-        String query = "INSERT INTO tbl_deptLOs (cat1, cat2, correct, total) VALUES ('" + cat1 + "', '" + cat2 + "', 'XX', 'ZZ');";
+        String query = "INSERT INTO tbl_deptLOs (cat1, cat2, correct, total) VALUES ('" + cat1 + "', '" + cat2 + "', '0', '0');";
         execNonQuery(query);
     }
     
@@ -229,7 +236,7 @@ public class server {
                 pullTestLO(args[1]);
                 break;
             case "updateTestLOs":
-                updateTestLOs(args[1],args[2],args[3],Boolean.getBoolean(args[4]));
+                updateTestLOs(args[1],args[2],args[3],Boolean.valueOf(args[4]));
                 break;
             case "viewStudentScores":
                 viewStudentScores(args[1]);
@@ -241,7 +248,7 @@ public class server {
                 pullDepartmentLOs();
                 break;    
             case "updateDepartmentLOs":
-                updateDepartmentLOs(args[1],args[2],Boolean.getBoolean(args[3]));
+                updateDepartmentLOs(args[1],args[2],Boolean.valueOf(args[3]));
                 break;
             case "pullTest":
                 pullTest(args[1]);
