@@ -29,8 +29,10 @@ public class AddQuestionScene extends TeacherDash {
     static RadioButton rbAnswerChoiceN;
     protected CreateTestScene cts = null;
     protected boolean editFlag = false;
+    //protected int currentUserID;
 
-    public AddQuestionScene(CreateTestScene cts, boolean editFlag) {
+    public AddQuestionScene(int cuID, CreateTestScene cts, boolean editFlag) {
+        super(cuID);
         this.cts = cts;
         this.editFlag = editFlag;
     }
