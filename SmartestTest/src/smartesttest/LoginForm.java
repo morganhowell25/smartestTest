@@ -33,9 +33,36 @@ public class LoginForm {
     }
 
     public Scene getScene() {
+        //server.addUser("admin",utils.encrypt("admin1"),"admin");
         GridPane gp = new GridPane();
         gp.setAlignment(Pos.CENTER);
 
+        /*Question q = new Question("My Question?", new String[]{"True","False"}, 5, 1,new ArrayList<ArrayList<String>>());
+        String strQ = utils.toStr(q);
+        System.out.println(strQ);
+        Question q2 = (Question) utils.toObj(strQ);
+        System.out.println("q2 = " + q2);*/
+        Question[] arrQ = new Question[3];
+        arrQ[0] = new Question("My Question1?", new String[]{"True","False"}, 5, 1,new ArrayList<ArrayList<String>>());
+        arrQ[1] = new Question("My Question2?", new String[]{"Dog","Cat"}, 4, 0,new ArrayList<ArrayList<String>>());
+        arrQ[2] = new Question("My Question3?", new String[]{"Hi","There"}, 3, 1,new ArrayList<ArrayList<String>>());
+        Test myTest = new Test(arrQ, "8675309", 2);
+        //server.saveTest(myTest.getPincode(),myTest.getTeacherID(),myTest);*/
+ 
+        /*StudentScoresListStruct ssls = new StudentScoresListStruct();
+        ssls.id = 3;
+        ssls.uname = "cheese";
+        ssls.score = "100";
+        String ss = utils.toStr(ssls);
+        System.out.println(ss);
+        StudentScoresListStruct ssl = (StudentScoresListStruct)utils.toObj(ss);*/
+        
+        /*GradedTest gt = new GradedTest(myTest, new int[]{1,0,1}, 3);
+        String strgt = utils.toStr(gt);
+        GradedTest gt2 = (GradedTest)utils.toObj(strgt);*/
+        
+        
+        
         LoginForm lf = this;
 
         Text scenetitle = new Text("Welcome");
@@ -65,6 +92,7 @@ public class LoginForm {
                 //System.out.println(pword);
                 //the following snippet protects against basic SQL injection
                 boolean validUname = true;
+
                 for (int i = 0; i < uname.length(); i++) {
                     if (!((uname.charAt(i) >= 'a' && uname.charAt(i) <= 'z') || (uname.charAt(i) >= 'A' && uname.charAt(i) <= 'Z') || (uname.charAt(i) >= '0' && uname.charAt(i) <= '9'))) {
                         validUname = false;
@@ -89,32 +117,33 @@ public class LoginForm {
                     badLogin.showAndWait();
                 } else {
                     newCred = server.pullUInfo(uname); // Pull user info from DB according to uname they entered
-                    System.out.println(newCred);
+                    System.out.println("newCred = " + newCred);
                     // If no info was pulled from the DB, the user entered an invalid username
 
-                    if (newCred.get(0).isEmpty() && newCred.get(1).isEmpty() && newCred.get(2).isEmpty()) {
+                    if (newCred == null || newCred.get(0).isEmpty() || newCred.get(1).isEmpty() || newCred.get(2).isEmpty()) {
                         Alert loginFail = new Alert(Alert.AlertType.ERROR);
                         loginFail.setTitle("Error!");
                         loginFail.setHeaderText("Login Failed!");
                         loginFail.setContentText("Invalid login credentials.");
                         loginFail.showAndWait();
                     } else { // Info was pulled from DB
-                        if (newCred.get(1).get(0).equals("admin1")) { // If the default admin is logging in, don't decrypt the password in the DB
-                            passPulled = newCred.get(1).get(0);
-                        } else { // If anyone else is logging in, decrypt the password from the database
-                            System.out.println(newCred.get(1).get(0));
-                            passPulled = utils.decrypt(newCred.get(1).get(0));
-                            System.out.println(passPulled);
-                        }
+                        // Decrypt the password from the database
+                        System.out.println(newCred.get(1).get(0));
+                        passPulled = utils.decrypt(newCred.get(1).get(0));
+                        System.out.println(passPulled);
+                        
                         // Compare the uname and password the user entered to the info pulled from DB
                         if (uname.equals(newCred.get(0).get(0)) && pword.equals(passPulled)) {
-                            if (newCred.get(2).get(0).equals("admin")) { // If user is admin, load AdminDash
+                            ArrayList<String> arrID = server.pullID(newCred.get(0).get(0));
+                            int userID = Integer.parseInt(arrID.get(0));
+                            System.out.println("User ID = " + userID);
+                            if (newCred.get(2).get(0).equals("admin")) {
                                 Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
                                 loginSuccess.setTitle("Login Form");
                                 loginSuccess.setHeaderText("Login Successful!");
                                 loginSuccess.setContentText("Press OK to proceed.");
                                 loginSuccess.showAndWait();
-                                AdminDash adminDash = new AdminDash();
+                                AdminDash adminDash = new AdminDash(userID);
                                 Stage primaryStage = new Stage();
                                 adminDash.start(primaryStage);
                                 //primaryStage.close();
@@ -124,7 +153,7 @@ public class LoginForm {
                                 loginSuccess.setHeaderText("Login Successful!");
                                 loginSuccess.setContentText("Press OK to proceed.");
                                 loginSuccess.showAndWait();
-                                TeacherDash teacherDash = new TeacherDash();
+                                TeacherDash teacherDash = new TeacherDash(userID);
                                 Stage primaryStage = new Stage();
                                 teacherDash.start(primaryStage);
                             } else { // If user is student, load StudentDash
@@ -133,7 +162,7 @@ public class LoginForm {
                                 loginSuccess.setHeaderText("Login Successful!");
                                 loginSuccess.setContentText("Press OK to proceed.");
                                 loginSuccess.showAndWait();
-                                StudentDash studentDash = new StudentDash();
+                                StudentDash studentDash = new StudentDash(userID);
                                 Stage primaryStage = new Stage();
                                 studentDash.start(primaryStage);
                                 System.out.println("After start clicked");

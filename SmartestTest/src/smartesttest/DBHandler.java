@@ -41,7 +41,7 @@ public class DBHandler {
         StringBuilder sb = new StringBuilder();
         String line = br.readLine();
         while (line != null) {
-            sb.append(line + "\n");
+            sb.append(line);// + "\n");
             line = br.readLine();
         }
         String sRet = sb.toString();

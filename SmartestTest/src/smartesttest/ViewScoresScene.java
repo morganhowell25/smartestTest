@@ -14,14 +14,17 @@ import javafx.scene.layout.GridPane;
  * @author Morgan Howell
  */
 public class ViewScoresScene extends StudentDash {
+    
+    public ViewScoresScene(int cuID) {
+        super(cuID);
+    }
 
     public Scene getScene() {
         GridPane gp = drawStudentDash();
         
         StudentDash studentDash = this;
         
-        int studentid = 0;
-        ArrayList<String> takenTests = server.pullTakenTestList(studentid);
+        ArrayList<String> takenTests = server.pullTakenTestList(currentUserID);
 
         Label testList = new Label("Tests Taken");
         gp.add(testList, 1, 0);
@@ -39,8 +42,11 @@ public class ViewScoresScene extends StudentDash {
                 @Override
                 public void handle(ActionEvent event) {
                     System.out.println("View Test Clicked!");
-                    GradedTest gt = server.pullStudentGradedTest(studentid, takenTests.get(index));
-                    ViewStudentScoreScene scoreScene = new ViewStudentScoreScene(gt);
+                    /*ArrayList<String> arrGT = server.pullStudentGradedTest(currentUserID, takenTests.get(index));
+                    System.out.println(arrGT.get(0));
+                    GradedTest gt = (GradedTest)utils.toObj(arrGT.get(0));*/
+                    GradedTest gt = server.pullStudentGradedTest(currentUserID, takenTests.get(index));
+                    ViewStudentScoreScene scoreScene = new ViewStudentScoreScene(gt, currentUserID);
                     scoreScene.STAGE = studentDash.STAGE;
                     studentDash.update(scoreScene.getScene());
                 }

@@ -25,6 +25,10 @@ public class AdminDash extends DashBoard
     
     public AdminDash(){} // Here lies a blank constructor.
     // Tis meant to honor Captain Morgan. Yoho.
+    
+    public AdminDash(int cuID){
+            this.currentUserID = cuID;
+    }
       
     public void start(Stage primaryStage){
         STAGE = primaryStage;

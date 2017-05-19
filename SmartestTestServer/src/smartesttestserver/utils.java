@@ -1,4 +1,4 @@
-package smartesttest;
+package smartesttestserver;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -19,7 +19,7 @@ public class utils {
             oos.writeObject(obj);
             byte[] barr = baos.toByteArray();
             sRet = Base64.getEncoder().encodeToString(barr);
-            sRet = URLEncoder.encode(sRet, "UTF-8");
+            //sRet = URLEncoder.encode(sRet, "UTF-8");
 
         } catch (Exception exc) {
             System.out.println(exc);

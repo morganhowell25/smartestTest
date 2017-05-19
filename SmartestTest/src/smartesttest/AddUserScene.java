@@ -62,8 +62,7 @@ public class AddUserScene extends AdminDash implements AppScene
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Confirm Clicked!");
-                String querycheck = "SELECT * from tbl_user WHERE uname='" + userNameTxt.getText() + "';";
-                ArrayList<String> unames = DBHandler.execQuery(querycheck);
+                ArrayList<String> unames = server.checkUname(userNameTxt.getText());
                 String enteredPass = userPassTxt.getText();
                 boolean validPass = true;
                 for(int i = 0; i < enteredPass.length(); i++){
@@ -86,7 +85,7 @@ public class AddUserScene extends AdminDash implements AppScene
                     nullAlert.setContentText("Please enter a non-empty username");
                     nullAlert.showAndWait();
                 }
-                else if(!unames.isEmpty()){
+                else if(!(unames.isEmpty())){
                     Alert badAlert = new Alert(AlertType.ERROR);
                     badAlert.setTitle("Failed to Add User");
                     badAlert.setHeaderText("Username already exists");
@@ -101,8 +100,7 @@ public class AddUserScene extends AdminDash implements AppScene
                     badAlert.showAndWait();
                 }
                 else{
-                    String encryptedPass = utils.encrypt(userPassTxt.getText());
-                    server.addUser(userNameTxt.getText(), encryptedPass, typeBox.getValue().toString().toLowerCase());
+                    server.addUser(userNameTxt.getText(), utils.encrypt(userPassTxt.getText()), typeBox.getValue().toString().toLowerCase());
                     Alert goodAlert = new Alert(AlertType.INFORMATION);
                     goodAlert.setTitle("User Added Successfully");
                     goodAlert.setHeaderText(null);

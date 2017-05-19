@@ -13,8 +13,12 @@ import javafx.scene.layout.GridPane;
  *
  * @author csc190
  */
-public class StudentHomeScene extends StudentDash
-{
+public class StudentHomeScene extends StudentDash{
+    
+    public StudentHomeScene(int cuID) {
+        super(cuID);
+    }
+    
     public Scene getScene()
     {
         GridPane gp = drawStudentDash();

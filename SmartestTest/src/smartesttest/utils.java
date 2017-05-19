@@ -1,27 +1,18 @@
 package smartesttest;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Base64;
 
 public class utils {
 
     static final String DRIVER = "com.mysql.jdbc.Driver";
-    static final String URL = "jdbc:mysql://localhost/smartTest_db";
+    static final String URL = "jdbc:mysql://localhost/smarttest_db";
     static final String USER = "root";
     static final String PASS = "goodyear123!@#";
     public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -36,7 +27,7 @@ public class utils {
             oos.writeObject(obj);
             byte[] barr = baos.toByteArray();
             sRet = Base64.getEncoder().encodeToString(barr);
-            sRet = URLEncoder.encode(sRet, "UTF-8");
+            //sRet = URLEncoder.encode(sRet, "UTF-8");
 
         } catch (Exception exc) {
             System.out.println(exc);
@@ -60,33 +51,6 @@ public class utils {
             return obj;
         }
     }
-        /**
-     * Return the first string in the last record in the query
-     *
-     * @param qry
-     * @return
-     */
-    public static String execQuery(String qry) {
-        String res = null;
-        try {
-            Class.forName(DRIVER);
-            Connection conn = DriverManager.getConnection(URL, USER, PASS);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(qry);
-
-            while (rs.next()) {
-                res = rs.getString(1);
-
-            }
-
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return res;
-    }
     
     public static String encrypt(String passText){
         String cipherText = "";
@@ -96,7 +60,7 @@ public class utils {
             char newChar = ALPHABET.charAt(keyVal);
             cipherText += newChar;
         }
-    return cipherText;
+        return cipherText;
     }
     
     public static String decrypt(String cipherText){
@@ -111,6 +75,6 @@ public class utils {
             char newChar = ALPHABET.charAt(keyVal);
             passText += newChar;
         }
-    return passText;
+        return passText;
     }
 }

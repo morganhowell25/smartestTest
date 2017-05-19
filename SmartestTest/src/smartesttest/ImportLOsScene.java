@@ -64,16 +64,14 @@ public class ImportLOsScene extends AdminDash {
                             strCat1 = strCat1.replaceFirst("([^;]*;){1}", ""); // Remove all characters before the semicolon ";" in the string
                             strCat1 = strCat1.trim(); // Remove the leading whitespace
                             System.out.println(strCat1);
-                            String query = "INSERT INTO tbl_deptLOs (cat1, cat2, correct, total) VALUES ('" + strCat1 + "', 'default', 'XX', 'ZZ');";
-                            DBHandler.execNonQuery(query);
+                            server.uploadOneLO(strCat1, "default");
                         } else { // The line read is a category 2 Learning Outcome
                             String strCat2 = line;
                             //strCat2 = strCat2.substring(7); // Extract the LO from the file
                             strCat2 = strCat2.replaceFirst("([^;]*;){1}", ""); // Remove all characters before the semicolon ";" in the string
                             strCat2 = strCat2.trim(); // Remove the leading whitespace
                             System.out.println(strCat2);
-                            String query = "INSERT INTO tbl_deptLOs (cat1, cat2, correct, total) VALUES ('" + strCat1 + "', '" + strCat2 + "', 'XX', 'ZZ');";
-                            DBHandler.execNonQuery(query);
+                            server.uploadOneLO(strCat1, strCat2);
                         }
                     }
 

@@ -20,20 +20,18 @@ import static smartesttest.server.pullTests;
  *
  * @author csc190
  */
-public class ManageTestsScene extends TeacherDash
-{
-    //hold until we have tid
-    int tid = 0;
-
-    public ManageTestsScene()
-    {
+public class ManageTestsScene extends TeacherDash{
     
+    public ManageTestsScene(int cuID) {
+        super(cuID);
     }
+    //hold until we have tid
+    //int tid = 0;
     
     public Scene getScene()
     {
         GridPane gp = drawTeacherDash();
-        ManageTestsScene mts = this;
+        TeacherDash teacherDash = this;
         //Upon clicking Manage Tests
         
         //Labels
@@ -41,10 +39,11 @@ public class ManageTestsScene extends TeacherDash
         Label lbScores = new Label("Student Scores");
         Label lbLO = new Label("Learning Outcomes");
         
-        ArrayList<String> tTests = pullTests(tid);
+        ArrayList<String> tTests = pullTests(currentUserID);
         for (int i = 0; i<tTests.size(); i++){
             final int x = i;
             Label pin = new Label(tTests.get(i));
+            String pincode = tTests.get(i);
             gp.add(pin,1,i+2);
             Button score = new Button("View Student Scores");
             gp.add(score,2,i+2);
@@ -53,17 +52,17 @@ public class ManageTestsScene extends TeacherDash
             score.setOnAction(new EventHandler<ActionEvent>() { 
                     @Override
                     public void handle(ActionEvent event) {
-                        StudentScoresListScene ssls = new StudentScoresListScene(tTests.get(x));
-                        ssls.STAGE = mts.STAGE;
-                        mts.update(ssls.getScene());
+                        StudentScoresListScene ssls = new StudentScoresListScene(currentUserID, pincode);
+                        ssls.STAGE = teacherDash.STAGE;
+                        teacherDash.update(ssls.getScene());
                     }
             });
             LOs.setOnAction(new EventHandler<ActionEvent>() { 
                     @Override
                     public void handle(ActionEvent event) {
-                        ViewTestLOScene vtl = new ViewTestLOScene();
-                        vtl.STAGE = mts.STAGE;
-                        mts.update(vtl.getScene(tTests.get(x)));
+                        ViewTestLOScene vtl = new ViewTestLOScene(currentUserID);
+                        vtl.STAGE = teacherDash.STAGE;
+                        teacherDash.update(vtl.getScene(tTests.get(x)));
                     }
             });
         }

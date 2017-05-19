@@ -33,7 +33,7 @@ public class ManageUserScene extends AdminDash {
         Label userID = new Label("ID");
         Label userRole = new Label("Role");
         Label userName = new Label("Username");
-        Label delete = new Label("Change Password?");
+        Label delete = new Label("Reset Password?");
         gp.add(userID, 1, 0);
         gp.add(userRole, 2, 0);
         gp.add(userName, 3, 0);
@@ -46,7 +46,7 @@ public class ManageUserScene extends AdminDash {
                 Label myLbl = new Label((arrUsers.get(i)).get(j));
                 gp.add(myLbl, 1 + i, 1 + j);
                 final int buttonInd = j + 1;
-                Button delBtn = new Button("Change Password");
+                Button delBtn = new Button("Reset");
 
                 delBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
@@ -57,6 +57,8 @@ public class ManageUserScene extends AdminDash {
                         dialog.setHeaderText(null);
                         dialog.setContentText("Please enter new password:");
                         Optional<String> result = dialog.showAndWait();
+                        System.out.println(result.get() + " " + buttonInd);
+                        
                         if (result.isPresent()) {
                             boolean validPass = true;
                             for (int i = 0; i < result.get().length(); i++) {
@@ -72,7 +74,7 @@ public class ManageUserScene extends AdminDash {
                                 badAlert.setContentText("Please only use alphanumeric characters");
                                 badAlert.showAndWait();
                             } else {
-                                server.resetPWD(result.get(), buttonInd);
+                                server.resetPWD(utils.encrypt(result.get()), buttonInd);
 
                                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                                 alert.setTitle("Password Changed Successfully");

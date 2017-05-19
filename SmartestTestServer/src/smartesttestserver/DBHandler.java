@@ -1,4 +1,4 @@
-package smartesttest;
+package smartesttestserver;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -25,14 +25,14 @@ public class DBHandler {
         HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
         con.setRequestMethod("POST");
         con.setRequestProperty("Content-length", String.valueOf(datastr.length()));
-        con.setRequestProperty("Content-Type", "application/x-www- form-urlencoded");
+        con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         con.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0;Windows98;DigExt)");
         con.setDoOutput(true);
         con.setDoInput(true);
 
         //2. send request out
         DataOutputStream oos = new DataOutputStream(con.getOutputStream());
-        oos.writeChars(datastr);
+        oos.writeBytes(datastr);
         oos.close();
 
         //3. collect the https response
