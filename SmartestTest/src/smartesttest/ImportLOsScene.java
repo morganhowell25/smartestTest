@@ -6,6 +6,7 @@
 package smartesttest;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,6 +44,10 @@ public class ImportLOsScene extends AdminDash {
         //    btnUpload.setDisable(disabled); // Disable upload the button
         //}
         gp.add(btnUpload, 1, 2);
+        ArrayList<ArrayList<String>> existingLO = server.pullDepartmentLOs();
+        if(!(existingLO.get(0).isEmpty())){
+            btnUpload.setDisable(true);
+        }
         
         btnUpload.setOnAction(new EventHandler<ActionEvent>() {
             @Override
