@@ -43,11 +43,20 @@ public class LoginForm {
         Question q2 = (Question) utils.toObj(strQ);
         System.out.println("q2 = " + q2);*/
         Question[] arrQ = new Question[3];
-        arrQ[0] = new Question("My Question1?", new String[]{"True","False"}, 5, 1,new ArrayList<ArrayList<String>>());
-        arrQ[1] = new Question("My Question2?", new String[]{"Dog","Cat"}, 4, 0,new ArrayList<ArrayList<String>>());
-        arrQ[2] = new Question("My Question3?", new String[]{"Hi","There"}, 3, 1,new ArrayList<ArrayList<String>>());
-        Test myTest = new Test(arrQ, "8675309", 2);
-        //server.saveTest(myTest.getPincode(),myTest.getTeacherID(),myTest);*/
+        ArrayList<String> arrCat1 = new ArrayList<String>();
+        arrCat1.add("Colors");
+        arrCat1.add("Dogs");
+        ArrayList<String> arrCat2 = new ArrayList<String>();
+        arrCat2.add("Blue");
+        arrCat2.add("Scottish");
+        ArrayList<ArrayList<String>> arrLOs = new ArrayList<ArrayList<String>>();
+        arrLOs.add(arrCat1);
+        arrLOs.add(arrCat2);
+        arrQ[0] = new Question("My Question1?", new String[]{"True","False"}, 5, 1,arrLOs);
+        arrQ[1] = new Question("My Question2?", new String[]{"Dog","Cat"}, 4, 0,arrLOs);
+        arrQ[2] = new Question("My Question3?", new String[]{"Hi","There"}, 3, 1,arrLOs);
+        Test myTest = new Test(arrQ, "8", 2);
+        server.saveTest(myTest.getPincode(),myTest.getTeacherID(),myTest);
  
         /*StudentScoresListStruct ssls = new StudentScoresListStruct();
         ssls.id = 3;

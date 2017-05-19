@@ -42,7 +42,8 @@ public class Question implements java.io.Serializable
         setAnswers(answers);
         setPointValue(pointValue);
         setCorrectAnswer(correctAns);
-        setLOs(LOs);        
+        setLOs(LOs);
+        //myLOs = LOs;
     }
     
     public String getQuestion()

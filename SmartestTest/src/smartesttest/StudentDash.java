@@ -30,7 +30,7 @@ public class StudentDash extends DashBoard
     public void start(Stage primaryStage){
         STAGE = primaryStage;
         
-        Question[] questions = new Question[6];
+        /*Question[] questions = new Question[6];
         questions[0] = new Question();
         String[] answers = new String[]{"andy", "is a", "butt"};
         questions[1] = new Question("Question here", answers, 1, 2, new ArrayList<ArrayList<String>>());
@@ -47,7 +47,7 @@ public class StudentDash extends DashBoard
                 
         Test t = new Test(questions, "dummy pincode" , 72);
         GradedTest gt = new GradedTest(t, new int[]{0,2,2,1,6,0}, 23);
-        gt.grade();
+        gt.grade();*/
         //TestScene shs = new TestScene(t);
         //ViewStudentScoreSceneTeacher shs = new ViewStudentScoreSceneTeacher(gt);
         //ViewStudentScoreScene shs = new ViewStudentScoreScene(gt, currentUserID);
