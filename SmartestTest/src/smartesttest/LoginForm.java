@@ -25,11 +25,12 @@ import javafx.stage.Stage;
  */
 public class LoginForm {
 
-    //protected Stage pStage;
+    protected Stage pStage = new Stage();
     public void start(Stage primaryStage) {
         LoginForm lForm = this;
-        primaryStage.setTitle("SmartTest");
-        update(primaryStage, lForm.getScene());
+        pStage = primaryStage;
+        pStage.setTitle("SmartTest");
+        update(pStage, lForm.getScene());
     }
 
     public Scene getScene() {
@@ -155,7 +156,7 @@ public class LoginForm {
                                 AdminDash adminDash = new AdminDash(userID);
                                 Stage primaryStage = new Stage();
                                 adminDash.start(primaryStage);
-                                //primaryStage.close();
+                                pStage.close();
                             } else if (newCred.get(2).get(0).equals("teacher")) { // If user is teacher, load TeacherDash
                                 Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
                                 loginSuccess.setTitle("Login Form");
@@ -165,6 +166,7 @@ public class LoginForm {
                                 TeacherDash teacherDash = new TeacherDash(userID);
                                 Stage primaryStage = new Stage();
                                 teacherDash.start(primaryStage);
+                                pStage.close();
                             } else { // If user is student, load StudentDash
                                 Alert loginSuccess = new Alert(Alert.AlertType.INFORMATION);
                                 loginSuccess.setTitle("Login Form");
@@ -174,9 +176,7 @@ public class LoginForm {
                                 StudentDash studentDash = new StudentDash(userID);
                                 Stage primaryStage = new Stage();
                                 studentDash.start(primaryStage);
-                                System.out.println("After start clicked");
-                                //this..close();
-                                System.out.println("After close clicked");
+                                pStage.close();
                             }
                         } else { // The user entered invalid login credentials
                             Alert loginFail = new Alert(Alert.AlertType.ERROR);
@@ -187,7 +187,6 @@ public class LoginForm {
                         }
                     }
                 }
-
             }
         });
 

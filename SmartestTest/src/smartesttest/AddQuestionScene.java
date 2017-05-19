@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
@@ -34,6 +35,7 @@ public class AddQuestionScene extends TeacherDash {
         super(cuID);
         this.cts = cts;
         this.editFlag = editFlag;
+        current = 4;
     }
 
     public Scene getScene(Question myQ, int indexEditQ) {
@@ -85,13 +87,11 @@ public class AddQuestionScene extends TeacherDash {
         //Create radiobuttons for each department LO and add to third column
         RadioButton rbLO;
         for (int i = 0; i < deptLOs.get(1).size(); i++) {
-            if (!deptLOs.get(1).get(i).equals("default")) {
+            if(!(deptLOs.get(1).get(i).equals("default"))){
                 rbLO = new RadioButton(deptLOs.get(1).get(i));
                 gp.add(rbLO, 3, i + 1);
                 rbLOSelect.add(rbLO);
-            }
-
-            //rbCurr++;
+            }          
         }
 
         //Button add to gp
@@ -134,15 +134,17 @@ public class AddQuestionScene extends TeacherDash {
                 }
             }
             //}
+            //Set up LOs during edit
             int correct = myQ.getCorrectAnswer();
             rbArr.get(correct).setSelected(true);
-            //ArrayList<ArrayList<String>> setUpLOs = myQ.getLOs();
+            ArrayList<ArrayList<String>> setUpLOs = myQ.getLOs();
 
 
-            /*for (int j = 0; j < setUpLOs.length; j++) {
-                int index = Integer.parseInt(setUpLOs[j]);
+            for (int j = 0; j < setUpLOs.size(); j++) {
+                int index = Integer.parseInt(setUpLOs.get(1).get(j));
                 rbLOSelect.get(index).setSelected(true);
-            }*/
+            }
+
         }
 
         //This button action is soley for adding more answers choices.
@@ -243,8 +245,7 @@ public class AddQuestionScene extends TeacherDash {
                         System.out.println("ACTUAL ARR: " + answersArr.get(i)); //Should match above
                     }
                     //Find selected RB               
-                    int correctAns = -1;
-                    int index = 0;
+                    int correctAns = -1;                    int index = 0;
                     boolean rbSelect = false;
                     try {
                         while (rbSelect == false) {
@@ -270,6 +271,7 @@ public class AddQuestionScene extends TeacherDash {
                     }
                     //System.out.println("Selected RB index = " + correctAns);
                     //Find selected LOs
+                    ArrayList<String> arrList = new ArrayList<String>();
                     for (int k = 0; k < rbLOSelect.size(); k++) {
                         if (rbLOSelect.get(k).isSelected()) {
                             //ArrayList<String> tempCats = new ArrayList<String>();
@@ -281,7 +283,8 @@ public class AddQuestionScene extends TeacherDash {
                             }
                             //selectedLOs.get(0).add(deptLOs.get(0).get(k));
                             //selectedLOs.add(rbLOSelect.get(k).getText());
-                            //selectedLOs.add("" + k);
+                            arrList.add(""+ k);
+                            selectedLOs.add(arrList);
                             System.out.println("Selected LO index = " + k);
                         }
                     }
@@ -294,11 +297,12 @@ public class AddQuestionScene extends TeacherDash {
                     //Finally... save the question. Call contructor.
                     //Convert ArrayLists to Array
                     String[] ansArray = answersArr.toArray(new String[answersArr.size()]);
-                    String[] selLOsArray = selectedLOs.toArray(new String[selectedLOs.size()]);
+                    //String[] selLOsArray = selectedLOs.toArray(new String[selectedLOs.size()]);
 
-                    if (!StrQuestion.equals("") && ansArray.length != 0 && selLOsArray.length != 0 && !txtPoints.getText().equals("") && correctAns != -1 && emptyStrings != true) {
+                    if (!StrQuestion.equals("") && ansArray.length != 0 && selectedLOs.size() != 0 && !txtPoints.getText().equals("") && correctAns != -1 && emptyStrings != true) {
                         //if(mode != true){   
-                        //Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selectedLOs);
+
+                        Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selectedLOs);
                         //}
                         current = 4;
                         //Now go back to old scene
@@ -352,8 +356,9 @@ public class AddQuestionScene extends TeacherDash {
         //gp.add(rbAnswerChoice,1,3);     
         //gp.add(rbLO,1,3);         
         //end Add GridPane
-
-        Scene scene = new Scene(gp, 900, 700);
+        ScrollPane sp = new ScrollPane();
+        sp.setContent(gp);
+        Scene scene = new Scene(sp, 900, 700);
         return scene;
 
     }
