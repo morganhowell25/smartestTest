@@ -88,7 +88,7 @@ public class server {
         String hold = "";
         try {
             String dataStr = "op=pullStudentGradedTest&id=" + URLEncoder.encode(String.valueOf(id), "UTF-8")
-                    +"&pincode=" + URLEncoder.encode(String.valueOf(pincode), "UTF-8");
+                    +"&pincode=" + URLEncoder.encode(pincode, "UTF-8");
             String url = "http://localhost/smartestTest.php";
             hold = DBHandler.httpsPost(url, dataStr);
         } catch (Exception exc) {

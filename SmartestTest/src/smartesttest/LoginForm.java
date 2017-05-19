@@ -42,12 +42,12 @@ public class LoginForm {
         System.out.println(strQ);
         Question q2 = (Question) utils.toObj(strQ);
         System.out.println("q2 = " + q2);*/
- /*Question[] arrQ = new Question[3];
+        Question[] arrQ = new Question[3];
         arrQ[0] = new Question("My Question1?", new String[]{"True","False"}, 5, 1,new ArrayList<ArrayList<String>>());
         arrQ[1] = new Question("My Question2?", new String[]{"Dog","Cat"}, 4, 0,new ArrayList<ArrayList<String>>());
         arrQ[2] = new Question("My Question3?", new String[]{"Hi","There"}, 3, 1,new ArrayList<ArrayList<String>>());
         Test myTest = new Test(arrQ, "8675309", 2);
-        server.saveTest(myTest.getPincode(),myTest.getTeacherID(),myTest);*/
+        //server.saveTest(myTest.getPincode(),myTest.getTeacherID(),myTest);*/
  
         /*StudentScoresListStruct ssls = new StudentScoresListStruct();
         ssls.id = 3;
@@ -56,6 +56,12 @@ public class LoginForm {
         String ss = utils.toStr(ssls);
         System.out.println(ss);
         StudentScoresListStruct ssl = (StudentScoresListStruct)utils.toObj(ss);*/
+        
+        /*GradedTest gt = new GradedTest(myTest, new int[]{1,0,1}, 3);
+        String strgt = utils.toStr(gt);
+        GradedTest gt2 = (GradedTest)utils.toObj(strgt);*/
+        
+        
         
         LoginForm lf = this;
 

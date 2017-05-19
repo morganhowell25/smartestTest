@@ -77,11 +77,13 @@ public class server {
     
     // What happens when student or teacher views an individual student's test
     // ***THIS WILL BE CALLED IN BOTH ViewStudentScoresSceneTeacher AND ViewStudentScoresScene***
-    public static void pullStudentGradedTest(int id, int pincode){
+    public static void pullStudentGradedTest(int id, String pincode){
         String query = "SELECT gradedTestObj FROM tbl_gradedtest WHERE sid='" + id + "' AND pincode='" + pincode + "';";
         ArrayList<String> strGradedTest = execQuery(query);
-        GradedTest gradedTest = (GradedTest) toObj(strGradedTest.get(0));
-        System.out.println(utils.toStr(gradedTest));
+        //String strgt = strGradedTest.get(0);
+        System.out.println(strGradedTest.get(0));
+        //utils.toStr(strGradedTest)
+        //GradedTest gt = (GradedTest)utils.toObj(strGradedTest.get(0));
     }
     
     // What happens when teacher clicks "View Dept LOs" in TeacherDash
@@ -233,7 +235,7 @@ public class server {
                 viewStudentScores(args[1]);
                 break;
             case "pullStudentGradedTest":
-                pullStudentGradedTest(Integer.parseInt(args[1]),Integer.parseInt(args[2]));
+                pullStudentGradedTest(Integer.parseInt(args[1]),args[2]);
                 break;
             case "pullDepartmentLOs":
                 pullDepartmentLOs();
