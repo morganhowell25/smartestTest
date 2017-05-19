@@ -20,7 +20,7 @@ import javax.swing.ButtonGroup;
 
 /**
  *
- * @author csc190
+ * @author Gianfranco Leto
  */
 public class AddQuestionScene extends TeacherDash {
 
@@ -29,8 +29,10 @@ public class AddQuestionScene extends TeacherDash {
     static RadioButton rbAnswerChoiceN;
     protected CreateTestScene cts = null;
     protected boolean editFlag = false;
+    //protected int currentUserID;
 
-    public AddQuestionScene(CreateTestScene cts, boolean editFlag) {
+    public AddQuestionScene(int cuID, CreateTestScene cts, boolean editFlag) {
+        super(cuID);
         this.cts = cts;
         this.editFlag = editFlag;
     }
@@ -42,12 +44,12 @@ public class AddQuestionScene extends TeacherDash {
 
         //Upon clicking Add Question...
 //Initialize some things 
-        ArrayList<ArrayList<String>> deptLOs = utils.pullDepartmentLOs();
+        ArrayList<ArrayList<String>> deptLOs = server.pullDepartmentLOs();
         ArrayList<String> answersArr = new ArrayList<String>();
         ArrayList<TextField> textFieldArr = new ArrayList<TextField>();
         ArrayList<RadioButton> rbArr = new ArrayList<RadioButton>();
         ArrayList<RadioButton> rbLOSelect = new ArrayList<RadioButton>();
-        ArrayList<String> selectedLOs = new ArrayList<String>();
+        ArrayList<ArrayList<String>> selectedLOs = new ArrayList<ArrayList<String>>();
 
         //Default question at start
         TextField txtQuestion = new TextField();
@@ -132,10 +134,12 @@ public class AddQuestionScene extends TeacherDash {
             //}
             int correct = myQ.getCorrectAnswer();
             rbArr.get(correct).setSelected(true);
-            String[] setUpLOs = myQ.getLOs();
+            ArrayList<ArrayList<String>> setUpLOs = new ArrayList<ArrayList<String>>();
+            setUpLOs = myQ.getLOs();
 
-            for (int j = 0; j < setUpLOs.length; j++) {
-                int index = Integer.parseInt(setUpLOs[j]);
+
+            for (int j = 0; j < setUpLOs.size(); j++) {
+                int index = Integer.parseInt(setUpLOs.get(1).get(j));
                 rbLOSelect.get(index).setSelected(true);
             }
 
@@ -256,6 +260,7 @@ public class AddQuestionScene extends TeacherDash {
                                 index++;
                             }
                         }
+<<<<<<< HEAD
                         //System.out.println("Selected RB index = " + correctAns);
                         //Find selected LOs
                         for (int k = 0; k < rbLOSelect.size(); k++) {
@@ -278,6 +283,33 @@ public class AddQuestionScene extends TeacherDash {
 
                         if (!StrQuestion.equals("") && ansArray.length != 0 && selLOsArray.length != 0 && !txtPoints.getText().equals("") && correctAns != -1) {                              
                             Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selLOsArray);                           
+=======
+
+                        //System.out.println("Selected RB index = " + correctAns);
+                        //Find selected LOs
+                        ArrayList<String> indexArrList = new ArrayList<String>();
+                        for (int k = 0; k < rbLOSelect.size(); k++) {
+                            if (rbLOSelect.get(k).isSelected()) {
+                                //selectedLOs.add(rbLOSelect.get(k).getText());
+                                indexArrList.add(""+k);
+                                selectedLOs.add(indexArrList);
+                                System.out.println("Selected LO index = " + k);
+                            }
+                        }
+                        //End get user input
+                        /*TestArray
+                        for(int i=0; i<answersArr.size(); i++){
+                            System.out.print("Answer Array: " + answersArr.get(i)+ "\n");
+                        }
+                         */
+                        //Finally... save the question. Call contructor.
+                        //Convert ArrayLists to Array
+                        String[] ansArray = answersArr.toArray(new String[answersArr.size()]);
+                        //String[] selLOsArray = selectedLOs.toArray(new String[selectedLOs.size()]);
+
+                        if (!StrQuestion.equals("") && ansArray.length != 0 && selectedLOs.size() != 0 && !txtPoints.getText().equals("") && correctAns != -1) {                              
+                            Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selectedLOs);                           
+>>>>>>> homestretch2
                             current = 4;
                             //Now go back to old scene
                             cts.STAGE = teachDash.STAGE;
@@ -300,6 +332,10 @@ public class AddQuestionScene extends TeacherDash {
                         DeleteAlert.showAndWait();
                     }                                               
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> homestretch2
                 } catch (IndexOutOfBoundsException exc) {
                     Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
                     DeleteAlert.setTitle("Warning!");
@@ -327,7 +363,7 @@ public class AddQuestionScene extends TeacherDash {
 
         Scene scene = new Scene(gp, 900, 700);
         return scene;
-
-    }
-
+   
+    }           
+    
 }

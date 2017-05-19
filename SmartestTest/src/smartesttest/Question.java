@@ -5,6 +5,8 @@
  */
 package smartesttest;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author csc190
@@ -21,20 +23,20 @@ public class Question implements java.io.Serializable
     //within myAnswers
     private int myCorrectAnswer;
     //An array of the corresponding LO's 
-    private String[] myLOs;
+    private ArrayList<ArrayList<String>> myLOs;
     
     //Default constructor
     public Question()
     {
         myQuestion = "default question";
         myAnswers = new String[]{"ans1", "ans2", "ans3", "ans4"};
-        myPointValue = -1;
+        myPointValue = 1;
         myCorrectAnswer = -1;
-        myLOs = new String[]{"null"};        
+        myLOs = new ArrayList<ArrayList<String>>();        
     }
     
     //A Constructor that allows all the values to be set
-    public Question(String question, String[] answers, int pointValue, int correctAns, String[] LOs)
+    public Question(String question, String[] answers, int pointValue, int correctAns, ArrayList<ArrayList<String>> LOs)
     {
         setQuestion(question);
         setAnswers(answers);
@@ -55,7 +57,7 @@ public class Question implements java.io.Serializable
     public int getCorrectAnswer()
     {   return myCorrectAnswer;     }
     
-    public String[] getLOs()
+    public ArrayList<ArrayList<String>> getLOs()
     {   return myLOs;   }
     
     public void setQuestion(String question)
@@ -70,7 +72,7 @@ public class Question implements java.io.Serializable
     public void setCorrectAnswer(int correctAns)
     {   myCorrectAnswer = correctAns;   }
     
-    public void setLOs(String[] LOs)
+    public void setLOs(ArrayList<ArrayList<String>> LOs)
     {   myLOs = LOs;    }
     
     public String toString()
@@ -82,8 +84,8 @@ public class Question implements java.io.Serializable
         temp += ("Point Value: " + myPointValue + "\n");
         temp += ("Correct Answer: " + (myCorrectAnswer+1) + "\n");
         temp += "My Learning Outcomes:\n";
-        for(int i =0; i < myLOs.length; i++)
-            temp += ((i+1) + ") " + myLOs[i] + "\n");
+        for(int i =0; i < myLOs.size(); i++)
+            temp += ((i+1) + ") " + myLOs.get(i) + "\n");
         return temp;
     }
 }

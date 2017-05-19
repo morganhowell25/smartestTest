@@ -14,7 +14,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import static smartesttest.utils.viewStudentScores;
 
 /**
  *
@@ -25,8 +24,8 @@ public class StudentScoresListScene extends TeacherDash {
     protected String pincode; // The pincode of the specific test that the teacher is viewing the student scores for
 
     // Specific Constructor: pass in pincode from ManageTestsScene when clicking the "View Student Scores" button for a specific test.
-    public StudentScoresListScene(String pincode) {
-        this.pincode = pincode;
+    public StudentScoresListScene(int cuID) {
+        super(cuID);
     }
 
     public Scene getScene() {
@@ -57,7 +56,7 @@ public class StudentScoresListScene extends TeacherDash {
         gp.add(lblScore, 3, 2);
 
         // Collect a set of corresponding unames and scores that match the give pincode.
-        ArrayList<StudentScoresListStruct> arrSSLStruct = viewStudentScores(pincode);
+        ArrayList<StudentScoresListStruct> arrSSLStruct = server.viewStudentScores(pincode);
 
         // Test case: if no students have taken the specific test, don't open the scene, and return to ManageTestsScene.
         // IDK if this will work.
@@ -112,7 +111,8 @@ public class StudentScoresListScene extends TeacherDash {
                     @Override
                     public void handle(ActionEvent event) {
                         System.out.println("View Score Clicked!");
-                        ViewStudentScoreSceneTeacher vssst = new ViewStudentScoreSceneTeacher();
+                        GradedTest gt = new GradedTest();
+                        ViewStudentScoreSceneTeacher vssst = new ViewStudentScoreSceneTeacher(gt, currentUserID);
                         vssst.STAGE = teacherDash.STAGE;
                         teacherDash.update(vssst.getScene());
                     }

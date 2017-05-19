@@ -5,12 +5,18 @@
  */
 package smartesttest;
 
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
@@ -45,12 +51,64 @@ public class AddUserScene extends AdminDash implements AppScene
         //and another
         Label userPassLbl = new Label("Password");
         gp.add(userPassLbl,2,4);
-        TextField userPassTxt = new TextField();
+        PasswordField userPassTxt = new PasswordField();
         gp.add(userPassTxt,2,5);
         
         //ending button
         Button confirm = new Button("Confirm");
         gp.add(confirm,2,6);
+        
+        confirm.setOnAction(new EventHandler<ActionEvent>() { 
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Confirm Clicked!");
+                ArrayList<String> unames = server.checkUname(userNameTxt.getText());
+                String enteredPass = userPassTxt.getText();
+                boolean validPass = true;
+                for(int i = 0; i < enteredPass.length(); i++){
+                    if(!((enteredPass.charAt(i) >= 'a' && enteredPass.charAt(i) <= 'z') || (enteredPass.charAt(i) >= 'A' && enteredPass.charAt(i) <= 'Z') || (enteredPass.charAt(i) >= '0' && enteredPass.charAt(i) <= '9'))){
+                        validPass = false;
+                        break;
+                    }
+                }
+                if(validPass == false){
+                    Alert badAlert = new Alert(AlertType.ERROR);
+                    badAlert.setTitle("Failed to Add User");
+                    badAlert.setHeaderText("Invalid password");
+                    badAlert.setContentText("Please only use alphanumeric characters");
+                    badAlert.showAndWait();
+                }
+                else if(userNameTxt.getText().isEmpty()){
+                    Alert nullAlert = new Alert(AlertType.ERROR);
+                    nullAlert.setTitle("Failed to Add User");
+                    nullAlert.setHeaderText("Username cannot be empty");
+                    nullAlert.setContentText("Please enter a non-empty username");
+                    nullAlert.showAndWait();
+                }
+                else if(!(unames.isEmpty())){
+                    Alert badAlert = new Alert(AlertType.ERROR);
+                    badAlert.setTitle("Failed to Add User");
+                    badAlert.setHeaderText("Username already exists");
+                    badAlert.setContentText("Please choose a unique username");
+                    badAlert.showAndWait();
+                }
+                else if(typeBox.getValue() == null){
+                    Alert badAlert = new Alert(AlertType.ERROR);
+                    badAlert.setTitle("Failed to Add User");
+                    badAlert.setHeaderText("No UserType Selected");
+                    badAlert.setContentText("Please choose a User Type");
+                    badAlert.showAndWait();
+                }
+                else{
+                    server.addUser(userNameTxt.getText(), utils.encrypt(userPassTxt.getText()), typeBox.getValue().toString().toLowerCase());
+                    Alert goodAlert = new Alert(AlertType.INFORMATION);
+                    goodAlert.setTitle("User Added Successfully");
+                    goodAlert.setHeaderText(null);
+                    goodAlert.setContentText("Press OK to continue");
+                    goodAlert.showAndWait();
+                }
+            }
+        });
         
                 
         

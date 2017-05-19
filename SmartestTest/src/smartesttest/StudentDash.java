@@ -5,6 +5,7 @@
  */
 package smartesttest;
 
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -21,11 +22,36 @@ public class StudentDash extends DashBoard
     protected Scene SCENE;
     protected Stage STAGE;
     protected int currentUserID;
+    
+    public StudentDash(int cuID){
+            currentUserID = cuID;
+    }
           
     public void start(Stage primaryStage){
         STAGE = primaryStage;
         
-        StudentHomeScene shs = new StudentHomeScene();
+        Question[] questions = new Question[6];
+        questions[0] = new Question();
+        String[] answers = new String[]{"andy", "is a", "butt"};
+        questions[1] = new Question("Question here", answers, 1, 2, new ArrayList<ArrayList<String>>());
+        questions[2] = new Question();
+        String[] answers1 = new String[]{"True", "False"};
+        questions[3] = new Question("Question here", answers1, 1, 1, new ArrayList<ArrayList<String>>());
+        String[] answers2 = new String[]{"andy", "is a", "butt", "can","this","have","more answers?"};
+        questions[4] = new Question("Question here What happens if I use a \n in the question", answers2, 1, 2, new ArrayList<ArrayList<String>>());
+        questions[5] = new Question();
+        
+        //Notes Run time issue 2 of them.
+        // Need to be able to scroll, tests ill have mutiple questions. Applies to all scenes.
+        // If there are more than 5 answers it overlaps.
+                
+        Test t = new Test(questions, "dummy pincode" , 72);
+        GradedTest gt = new GradedTest(t, new int[]{0,2,2,1,6,0}, 23);
+        gt.grade();
+        //TestScene shs = new TestScene(t);
+        //ViewStudentScoreSceneTeacher shs = new ViewStudentScoreSceneTeacher(gt);
+        //ViewStudentScoreScene shs = new ViewStudentScoreScene(gt, currentUserID);
+        StudentHomeScene shs = new StudentHomeScene(currentUserID);
         shs.STAGE = this.STAGE;
         SCENE = shs.getScene();
         
@@ -47,7 +73,7 @@ public class StudentDash extends DashBoard
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("TakeTest Clicked!");
-                TakeTestScene tts = new TakeTestScene();
+                TakeTestScene tts = new TakeTestScene(currentUserID);
                 tts.STAGE = studentDash.STAGE;
                 studentDash.update(tts.getScene());
             }
@@ -61,7 +87,7 @@ public class StudentDash extends DashBoard
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("PastTests Clicked!");
-                ViewScoresScene vss = new ViewScoresScene();
+                ViewScoresScene vss = new ViewScoresScene(currentUserID);
                 vss.STAGE = studentDash.STAGE;
                 studentDash.update(vss.getScene());
             }

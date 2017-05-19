@@ -12,27 +12,27 @@ package smartesttest;
 public class Test implements java.io.Serializable
 {
     protected Question[] myQuestions;
-    private int myPincode;
+    private String myPincode;
     private int myTeacherID;
     
     public Test()
     {
         myQuestions = new Question[]{new Question()};
-        myPincode = -1;
+        myPincode = "-1";
         myTeacherID= -1;
     }
     
-    public Test(Question[] questions, int pincode, int teacherID)
+    public Test(Question[] questions, String pincode, int teacherID)
     {
         setQuestions(questions);
         setPincode(pincode);
         setTeacherID(teacherID);
     }
     
-    public Question[] getQuestion()
+    public Question[] getTestQuestions()
     {   return myQuestions;     }
     
-    public int getPincode()
+    public String getPincode()
     {   return myPincode;       }
     
     public int getTeacherID()
@@ -41,7 +41,7 @@ public class Test implements java.io.Serializable
     public void setQuestions(Question[] questions)
     {   myQuestions = questions;    }
     
-    public void setPincode(int pincode)
+    public void setPincode(String pincode)
     {   myPincode = pincode;    }
     
     public void setTeacherID(int teacherID)

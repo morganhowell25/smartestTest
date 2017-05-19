@@ -21,12 +21,16 @@ public class TeacherDash extends DashBoard {
     protected Scene SCENE;
     protected Stage STAGE;
     protected int currentUserID;
+    
+    public TeacherDash(int cuID){
+        this.currentUserID = cuID;
+    }
 
     public void start(Stage primaryStage){
         STAGE = primaryStage;
         
-        //TeacherHomeScene ths = new TeacherHomeScene();
-        StudentScoresListScene ths = new StudentScoresListScene("99999");
+        TeacherHomeScene ths = new TeacherHomeScene(currentUserID);
+        //StudentScoresListScene ths = new StudentScoresListScene("99999");
         ths.STAGE = this.STAGE;
         SCENE = ths.getScene();
         
@@ -50,7 +54,7 @@ public class TeacherDash extends DashBoard {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("CreateTest Clicked!");
-                CreateTestScene cts = new CreateTestScene();
+                CreateTestScene cts = new CreateTestScene(currentUserID);
                 cts.STAGE = teacherDash.STAGE;
                 teacherDash.update(cts.getScene(null, false, 0));
             }
@@ -64,7 +68,7 @@ public class TeacherDash extends DashBoard {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("ManageTests Clicked!");
-                ManageTestsScene mts = new ManageTestsScene();
+                ManageTestsScene mts = new ManageTestsScene(currentUserID);
                 mts.STAGE = teacherDash.STAGE;
                 teacherDash.update(mts.getScene());
             }
@@ -78,7 +82,7 @@ public class TeacherDash extends DashBoard {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("ViewLO Clicked!");
-                ViewDepartmentLOScene vdlos = new ViewDepartmentLOScene();
+                ViewDepartmentLOScene vdlos = new ViewDepartmentLOScene(currentUserID);
                 vdlos.STAGE = teacherDash.STAGE;
                 teacherDash.update(vdlos.getScene());
             }
