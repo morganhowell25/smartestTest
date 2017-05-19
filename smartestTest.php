@@ -68,8 +68,12 @@
         }else if($op=="pullID"){
 		$uname = $_POST["uname"];
                 $cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $uname";
-        }
-	
+        }else if($op=="uploadOneTestLO"){
+		$pincode = $_POST["pincode"];
+		$cat1 = $_POST["cat1"];
+                $cat2 = $_POST["cat2"];
+		$cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $pincode $cat1 $cat2";
+}		
 	$str = shell_exec($cmd);
 	print($str);
 ?>

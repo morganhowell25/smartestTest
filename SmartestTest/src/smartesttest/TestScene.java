@@ -28,6 +28,7 @@ public class TestScene extends StudentDash {
 
     public Scene getScene() {
         GridPane gp = drawStudentDash();
+        StudentDash stuDash = this;
 
         int currentRow = 0;
         ArrayList<ToggleGroup> answerButtons = new ArrayList<ToggleGroup>();
@@ -98,12 +99,16 @@ public class TestScene extends StudentDash {
                     GradedTest graded = new GradedTest(myTest, stuAns, currentUserID);
                     graded.grade();
                     server.saveGradedTest(currentUserID, myTest.getPincode(), graded, "" + graded.getScore());
+                    
+                    ViewStudentScoreScene vssst = new ViewStudentScoreScene(graded, currentUserID);
+                        vssst.STAGE = stuDash.STAGE;
+                        stuDash.update(vssst.getScene());
 
                     //testing to see if it correctly pulls the students answers
                     //#worksfristtime
-                    for (int x = 0; x < stuAns.length; x++) {
+                    /*for (int x = 0; x < stuAns.length; x++) {
                         System.out.println("Student Answered: " + stuAns[x]);
-                    }
+                    }*/
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Error");
