@@ -87,7 +87,6 @@ public class AddQuestionScene extends TeacherDash {
         //Create radiobuttons for each department LO and add to third column
         RadioButton rbLO;
         for (int i = 0; i < deptLOs.get(1).size(); i++) {
-
             if(!(deptLOs.get(1).get(i).equals("default"))){
                 rbLO = new RadioButton(deptLOs.get(1).get(i));
                 gp.add(rbLO, 3, i + 1);
@@ -123,7 +122,7 @@ public class AddQuestionScene extends TeacherDash {
                     rbArr.add(rbAnswerChoiceN);
                     //Add to gp
                     gp.add(rbAnswerChoiceN, 2, current + 1);
-                    gp.add(txtAnsOptionN, 1, current + 1);
+                    gp.add(txtAnsOptionN, 1, current + 1);                    
                     gp.add(btnDone, 1, current + 2);
                     gp.add(btnNewAnswerOption, 2, current + 2);
                     gp.add(btnRMOption, 2, current + 3);
@@ -138,14 +137,12 @@ public class AddQuestionScene extends TeacherDash {
             //Set up LOs during edit
             int correct = myQ.getCorrectAnswer();
             rbArr.get(correct).setSelected(true);
-
             ArrayList<ArrayList<String>> setUpLOs = myQ.getLOs();
 
 
             for (int j = 0; j < setUpLOs.size(); j++) {
                 int index = Integer.parseInt(setUpLOs.get(1).get(j));
                 rbLOSelect.get(index).setSelected(true);
-
             }
 
         }
@@ -250,43 +247,20 @@ public class AddQuestionScene extends TeacherDash {
                     //Find selected RB               
                     int correctAns = -1;                    int index = 0;
                     boolean rbSelect = false;
-                    try {
-                        while (rbSelect == false) {
-                            if (rbArr.get(index).isSelected()) {
-                                correctAns = index;
-                                rbSelect = true;
-                            } else {
-                                index++;
-                                /*if (index == rbArr.size()) {
-                                Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
-                                DeleteAlert.setTitle("Warning!");
-                                DeleteAlert.setHeaderText(null);
-                                DeleteAlert.setContentText("Please select an answer choice!");
-                                DeleteAlert.showAndWait();*/
-                            }
+                    while (rbSelect == false) {
+                        if (rbArr.get(index).isSelected()) {
+                            correctAns = index;
+                            rbSelect = true;
+                        } else {
+                            index++;
                         }
-                    } catch (Exception e) {
-                        Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
-                        DeleteAlert.setTitle("Warning!");
-                        DeleteAlert.setHeaderText(null);
-                        DeleteAlert.setContentText("Please select an answer choice!");
-                        DeleteAlert.showAndWait();
                     }
                     //System.out.println("Selected RB index = " + correctAns);
                     //Find selected LOs
                     ArrayList<String> arrList = new ArrayList<String>();
                     for (int k = 0; k < rbLOSelect.size(); k++) {
                         if (rbLOSelect.get(k).isSelected()) {
-                            //ArrayList<String> tempCats = new ArrayList<String>();
-                            selectedLOs.get(1).add(rbLOSelect.get(k).getText());
-                            for (int i = 0; i < deptLOs.get(1).size(); i++) {
-                                if (deptLOs.get(1).get(i).equals(rbLOSelect.get(k).getText())) {
-                                    selectedLOs.get(0).add(deptLOs.get(0).get(i));
-                                }
-                            }
-                            //selectedLOs.get(0).add(deptLOs.get(0).get(k));
                             //selectedLOs.add(rbLOSelect.get(k).getText());
-
                             arrList.add(""+ k);
                             selectedLOs.add(arrList);
                             System.out.println("Selected LO index = " + k);
@@ -305,7 +279,6 @@ public class AddQuestionScene extends TeacherDash {
 
                     if (!StrQuestion.equals("") && ansArray.length != 0 && selectedLOs.size() != 0 && !txtPoints.getText().equals("") && correctAns != -1 && emptyStrings != true) {
                         //if(mode != true){   
-
                         Question myQ = new Question(StrQuestion, ansArray, intPoints, correctAns, selectedLOs);
                         //}
                         current = 4;
@@ -319,6 +292,7 @@ public class AddQuestionScene extends TeacherDash {
                         DeleteAlert.setContentText("Please Fill out all fields and buttons!");
                         DeleteAlert.showAndWait();
                     }
+
 
                 } catch (NumberFormatException exc) {
                     Alert DeleteAlert = new Alert(Alert.AlertType.WARNING);
@@ -364,7 +338,7 @@ public class AddQuestionScene extends TeacherDash {
         sp.setContent(gp);
         Scene scene = new Scene(sp, 900, 700);
         return scene;
-
-    }
-
+   
+    }           
+    
 }

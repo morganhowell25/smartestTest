@@ -99,6 +99,17 @@ public class CreateTestScene extends TeacherDash {
                 Question [] quArr = arrQ.toArray(new Question[arrQ.size()]); 
                 Test theTest = new Test(quArr, thePin, currentUserID);
                 server.saveTest(thePin, currentUserID, theTest);
+                
+                for(int i =0; i < theTest.getTestQuestions().length; i++)
+                {
+                    for(int j=0; j<theTest.getTestQuestions()[i].getLOs().size(); j++)
+                    {
+                        server.uploadOneTestLO(theTest.getPincode(),
+                                theTest.getTestQuestions()[i].getLOs().get(0).get(i), 
+                                theTest.getTestQuestions()[i].getLOs().get(1).get(j));
+                    }
+                }
+                
                 finalizeAlert.setTitle("Success");
                 finalizeAlert.setHeaderText(null);
                 finalizeAlert.setContentText("Lesson Submitted.");
