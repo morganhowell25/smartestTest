@@ -12,14 +12,13 @@
 		$cat2 = $_POST["cat2"];
 		$right = $_POST["right"];
 		$cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $pincode $cat1 $cat2 $right";
-	}else if($op=="viewStudentTestScores"){
+	}else if($op=="viewStudentScores"){
 		$pincode = $_POST["pincode"];
 		$cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $pincode";
-	}else if($op=="studentGradedTest"){
-		$cat1 = $_POST["cat1"];
-		$cat2 = $_POST["cat2"];
-		$right = $_POST["right"];
-		$cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $cat1 $cat2 $right";
+	}else if($op=="pullStudentGradedTest"){
+		$id = $_POST["id"];
+		$pincode = $_POST["pincode"];
+		$cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $id $pincode";
 	}else if($op=="updateDepartmentLOs"){
 		$cat1 = $_POST["cat1"];
 		$cat2 = $_POST["cat2"];
@@ -66,6 +65,9 @@
                 $cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $uname";
         }else if($op=="pullDepartmentLOs"){
                 $cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op";
+        }else if($op=="pullID"){
+		$uname = $_POST["uname"];
+                $cmd = "java -classpath /var/www/cgi-bin:/var/www/cgi-bin/mysql-connector-java-5.1.23-bin.jar smartesttestserver.server $op $uname";
         }
 	
 	$str = shell_exec($cmd);
